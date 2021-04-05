@@ -43,7 +43,7 @@ class _ChangePassState extends State< ChangePass> with SingleTickerProviderState
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-              child: Text("Old Password"),
+              child: Text("Old Password", style: TextStyle(fontSize: 18,),),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -56,7 +56,7 @@ class _ChangePassState extends State< ChangePass> with SingleTickerProviderState
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: Text("New Password"),
+              child: Text("New Password", style: TextStyle(fontSize: 18,),),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -69,7 +69,7 @@ class _ChangePassState extends State< ChangePass> with SingleTickerProviderState
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: Text("Confirm New Password "),
+              child: Text("Confirm New Password ", style: TextStyle(fontSize: 18,),),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),

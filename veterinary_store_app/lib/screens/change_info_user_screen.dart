@@ -43,7 +43,7 @@ class _ChangeInfoState extends State<ChangeInfo> with SingleTickerProviderStateM
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-              child: Text("Name"),
+              child: Text("Name", style: TextStyle(fontSize: 18,),),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -56,7 +56,7 @@ class _ChangeInfoState extends State<ChangeInfo> with SingleTickerProviderStateM
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: Text("Phone"),
+              child: Text("Phone", style: TextStyle(fontSize: 18,),),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -69,7 +69,7 @@ class _ChangeInfoState extends State<ChangeInfo> with SingleTickerProviderStateM
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: Text("Email"),
+              child: Text("Email", style: TextStyle(fontSize: 18,),),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
