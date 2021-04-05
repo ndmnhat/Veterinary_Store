@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:veterinary_store_app/screens/notification_screen.dart';
+import 'package:veterinary_store_app/screens/seach_screen.dart';
 import 'package:veterinary_store_app/screens/user_info_screen.dart';
 import 'package:veterinary_store_app/screens/cart_screen.dart';
 import 'package:veterinary_store_app/screens/health_care_screen.dart';
@@ -49,6 +50,7 @@ class _AppScreenState extends State<AppScreen> {
             child: Padding(
               padding: const  EdgeInsets.fromLTRB(20, 0, 20, 5),
               child: OutlinedButton(
+                onPressed: () { _seach();},
                 child: Row(
                   children: [
                     Icon(Icons.search, color: Colors.black, size: 30),],
@@ -129,9 +131,10 @@ class _AppScreenState extends State<AppScreen> {
                 elevation: 1,
                 iconSize: 35,
                 unselectedItemColor: Colors.grey,
+                selectedItemColor: Colors.cyanAccent,
                 selectedFontSize: 1.0,
                 unselectedFontSize: 1.0,
-                backgroundColor: Colors.cyanAccent,
+                backgroundColor: Colors.white,
             ),]
           ),
         ),
@@ -141,6 +144,11 @@ class _AppScreenState extends State<AppScreen> {
   void _nofi() {
     print("text");
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => NofiScreen()));
+  }
+
+  void _seach() {
+    print("seach");
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => SeachProduct()));
   }
 
 }
