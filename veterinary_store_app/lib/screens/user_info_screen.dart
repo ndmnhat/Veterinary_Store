@@ -16,73 +16,100 @@ class _UserInfoState extends State<UserInfo> {
     return Container(
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("UserInfo"),
-              Row(
-                children: [
-                  Text("See more"),
-                  IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed:(){_userInfoChange();}),
-                ],
-              )
-            ],
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("UserInfo", style: TextStyle(fontSize: 18,),),
+                Row(
+                  children: [
+                    Text("See more", style: TextStyle(fontSize: 18,),),
+                    IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed:(){_userInfoChange();}),
+                  ],
+                )
+              ],
+            ),
           ),
-          Row(
-            children: [
-              Text("Name:   Demo"),],
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+            child: Row(
+              children: [
+                Text("Name:   Demo", style: TextStyle(fontSize: 18,),),],
+            ),
           ),
-          Row(
-            children: [
-              Text("Email:"),],
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+            child: Row(
+              children: [
+                Text("Email:", style: TextStyle(fontSize: 18,),),],
+            ),
           ),
-          Row(
-            children: [
-              Text("Phone:"),],
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+            child: Row(
+              children: [
+                Text("Phone:", style: TextStyle(fontSize: 18,),),],
+            ),
           ),
-          Row(
-            children: [
-              Text("Total Bill Success:"),],
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+            child: Row(
+              children: [
+                Text("Total Bill Success:", style: TextStyle(fontSize: 18,),),],
+            ),
           ),
-          Row(
-            children: [
-              Text("Total Money Cost:"),],
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+            child: Row(
+              children: [
+                Text("Total Money Cost:", style: TextStyle(fontSize: 18,),),],
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Change Address"),
-              Row(
-                children: [
-                  Text("See more"),
-                  IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed:(){_changeAddress();},),
-                ],
-              )
-            ],
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 15, 10, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Change Address", style: TextStyle(fontSize: 18,),),
+                Row(
+                  children: [
+                    Text("See more", style: TextStyle(fontSize: 18,),),
+                    IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed:(){_changeAddress();},),
+                  ],
+                )
+              ],
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Transaction History"),
-              Row(
-                children: [
-                  Text("See more"),
-                  IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed:(){_tranHisScreen();},),
-                ],
-              )
-            ],
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Transaction History", style: TextStyle(fontSize: 18,),),
+                Row(
+                  children: [
+                    Text("See more", style: TextStyle(fontSize: 18,),),
+                    IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed:(){_tranHisScreen();},),
+                  ],
+                )
+              ],
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Change Password"),
-              Row(
-                children: [
-                  Text("See more"),
-                  IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed:(){_changePass();},),
-                ],
-              )
-            ],
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Change Password", style: TextStyle(fontSize: 18,),),
+                Row(
+                  children: [
+                    Text("See more", style: TextStyle(fontSize: 18,),),
+                    IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed:(){_changePass();},),
+                  ],
+                )
+              ],
+            ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),

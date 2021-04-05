@@ -75,7 +75,7 @@ class _AppScreenState extends State<AppScreen> {
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: Container(
-        height: _selectedIndex == 3 ? 110 : 57,
+        height: _selectedIndex == 3 ? MediaQuery.of(context).size.height * 0.16 : MediaQuery.of(context).size.height * 0.08,
         decoration: BoxDecoration(
             border: Border(top: BorderSide(color: Colors.tealAccent, width: 1.0))),
           child:Column(

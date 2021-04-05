@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'package:veterinary_store_app/screens/user_info_screen.dart';
+import 'package:veterinary_store_app/screens/cart_screen.dart';
+import 'package:veterinary_store_app/screens/health_care_screen.dart';
+import 'package:veterinary_store_app/screens/home_screen.dart';
+
 class TranHis extends StatefulWidget {
   @override
   _TranHisState createState() => _TranHisState();
 }
 
 class _TranHisState extends State<TranHis> with SingleTickerProviderStateMixin {
+  var _selectedIndex = 0;
   final List<Tab> myTabs = <Tab>[
     Tab(
       text: 'All',
@@ -19,6 +25,13 @@ class _TranHisState extends State<TranHis> with SingleTickerProviderStateMixin {
     Tab(
       text: 'Cancel',
     ),
+  ];
+
+  List <Widget> _widgetOptions = <Widget>[
+    HomeScreen(),
+    HealthCare(),
+    UserInfo(),
+    CartScreen(),
   ];
 
   TabController _tabController;
@@ -54,15 +67,13 @@ class _TranHisState extends State<TranHis> with SingleTickerProviderStateMixin {
         ),
         body: TabBarView(
           controller: _tabController,
-          children: myTabs.map((Tab tab) {
-            final String label = tab.text.toLowerCase();
-            return Center(
-              child: Text(
-                'This is the $label tab',
-                style: const TextStyle(fontSize: 36),
-              ),
-            );
-          }).toList(),
+            children: [
+              // sẽ thay thành hàm return về ds các đơn hàng
+              HomeScreen(),
+              HealthCare(),
+              UserInfo(),
+              CartScreen(),
+            ],
         ),
       ),
     );

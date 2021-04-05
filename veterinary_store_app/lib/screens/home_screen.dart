@@ -15,8 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
       padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
       child: Container(
         child: SmartGridView(
-          tileWidth: 150,
-          tileHeight: 120,
+          tileWidth: MediaQuery.of(context).size.width * 0.4,
+          tileHeight: MediaQuery.of(context).size.height * 0.17,
           children: List.generate(10, (index) => GestureDetector(
             onTap: _changetodetail,
             child: Card(
@@ -30,8 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: Image.network('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
                       fit: BoxFit.fill,
-                      width: 200,
-                      height: 150,
+                      width: MediaQuery.of(context).size.width * 0.48,
+                      height: MediaQuery.of(context).size.height * 0.21,
                     ),
                   ),
                   Text(
