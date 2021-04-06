@@ -39,6 +39,7 @@ class _AppScreenState extends State<AppScreen> {
   }
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -73,38 +74,42 @@ class _AppScreenState extends State<AppScreen> {
           ),
         ],
       ),
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: SafeArea(
+        child: _widgetOptions.elementAt(_selectedIndex),),
       bottomNavigationBar: Container(
-        height: _selectedIndex == 3 ? MediaQuery.of(context).size.height * 0.16 : MediaQuery.of(context).size.height * 0.08,
+        height: _selectedIndex == 3 ? 110 : 57,
         decoration: BoxDecoration(
             border: Border(top: BorderSide(color: Colors.tealAccent, width: 1.0))),
           child:Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               _selectedIndex == 3 ? Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Hello", style: TextStyle(color: Colors.black)),
-                        Text("0 đ",style: TextStyle(color: Colors.black)),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-                    child: OutlinedButton(
-                      child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Pay",style: TextStyle(color: Colors.black)),
-                          Icon(Icons.arrow_right_alt, color: Colors.black, size: 30),],
+                          Text("Hello", style: TextStyle(color: Colors.black,fontSize: 18,)),
+                          Text("0 đ",style: TextStyle(color: Colors.black,fontSize: 18,)),
+                        ],
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+                      child: OutlinedButton(
+                        child: Row(
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text("Pay",style: TextStyle(color: Colors.black,fontSize: 18,)),
+                            Icon(Icons.arrow_right_alt, color: Colors.black, size: 30),],
+                        ),
+                      ),
+                    ),
+                  ],
               ) : Row(),
               BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
