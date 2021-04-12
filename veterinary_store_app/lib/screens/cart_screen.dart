@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'detail_product_screen.dart';
+
 class CartScreen extends StatefulWidget {
   @override
   _CartScreenState createState() => _CartScreenState();
@@ -15,7 +17,7 @@ class _CartScreenState extends State<CartScreen> {
         itemCount: 2,
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap:(){ print("text");},
+            onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailProduct()));},
             child: Container(
               width: MediaQuery.of(context).size.width * 0.94,
               child: Card(
