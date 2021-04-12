@@ -115,6 +115,7 @@ class _UserInfoState extends State<UserInfo> {
             padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: OutlinedButton(
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.cyanAccent),),
+              onPressed: () {},
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

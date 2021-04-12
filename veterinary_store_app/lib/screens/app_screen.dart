@@ -101,6 +101,7 @@ class _AppScreenState extends State<AppScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
                       child: OutlinedButton(
+                        onPressed: (){},
                         child: Row(
                           // crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
