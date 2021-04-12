@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:veterinary_store_app/screens/invoice_details_screen.dart';
 
 import 'package:veterinary_store_app/screens/user_info_screen.dart';
 import 'package:veterinary_store_app/screens/cart_screen.dart';
 import 'package:veterinary_store_app/screens/health_care_screen.dart';
-import 'package:veterinary_store_app/screens/home_screen.dart';
 
 class TranHis extends StatefulWidget {
   @override
@@ -25,13 +25,6 @@ class _TranHisState extends State<TranHis> with SingleTickerProviderStateMixin {
     Tab(
       text: 'Cancel',
     ),
-  ];
-
-  List <Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    HealthCare(),
-    UserInfo(),
-    CartScreen(),
   ];
 
   TabController _tabController;
@@ -69,12 +62,126 @@ class _TranHisState extends State<TranHis> with SingleTickerProviderStateMixin {
           controller: _tabController,
             children: [
               // sẽ thay thành hàm return về ds các đơn hàng
-              HomeScreen(),
+              AllTransaction(),
               HealthCare(),
               UserInfo(),
               CartScreen(),
             ],
         ),
+      ),
+    );
+  }
+}
+
+class AllTransaction extends StatefulWidget {
+  @override
+  _AllTransactionState createState() => _AllTransactionState();
+}
+
+class _AllTransactionState extends State<AllTransaction> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(  // Added
+      child:ListView.builder(
+          itemCount: 2,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => InvoiceDetail()));},
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.94,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4.0),
+                    side: BorderSide(color: Colors.cyanAccent)
+                  ),
+                  color: Colors.white,
+                  // elevation: 10,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'ID Bill',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                    child: Container(
+                                      // color: Colors.green,
+                                      width: 80.0,
+                                      height: 20.0,
+                                      decoration: ShapeDecoration(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(5.0),
+                                            side: BorderSide(color: Colors.lightGreen)
+                                        ),
+                                        color: Colors.lightGreen,
+                                      ),
+                                      child: Text(
+                                        'Complete',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(color: Colors.black),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                              child: Text(
+                                'Day: 30/2/2021',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                              child: Text(
+                                'Username: User',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
+                              child: Text(
+                                'Totals: 100.000 vnđ',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }
       ),
     );
   }
