@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'detail_product_screen.dart';
 
 class CartScreen extends StatefulWidget {
@@ -14,7 +13,7 @@ class _CartScreenState extends State<CartScreen> {
       padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
       color: Colors.white,
       child: ListView.builder(
-        itemCount: 2,
+        itemCount: 10,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailProduct()));},

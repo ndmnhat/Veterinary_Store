@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:veterinary_store_app/screens/notification_screen.dart';
+import 'package:veterinary_store_app/screens/payment_screen.dart';
 import 'package:veterinary_store_app/screens/seach_screen.dart';
 import 'package:veterinary_store_app/screens/user_info_screen.dart';
 import 'package:veterinary_store_app/screens/cart_screen.dart';
@@ -101,7 +102,9 @@ class _AppScreenState extends State<AppScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
                       child: OutlinedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          _payment();
+                        },
                         child: Row(
                           // crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -148,13 +151,18 @@ class _AppScreenState extends State<AppScreen> {
   }
 
   void _nofi() {
-    print("text");
+    print("nofi");
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => NofiScreen()));
   }
 
   void _seach() {
     print("seach");
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => SeachProduct()));
+  }
+
+  void _payment() {
+    print("pay");
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Payment()));
   }
 
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'detail_product_screen.dart';
 
 class InvoiceDetail extends StatefulWidget {
@@ -7,7 +6,7 @@ class InvoiceDetail extends StatefulWidget {
   _InvoiceDetailState createState() => _InvoiceDetailState();
 }
 
-class _InvoiceDetailState extends State< InvoiceDetail> {
+class _InvoiceDetailState extends State<InvoiceDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,14 +19,14 @@ class _InvoiceDetailState extends State< InvoiceDetail> {
         child: Container(
           width: MediaQuery.of(context).size.width,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+            padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
                     child: Row(
                       children: [
                         Text(
@@ -62,7 +61,7 @@ class _InvoiceDetailState extends State< InvoiceDetail> {
                 ),
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                     child: Text(
                       'Day: 30/2/2021',
                       style: TextStyle(
@@ -73,7 +72,7 @@ class _InvoiceDetailState extends State< InvoiceDetail> {
                 ),
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                     child: Text(
                       'Username: User',
                       style: TextStyle(
@@ -84,7 +83,7 @@ class _InvoiceDetailState extends State< InvoiceDetail> {
                 ),
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
                     child: Text(
                       'Totals: 100.000 vnđ',
                       style: TextStyle(
@@ -97,7 +96,7 @@ class _InvoiceDetailState extends State< InvoiceDetail> {
                   width: MediaQuery.of(context).size.width,
                   color: Colors.grey,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
+                    padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                     child: Text(
                       'Address',
                       style: TextStyle(
@@ -110,7 +109,7 @@ class _InvoiceDetailState extends State< InvoiceDetail> {
                 Container(
                   width: MediaQuery.of(context).size.width,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 5),
                     child: Text(
                       '16389 Đường 186 Khu phố 135 TP HCM TP Thủ Đức',
                       style: TextStyle(
@@ -125,7 +124,7 @@ class _InvoiceDetailState extends State< InvoiceDetail> {
                   width: MediaQuery.of(context).size.width,
                   color: Colors.grey,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
+                    padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                     child: Text(
                       'Shipping Method',
                       style: TextStyle(
@@ -137,7 +136,7 @@ class _InvoiceDetailState extends State< InvoiceDetail> {
                 ),
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                     child: Text(
                       'Bla bla bla',
                       style: TextStyle(
@@ -150,7 +149,7 @@ class _InvoiceDetailState extends State< InvoiceDetail> {
                   width: MediaQuery.of(context).size.width,
                   color: Colors.grey,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
+                    padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                     child: Text(
                       'Payment Method',
                       style: TextStyle(
@@ -162,7 +161,7 @@ class _InvoiceDetailState extends State< InvoiceDetail> {
                 ),
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                     child: Text(
                       'Cash',
                       style: TextStyle(
@@ -175,7 +174,7 @@ class _InvoiceDetailState extends State< InvoiceDetail> {
                   width: MediaQuery.of(context).size.width,
                   color: Colors.grey,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
+                    padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                     child: Text(
                       'Detail',
                       style: TextStyle(
@@ -186,7 +185,7 @@ class _InvoiceDetailState extends State< InvoiceDetail> {
                   ),
                 ),
                 ListView.builder(
-                    scrollDirection: Axis.vertical,
+                    physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: 4,
                     itemBuilder: (context, index) {
@@ -267,6 +266,16 @@ class _InvoiceDetailState extends State< InvoiceDetail> {
                 ),
               ],
             ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.cyanAccent,
+        child: Container(
+          padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+          child: ElevatedButton(
+            onPressed: (){},
+            child: Text('Cancel'),
           ),
         ),
       ),
