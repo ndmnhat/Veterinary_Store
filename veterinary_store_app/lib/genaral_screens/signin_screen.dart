@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:veterinary_store_app/screens/app_screen.dart';
-import 'package:veterinary_store_app/screens/signup_screen.dart';
+import 'package:veterinary_store_app/user/screens/app_screen.dart';
+import 'package:veterinary_store_app/genaral_screens/signup_screen.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 
 
