@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'detail_product_screen.dart';
+import '../../../detail_product/detail_product_screen.dart';
 
 class InvoiceDetail extends StatefulWidget {
   @override

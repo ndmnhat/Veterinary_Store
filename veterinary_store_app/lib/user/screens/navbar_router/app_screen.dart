@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:veterinary_store_app/user/screens/notification_screen.dart';
-import 'package:veterinary_store_app/user/screens/payment_screen.dart';
-import 'package:veterinary_store_app/user/screens/seach_screen.dart';
-import 'package:veterinary_store_app/user/screens/user_info_screen.dart';
-import 'package:veterinary_store_app/user/screens/cart_screen.dart';
-import 'package:veterinary_store_app/user/screens/health_care_screen.dart';
-import 'package:veterinary_store_app/user/screens/home_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/nofitication/notification_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/cart/payment/payment_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/seach/seach_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/user_detail/user_info_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/cart/cart_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/health_care/health_care_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/home/home_screen.dart';
 
 class AppScreen extends StatefulWidget {
   @override
@@ -20,27 +20,19 @@ class _AppScreenState extends State<AppScreen> {
     HealthCare(),
     UserInfo(),
     CartScreen(),
-
   ];
 
   void _onItemTap(int index){
     setState(() {
       _selectedIndex = index;
-      if(index == 0){
-        _titleScreen = 'Veterinary Store';
-      }
-      else if(index == 1){
-        _titleScreen = 'HealthCare';
-      }else if(index == 2){
-        _titleScreen = 'User Information';
-      }else if(index == 3){
-        _titleScreen = 'Cart';
-      }
+      if(index == 0){_titleScreen = 'Veterinary Store';}
+      else if(index == 1){_titleScreen = 'HealthCare';}
+      else if(index == 2){_titleScreen = 'User Information';}
+      else if(index == 3){_titleScreen = 'Cart';}
     });
   }
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:veterinary_store_app/user/screens/transaction_history_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/user_detail/transaction_history/transaction_history_screen.dart';
 
-import 'change_address_screen.dart';
-import 'change_info_user_screen.dart';
-import 'change_pass_screen.dart';
+import 'change_info_user/change_address_screen.dart';
+import 'change_info_user/change_info_user_screen.dart';
+import 'change_info_user/change_pass_screen.dart';
 
 class UserInfo extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class UserInfo extends StatefulWidget {
 class _UserInfoState extends State<UserInfo> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return InkWell(
       child: Column(
         children: [
           Padding(

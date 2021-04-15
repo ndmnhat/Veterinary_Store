@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:veterinary_store_app/user/screens/invoice_details_screen.dart';
-
-import 'package:veterinary_store_app/user/screens/user_info_screen.dart';
-import 'package:veterinary_store_app/user/screens/cart_screen.dart';
-import 'package:veterinary_store_app/user/screens/health_care_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/user_detail/transaction_history/detail_bill/invoice_details_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/user_detail/user_info_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/cart/cart_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/health_care/health_care_screen.dart';
 
 class TranHis extends StatefulWidget {
   @override
