@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/user_detail/transaction_history/detail_bill/invoice_details_screen.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/user_detail/user_info_screen.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/cart/cart_screen.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/health_care/health_care_screen.dart';
+import 'package:veterinary_store_app/user/screens/user_detail/transaction_history/detail_bill/invoice_details_screen.dart';
+import 'package:veterinary_store_app/user/screens/user_detail/transaction_history/transaction/transaction.dart';
+import 'package:veterinary_store_app/user/screens/user_detail/user_info_screen.dart';
+import 'package:veterinary_store_app/user/screens/cart/cart_screen.dart';
+import 'package:veterinary_store_app/user/screens/health_care/health_care_screen.dart';
 
 class TranHis extends StatefulWidget {
   @override
@@ -62,16 +63,16 @@ class _TranHisState extends State<TranHis> with SingleTickerProviderStateMixin {
             children: [
               // sẽ thay thành hàm return về ds các đơn hàng
               AllTransaction(),
-              HealthCare(),
-              UserInfo(),
-              CartScreen(),
+              CompleteTransaction(),
+              WaittingTransaction(),
+              CancelTransaction(),
             ],
         ),
       ),
     );
   }
 }
-
+// tất cả các hóa đơn
 class AllTransaction extends StatefulWidget {
   @override
   _AllTransactionState createState() => _AllTransactionState();
@@ -86,102 +87,77 @@ class _AllTransactionState extends State<AllTransaction> {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => InvoiceDetail()));},
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.94,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4.0),
-                    side: BorderSide(color: Colors.cyanAccent)
-                  ),
-                  color: Colors.white,
-                  // elevation: 10,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    'ID Bill',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                                    child: Container(
-                                      // color: Colors.green,
-                                      width: 80.0,
-                                      height: 20.0,
-                                      decoration: ShapeDecoration(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(5.0),
-                                            side: BorderSide(color: Colors.lightGreen)
-                                        ),
-                                        color: Colors.lightGreen,
-                                      ),
-                                      child: Text(
-                                        'Complete',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                              child: Text(
-                                'Day: 30/2/2021',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                              child: Text(
-                                'Username: User',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
-                              child: Text(
-                                'Totals: 100.000 vnđ',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              child: transaction(this.context, "Complete",1),
             );
           }
       ),
     );
   }
 }
+
+// các hóa đơn đã hoàn thành
+class CompleteTransaction extends StatefulWidget {
+  @override
+  _CompleteTransactionState createState() => _CompleteTransactionState();
+}
+
+class _CompleteTransactionState extends State<CompleteTransaction> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(child:ListView.builder(
+        itemCount: 2,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => InvoiceDetail()));},
+            child: transaction(this.context,'Complete',1),
+          );
+        }
+    ),);
+  }
+}
+
+// các hóa đơn đang chờ xác nhận hoặc giao hàng
+
+class WaittingTransaction extends StatefulWidget {
+  @override
+  _WaittingTransactionState createState() => _WaittingTransactionState();
+}
+
+class _WaittingTransactionState extends State<WaittingTransaction> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(child:ListView.builder(
+        itemCount: 2,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => InvoiceDetail()));},
+            child: transaction(this.context, 'Waitting',2),
+          );
+        }
+    ),);
+  }
+}
+
+// các hóa đơn đã bị hủy
+
+class CancelTransaction extends StatefulWidget {
+  @override
+  _CancelTransactionState createState() => _CancelTransactionState();
+}
+
+class _CancelTransactionState extends State<CancelTransaction> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(child:ListView.builder(
+        itemCount: 2,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => InvoiceDetail()));},
+            child: transaction(this.context, 'Cancel',3),
+          );
+        }
+    ),);
+  }
+}
+
+

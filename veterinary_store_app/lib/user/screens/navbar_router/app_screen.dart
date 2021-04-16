@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/nofitication/notification_screen.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/cart/payment/payment_screen.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/seach/seach_screen.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/user_detail/user_info_screen.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/cart/cart_screen.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/health_care/health_care_screen.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/home/home_screen.dart';
+import 'package:veterinary_store_app/user/screens/nofitication/notification_screen.dart';
+import 'package:veterinary_store_app/user/screens/cart/payment/payment_screen.dart';
+import 'package:veterinary_store_app/user/screens/seach/seach_screen.dart';
+import 'package:veterinary_store_app/user/screens/user_detail/user_info_screen.dart';
+import 'package:veterinary_store_app/user/screens/cart/cart_screen.dart';
+import 'package:veterinary_store_app/user/screens/health_care/health_care_screen.dart';
+import 'package:veterinary_store_app/user/screens/home/home_screen.dart';
 
 class AppScreen extends StatefulWidget {
   @override
@@ -39,7 +39,7 @@ class _AppScreenState extends State<AppScreen> {
         title: Text(_titleScreen, style: TextStyle(fontSize: 30,color: Colors.black)),
         backgroundColor: Colors.cyanAccent,
         bottom: _selectedIndex == 0 ? PreferredSize(
-          preferredSize: Size(35, 35),
+          preferredSize: Size(35, 53),
           child: Container(
             child: Padding(
               padding: const  EdgeInsets.fromLTRB(20, 0, 20, 5),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/user_detail/transaction_history/transaction_history_screen.dart';
-
-import 'change_info_user/change_address_screen.dart';
-import 'change_info_user/change_info_user_screen.dart';
-import 'change_info_user/change_pass_screen.dart';
+import 'package:veterinary_store_app/user/screens/user_detail/transaction_history/transaction_history_screen.dart';
+import 'package:veterinary_store_app/user/screens/user_detail/change_info_user/change_address_screen.dart';
+import 'package:veterinary_store_app/user/screens/user_detail/change_info_user/change_info_user_screen.dart';
+import 'package:veterinary_store_app/user/screens/user_detail/change_info_user/change_pass_screen.dart';
 
 class UserInfo extends StatefulWidget {
   @override
@@ -132,7 +131,7 @@ class _UserInfoState extends State<UserInfo> {
   }
 
   void _tranHisScreen() {
-    print("text");
+    print('transaction_history');
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => TranHis()));
   }
 

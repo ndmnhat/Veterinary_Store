@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../detail_product/detail_product_screen.dart';
+import 'package:veterinary_store_app/user/screens/detail_product/detail_product_screen.dart';
 
 class Payment extends StatefulWidget {
   @override
@@ -8,11 +8,17 @@ class Payment extends StatefulWidget {
 
 class _PaymentState extends State<Payment> {
 
-  int _SelectRadio = 0;
+  int _selectRadio;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectRadio = 1;
+  }
 
   setSelectRadio(int val){
     setState(() {
-      _SelectRadio = val;
+      _selectRadio = val;
     });
   }
 
@@ -35,7 +41,7 @@ class _PaymentState extends State<Payment> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.grey,
+                  color: Color(0xFFeaeaea),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                     child: Text(
@@ -63,7 +69,7 @@ class _PaymentState extends State<Payment> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.grey,
+                  color: Color(0xFFeaeaea),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                     child: Text(
@@ -88,7 +94,7 @@ class _PaymentState extends State<Payment> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.grey,
+                  color: Color(0xFFeaeaea),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                     child: Text(
@@ -111,7 +117,7 @@ class _PaymentState extends State<Payment> {
                             children: [
                               Radio(
                                   value: 1,
-                                  groupValue: _SelectRadio,
+                                  groupValue: _selectRadio,
                                   activeColor: Colors.cyanAccent,
                                   onChanged: (val){
                                     setSelectRadio(val);
@@ -132,7 +138,7 @@ class _PaymentState extends State<Payment> {
                             children: [
                               Radio(
                                   value: 2,
-                                  groupValue: _SelectRadio,
+                                  groupValue: _selectRadio,
                                   activeColor: Colors.cyanAccent,
                                   onChanged: (val){
                                     setSelectRadio(val);
@@ -153,7 +159,7 @@ class _PaymentState extends State<Payment> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.grey,
+                  color: Color(0xFFeaeaea),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                     child: Text(
@@ -199,7 +205,7 @@ class _PaymentState extends State<Payment> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.grey,
+                  color: Color(0xFFeaeaea),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                     child: Text(
@@ -219,76 +225,7 @@ class _PaymentState extends State<Payment> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailProduct()));},
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(0.0),
-                              ),
-                              color: Colors.white,
-                              // elevation: 10,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.all(2.0),
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        maxWidth: MediaQuery.of(context).size.width * 0.28,
-                                        maxHeight: MediaQuery.of(context).size.width * 0.28,
-                                      ),
-                                      child: Image.network(
-                                          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
-                                          fit: BoxFit.fill
-                                      ),
-                                    ),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Container(
-                                        width: MediaQuery.of(context).size.width * 0.5,
-                                        child: Padding(
-                                          padding: const EdgeInsets.fromLTRB(5, 10, 0, 0),
-                                          child: Text(
-                                            'Demo',
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        width: MediaQuery.of(context).size.width * 0.5,
-                                        child: Padding(
-                                          padding: const EdgeInsets.fromLTRB(5, 10, 0, 0),
-                                          child: Text(
-                                            '10.000 đ',
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(5, 40, 0, 0),
-                                        child: Text(
-                                          '1',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                          child: product(),
                         );
                       }
                   ),
@@ -331,6 +268,79 @@ class _PaymentState extends State<Payment> {
             onPressed: (){},
             child: Text('Pay'),
           ),
+        ),
+      ),
+    );
+  }
+
+  Container product(){
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(0.0),
+        ),
+        color: Colors.white,
+        // elevation: 10,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width * 0.28,
+                  maxHeight: MediaQuery.of(context).size.width * 0.28,
+                ),
+                child: Image.network(
+                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                    fit: BoxFit.fill
+                ),
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(5, 10, 0, 0),
+                    child: Text(
+                      'Demo',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(5, 10, 0, 0),
+                    child: Text(
+                      '10.000 đ',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(5, 40, 0, 0),
+                  child: Text(
+                    '1',
+                    style: TextStyle(
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

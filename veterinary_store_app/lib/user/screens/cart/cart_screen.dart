@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../detail_product/detail_product_screen.dart';
+import 'package:veterinary_store_app/user/screens/detail_product/detail_product_screen.dart';
 
 class CartScreen extends StatefulWidget {
   @override
