@@ -67,7 +67,7 @@ class _DetailProductState extends State<DetailProduct> {
                 ),
                 SizedBox(height: 50.0),
                 Text(
-                  'Thông tin sản phẩm',
+                  'Product detai',
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
@@ -103,7 +103,7 @@ class _DetailProductState extends State<DetailProduct> {
                           child: Row(
                             children: [
                               Expanded(
-                                child: Text('Tên')
+                                child: Text('Name')
                               ),
                               VerticalDivider(
                                 width: 10.0,
@@ -122,7 +122,7 @@ class _DetailProductState extends State<DetailProduct> {
                 ),
                 SizedBox(height: 50.0),
                 Text(
-                  'Hướng dẫn sử dụng',
+                  'User manual',
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
@@ -143,7 +143,7 @@ class _DetailProductState extends State<DetailProduct> {
                 ),
                 SizedBox(height: 50.0),
                 Text(
-                  'Đánh giá sản phẩm',
+                  'Product reviews',
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
@@ -176,7 +176,7 @@ class _DetailProductState extends State<DetailProduct> {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  Text('1465 nhận xét'),
+                                  Text('1465 Review'),
                                 ],
                               ),
                             ),
@@ -188,11 +188,11 @@ class _DetailProductState extends State<DetailProduct> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('5: 1323 nhận xét'),
-                                  Text('4: 108 nhận xét'),
-                                  Text('3: 26 nhận xét'),
-                                  Text('2: 04 nhận xét'),
-                                  Text('1: 04 nhận xét'),
+                                  Text('5: 1323 Review'),
+                                  Text('4: 108 Review'),
+                                  Text('3: 26 Review'),
+                                  Text('2: 04 Review'),
+                                  Text('1: 04 Review'),
                                 ],
                               ),
                             ),
@@ -257,7 +257,7 @@ class _DetailProductState extends State<DetailProduct> {
           padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
           child: ElevatedButton(
             onPressed: (){},
-            child: Text('Chọn mua'),
+            child: Text('Add to cart'),
           ),
         ),
       ),
