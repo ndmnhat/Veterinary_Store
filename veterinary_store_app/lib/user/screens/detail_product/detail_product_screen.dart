@@ -16,9 +16,9 @@ class _DetailProductState extends State<DetailProduct> {
         // title: Text("Name Product", style: TextStyle(fontSize: 30,color: Colors.black)),
         backgroundColor: Colors.cyanAccent,
       ),
-      body: ListView(
+      body: SingleChildScrollView(
           padding: EdgeInsets.all(8.0),
-          children: [
+          child:
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -67,7 +67,7 @@ class _DetailProductState extends State<DetailProduct> {
                 ),
                 SizedBox(height: 50.0),
                 Text(
-                  'Product detai',
+                  'Product Information',
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
@@ -122,7 +122,7 @@ class _DetailProductState extends State<DetailProduct> {
                 ),
                 SizedBox(height: 50.0),
                 Text(
-                  'User manual',
+                  'Usage Instructions',
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
@@ -143,7 +143,7 @@ class _DetailProductState extends State<DetailProduct> {
                 ),
                 SizedBox(height: 50.0),
                 Text(
-                  'Product reviews',
+                  'Rates and Comments',
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
@@ -176,7 +176,7 @@ class _DetailProductState extends State<DetailProduct> {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  Text('1465 Review'),
+                                  Text('1465 rates'),
                                 ],
                               ),
                             ),
@@ -188,11 +188,11 @@ class _DetailProductState extends State<DetailProduct> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('5: 1323 Review'),
-                                  Text('4: 108 Review'),
-                                  Text('3: 26 Review'),
-                                  Text('2: 04 Review'),
-                                  Text('1: 04 Review'),
+                                  Text('5: 1323 rates'),
+                                  Text('4: 108 rates'),
+                                  Text('3: 26 rates'),
+                                  Text('2: 04 rates'),
+                                  Text('1: 04 rates'),
                                 ],
                               ),
                             ),
@@ -249,7 +249,6 @@ class _DetailProductState extends State<DetailProduct> {
 
               ]
             ),
-          ]
         ),    
       bottomNavigationBar: BottomAppBar(
         color: Colors.cyanAccent,

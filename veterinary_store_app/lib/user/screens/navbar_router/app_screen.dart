@@ -31,6 +31,7 @@ class _AppScreenState extends State<AppScreen> {
       else if(index == 3){_titleScreen = 'Cart';}
     });
   }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
