@@ -187,7 +187,7 @@ class _SignUpState extends State<SignUp> {
                       padding: const EdgeInsets.fromLTRB(0, 90, 0, 0),
                       child: RichText(
                           text: TextSpan(
-                              text: "already have an account ?",
+                              text: "Already have an account ?",
                               style: TextStyle(fontSize: 15,color: Colors.grey ),
                               children: <TextSpan>[
                                 TextSpan(

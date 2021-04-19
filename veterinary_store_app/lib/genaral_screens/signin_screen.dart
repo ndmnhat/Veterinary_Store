@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:veterinary_store_app/admin/screens/admin_screen.dart';
 import 'package:veterinary_store_app/user/screens/app_screen.dart';
 import 'package:veterinary_store_app/genaral_screens/signup_screen.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
@@ -214,6 +215,13 @@ class _SignInState extends State<SignIn> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => AppScreen()),
+            (Route<dynamic> route) => false,
+      );
+    }
+    else if(_userNameController.text == "admin@gmail.com" && _passWordController.text == "123456"){
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => AdminScreen()),
             (Route<dynamic> route) => false,
       );
     }

@@ -21,7 +21,7 @@ class _UserInfoState extends State<UserInfo> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("UserInfo", style: TextStyle(fontSize: 18,),),
+                Text("Info", style: TextStyle(fontSize: 18,),),
                 Row(
                   children: [
                     Text("See more", style: TextStyle(fontSize: 18,),),
