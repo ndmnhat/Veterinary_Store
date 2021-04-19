@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:veterinary_store_app/user/screens/user_detail/transaction_history/detail_bill/invoice_details_screen.dart';
 import 'package:veterinary_store_app/user/screens/user_detail/transaction_history/transaction/transaction.dart';
-import 'package:veterinary_store_app/user/screens/user_detail/user_info_screen.dart';
-import 'package:veterinary_store_app/user/screens/cart/cart_screen.dart';
-import 'package:veterinary_store_app/user/screens/health_care/health_care_screen.dart';
 
 class TranHis extends StatefulWidget {
   @override
@@ -13,18 +10,10 @@ class TranHis extends StatefulWidget {
 class _TranHisState extends State<TranHis> with SingleTickerProviderStateMixin {
   var _selectedIndex = 0;
   final List<Tab> myTabs = <Tab>[
-    Tab(
-      text: 'All',
-    ),
-    Tab(
-      text: 'Complete',
-    ),
-    Tab(
-      text: 'Waiting',
-    ),
-    Tab(
-      text: 'Cancel',
-    ),
+    Tab(text: 'All',),
+    Tab(text: 'Complete',),
+    Tab(text: 'Waiting',),
+    Tab(text: 'Cancel',),
   ];
 
   TabController _tabController;
@@ -49,7 +38,7 @@ class _TranHisState extends State<TranHis> with SingleTickerProviderStateMixin {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("History", style: TextStyle(fontSize: 40,color: Colors.black)),
+          title: Text("History", style: TextStyle(fontSize: 30,color: Colors.black)),
           backgroundColor: Colors.cyanAccent,
           bottom: TabBar(
             controller: _tabController,
@@ -58,15 +47,18 @@ class _TranHisState extends State<TranHis> with SingleTickerProviderStateMixin {
             labelStyle: TextStyle(fontSize: 15),
           ),
         ),
-        body: TabBarView(
-          controller: _tabController,
-            children: [
-              // sẽ thay thành hàm return về ds các đơn hàng
-              AllTransaction(),
-              CompleteTransaction(),
-              WaittingTransaction(),
-              CancelTransaction(),
-            ],
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(5, 5, 5, 0),
+          child: TabBarView(
+            controller: _tabController,
+              children: [
+                // sẽ thay thành hàm return về ds các đơn hàng
+                AllTransaction(),
+                CompleteTransaction(),
+                WaittingTransaction(),
+                CancelTransaction(),
+              ],
+          ),
         ),
       ),
     );
@@ -83,7 +75,7 @@ class _AllTransactionState extends State<AllTransaction> {
   Widget build(BuildContext context) {
     return Container(  // Added
       child:ListView.builder(
-          itemCount: 2,
+          itemCount: 10,
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => InvoiceDetail()));},
@@ -94,7 +86,6 @@ class _AllTransactionState extends State<AllTransaction> {
     );
   }
 }
-
 // các hóa đơn đã hoàn thành
 class CompleteTransaction extends StatefulWidget {
   @override
@@ -105,7 +96,7 @@ class _CompleteTransactionState extends State<CompleteTransaction> {
   @override
   Widget build(BuildContext context) {
     return Container(child:ListView.builder(
-        itemCount: 2,
+        itemCount: 5,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => InvoiceDetail()));},
@@ -127,7 +118,7 @@ class _WaittingTransactionState extends State<WaittingTransaction> {
   @override
   Widget build(BuildContext context) {
     return Container(child:ListView.builder(
-        itemCount: 2,
+        itemCount: 7,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => InvoiceDetail()));},
@@ -149,7 +140,7 @@ class _CancelTransactionState extends State<CancelTransaction> {
   @override
   Widget build(BuildContext context) {
     return Container(child:ListView.builder(
-        itemCount: 2,
+        itemCount: 4,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => InvoiceDetail()));},

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:veterinary_store_app/genaral_screens/sign_in/signin_screen.dart';
 import 'package:veterinary_store_app/user/screens/user_detail/transaction_history/transaction_history_screen.dart';
 import 'package:veterinary_store_app/user/screens/user_detail/change_info_user/change_address_screen.dart';
 import 'package:veterinary_store_app/user/screens/user_detail/change_info_user/change_info_user_screen.dart';
@@ -114,7 +115,7 @@ class _UserInfoState extends State<UserInfo> {
             padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: OutlinedButton(
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.cyanAccent),),
-              onPressed: () {},
+              onPressed: () {_signOut();},
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -145,5 +146,13 @@ class _UserInfoState extends State<UserInfo> {
 
   void _changeAddress(){
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChangeAddress()));
+  }
+
+  void _signOut(){
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => SignIn()),
+          (Route<dynamic> route) => false,
+    );
   }
 }
