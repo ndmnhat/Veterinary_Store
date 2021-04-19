@@ -9,6 +9,7 @@ class Body extends StatelessWidget {
     return Container(
       padding: EdgeInsets.fromLTRB(30, 70, 30, 10),
       constraints: BoxConstraints.expand(),
+      height: MediaQuery.of(context).size.height,
       color: Colors.white,
       child: SingleChildScrollView(
         child: Column(
@@ -32,7 +33,7 @@ class Body extends StatelessWidget {
                 ),),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 40, 0, 00),
+              padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
               child: Text("Hello\nWelcome back boss", style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -41,7 +42,7 @@ class Body extends StatelessWidget {
             ),
             SignInForm(),
             Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
@@ -57,20 +58,20 @@ class Body extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
                     child: RichText(
-                        text: TextSpan(
-                            text: "New user ?",
-                            style: TextStyle(fontSize: 15,color: Colors.grey ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp(),));
-                                  },
-                                text: " Sign up",
-                                style: TextStyle(fontSize: 15,color: Colors.blue ),
-                              )
-                            ]
-                        )
+                      text: TextSpan(
+                          text: "New user ?",
+                          style: TextStyle(fontSize: 15,color: Colors.grey ),
+                          children: <TextSpan>[
+                            TextSpan(
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp(),));
+                                },
+                              text: " Sign up",
+                              style: TextStyle(fontSize: 15,color: Colors.blue ),
+                            )
+                          ]
+                      ),
                     ),
                   ),
                 ]
@@ -104,7 +105,7 @@ class _SignInFormState extends State<SignInForm> {
         emailForm(),
         passForm(),
         Padding(
-          padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+          padding: const EdgeInsets.fromLTRB(0, 30, 0, 10),
           child: SizedBox(
             width: double.infinity,
             height: 50,
@@ -120,7 +121,7 @@ class _SignInFormState extends State<SignInForm> {
 
   Padding emailForm(){
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 20, 0, 00),
+      padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
       child: StreamBuilder(
         builder: (context, snapshot) => TextField(
           style: TextStyle(color: Colors.black,fontSize: 25),

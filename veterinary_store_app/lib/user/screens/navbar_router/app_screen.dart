@@ -78,13 +78,11 @@ class _AppScreenState extends State<AppScreen> {
             children: [
               _selectedIndex == 3 ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("Hello", style: TextStyle(color: Colors.black,fontSize: 18,)),
                           Text("0 đ",style: TextStyle(color: Colors.black,fontSize: 18,)),
@@ -93,15 +91,25 @@ class _AppScreenState extends State<AppScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
-                      child: OutlinedButton(
-                        onPressed: (){
-                          _payment();
-                        },
-                        child: Row(
-                          // crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text("Pay",style: TextStyle(color: Colors.black,fontSize: 18,)),
-                            Icon(Icons.arrow_right_alt, color: Colors.black, size: 30),],
+                      child: SizedBox(
+                        width: 100,
+                        child: OutlinedButton(
+                          onPressed: (){
+                            _payment();
+                          },
+                          style: OutlinedButton.styleFrom(
+                            side: BorderSide(
+                              width: 1.0,
+                              color: Colors.cyanAccent,
+                              style: BorderStyle.solid,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Pay",style: TextStyle(color: Colors.black,fontSize: 20,)),
+                              Icon(Icons.arrow_right_alt, color: Colors.black, size: 30),],
+                          ),
                         ),
                       ),
                     ),
