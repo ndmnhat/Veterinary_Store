@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'detail_product_screen.dart';
+import 'package:veterinary_store_app/user/screens/detail_product/detail_product_screen.dart';
 
 class InvoiceDetail extends StatefulWidget {
   @override
@@ -12,7 +12,6 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        // title: Text("Name Product", style: TextStyle(fontSize: 30,color: Colors.black)),
         backgroundColor: Colors.cyanAccent,
       ),
       body: SingleChildScrollView(
@@ -94,7 +93,7 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.grey,
+                  color: Color(0xFFeaeaea),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                     child: Text(
@@ -122,7 +121,7 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.grey,
+                  color: Color(0xFFeaeaea),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                     child: Text(
@@ -147,7 +146,7 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.grey,
+                  color: Color(0xFFeaeaea),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                     child: Text(
@@ -172,7 +171,7 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.grey,
+                  color: Color(0xFFeaeaea),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                     child: Text(
@@ -191,76 +190,7 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailProduct()));},
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(0.0),
-                            ),
-                            color: Colors.white,
-                            // elevation: 10,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.all(2.0),
-                                  child: ConstrainedBox(
-                                    constraints: BoxConstraints(
-                                      maxWidth: MediaQuery.of(context).size.width * 0.28,
-                                      maxHeight: MediaQuery.of(context).size.width * 0.28,
-                                    ),
-                                    child: Image.network(
-                                        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
-                                        fit: BoxFit.fill
-                                    ),
-                                  ),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      width: MediaQuery.of(context).size.width * 0.5,
-                                      child: Padding(
-                                        padding: const EdgeInsets.fromLTRB(5, 10, 0, 0),
-                                        child: Text(
-                                          'Demo',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width * 0.5,
-                                      child: Padding(
-                                        padding: const EdgeInsets.fromLTRB(5, 10, 0, 0),
-                                        child: Text(
-                                          '10.000 đ',
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: <Widget>[
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(5, 40, 0, 0),
-                                      child: Text(
-                                        '1',
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                        child: product(),
                       );
                     }
                 ),
@@ -280,5 +210,78 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
         ),
       ),
     );
+  }
+
+  Container product(){
+   return Container(
+     width: MediaQuery.of(context).size.width,
+     child: Card(
+       shape: RoundedRectangleBorder(
+         borderRadius: BorderRadius.circular(0.0),
+       ),
+       color: Colors.white,
+       // elevation: 10,
+       child: Row(
+         crossAxisAlignment: CrossAxisAlignment.start,
+         children: <Widget>[
+           Padding(
+             padding: const EdgeInsets.all(2.0),
+             child: ConstrainedBox(
+               constraints: BoxConstraints(
+                 maxWidth: MediaQuery.of(context).size.width * 0.28,
+                 maxHeight: MediaQuery.of(context).size.width * 0.28,
+               ),
+               child: Image.network(
+                   'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                   fit: BoxFit.fill
+               ),
+             ),
+           ),
+           Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
+             children: <Widget>[
+               Container(
+                 width: MediaQuery.of(context).size.width * 0.5,
+                 child: Padding(
+                   padding: const EdgeInsets.fromLTRB(5, 10, 0, 0),
+                   child: Text(
+                     'Demo',
+                     style: TextStyle(
+                       fontSize: 20,
+                     ),
+                   ),
+                 ),
+               ),
+               Container(
+                 width: MediaQuery.of(context).size.width * 0.5,
+                 child: Padding(
+                   padding: const EdgeInsets.fromLTRB(5, 10, 0, 0),
+                   child: Text(
+                     '10.000 đ',
+                     style: TextStyle(
+                       fontSize: 18,
+                     ),
+                   ),
+                 ),
+               ),
+             ],
+           ),
+           Column(
+             children: <Widget>[
+               Padding(
+                 padding: const EdgeInsets.fromLTRB(5, 40, 0, 0),
+                 child: Text(
+                   '1',
+                   style: TextStyle(
+                     fontSize: 14,
+                   ),
+                 ),
+               ),
+             ],
+           ),
+         ],
+       ),
+     ),
+   );
   }
 }

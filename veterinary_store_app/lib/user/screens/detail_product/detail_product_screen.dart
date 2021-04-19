@@ -103,7 +103,7 @@ class _DetailProductState extends State<DetailProduct> {
                           child: Row(
                             children: [
                               Expanded(
-                                child: Text('Tên')
+                                child: Text('Name')
                               ),
                               VerticalDivider(
                                 width: 10.0,
