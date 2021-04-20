@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:veterinary_store_app/genaral_screens/sign_up/signup_screen.dart';
-import 'package:veterinary_store_app/user/screens/navbar_router/app_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/app_screen.dart';
 
 class Body extends StatelessWidget {
   @override

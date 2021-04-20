@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:veterinary_store_app/user/screens/nofitication/notification_screen.dart';
-import 'package:veterinary_store_app/user/screens/cart/payment/payment_screen.dart';
-import 'package:veterinary_store_app/user/screens/seach/seach_screen.dart';
-import 'package:veterinary_store_app/user/screens/user_detail/user_info_screen.dart';
-import 'package:veterinary_store_app/user/screens/cart/cart_screen.dart';
-import 'package:veterinary_store_app/user/screens/health_care/health_care_screen.dart';
-import 'package:veterinary_store_app/user/screens/home/home_screen.dart';
+import 'package:veterinary_store_app/user/screens/notification_screen.dart';
+import 'package:veterinary_store_app/user/screens/payment_screen.dart';
+import 'package:veterinary_store_app/user/screens/seach_screen.dart';
+import 'package:veterinary_store_app/user/screens/user_info_screen.dart';
+import 'package:veterinary_store_app/user/screens/cart_screen.dart';
+import 'package:veterinary_store_app/user/screens/health_care_screen.dart';
+import 'package:veterinary_store_app/user/screens/home_screen.dart';
 
 class AppScreen extends StatefulWidget {
   @override

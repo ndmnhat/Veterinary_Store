@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:veterinary_store_app/genaral_screens/sign_in/signin_screen.dart';
-import 'package:veterinary_store_app/user/screens/user_detail/transaction_history/transaction_history_screen.dart';
-import 'package:veterinary_store_app/user/screens/user_detail/change_info_user/change_address_screen.dart';
-import 'package:veterinary_store_app/user/screens/user_detail/change_info_user/change_info_user_screen.dart';
-import 'package:veterinary_store_app/user/screens/user_detail/change_info_user/change_pass_screen.dart';
+import 'package:veterinary_store_app/user/screens/transaction_history_screen.dart';
+import 'package:veterinary_store_app/user/screens/change_info_user_screens/change_address_screen.dart';
+import 'package:veterinary_store_app/user/screens/change_info_user_screens/change_info_user_screen.dart';
+import 'package:veterinary_store_app/user/screens/change_info_user_screens/change_pass_screen.dart';
 
 class UserInfo extends StatefulWidget {
   @override
