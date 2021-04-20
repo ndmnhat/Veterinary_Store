@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:veterinary_store_app/user/screens/invoice_details_screen.dart';
-import 'package:veterinary_store_app/user/screens/transaction.dart';
+import 'package:veterinary_store_app/user/screens/transaction_screen.dart';
 
 class TranHis extends StatefulWidget {
   @override
