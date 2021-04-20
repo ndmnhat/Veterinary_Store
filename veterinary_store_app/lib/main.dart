@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:veterinary_store_app/genaral_screens/sign_in/signin_screen.dart';
-import 'package:veterinary_store_app/user/screens/navbar_router/app_screen.dart';
+import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/app_screen.dart';
+import 'package:veterinary_store_app/admin/screens/admin_screen.dart';
 
 // void main() {
 //   runApp(MaterialApp(
@@ -9,10 +10,17 @@ import 'package:veterinary_store_app/user/screens/navbar_router/app_screen.dart'
 //   ));
 // }
 
+// void main() {
+//   runApp(MaterialApp(
+//     debugShowCheckedModeBanner: false,
+//     home: SignIn(),
+//   ));
+// }
+
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: SignIn(),
+    home: AdminScreen(),
   ));
 }
 
