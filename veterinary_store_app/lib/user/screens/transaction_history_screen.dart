@@ -11,8 +11,8 @@ class _TranHisState extends State<TranHis> with SingleTickerProviderStateMixin {
   var _selectedIndex = 0;
   final List<Tab> myTabs = <Tab>[
     Tab(text: 'All',),
-    Tab(text: 'Complete',),
     Tab(text: 'Waiting',),
+    Tab(text: 'Complete',),
     Tab(text: 'Cancel',),
   ];
 
@@ -37,25 +37,27 @@ class _TranHisState extends State<TranHis> with SingleTickerProviderStateMixin {
       initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.grey[50]),
           centerTitle: true,
-          title: Text("History", style: TextStyle(fontSize: 30,color: Colors.black)),
-          backgroundColor: Colors.cyanAccent,
+          title: Text("History", style: TextStyle(fontSize: 30, color: Colors.grey[50])),
+          backgroundColor: Color(0xFF085B6E),
           bottom: TabBar(
             controller: _tabController,
             tabs: myTabs,
-            labelColor: Colors.black,
-            labelStyle: TextStyle(fontSize: 15),
+            labelColor: Colors.white,
+            unselectedLabelColor: Colors.grey[50],
+            labelStyle: TextStyle(fontSize: 16),
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(5, 5, 5, 0),
+          padding: const EdgeInsets.fromLTRB(8, 20, 8, 20),
           child: TabBarView(
             controller: _tabController,
               children: [
                 // sẽ thay thành hàm return về ds các đơn hàng
                 AllTransaction(),
-                CompleteTransaction(),
                 WaittingTransaction(),
+                CompleteTransaction(),
                 CancelTransaction(),
               ],
           ),

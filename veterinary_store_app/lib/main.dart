@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:veterinary_store_app/genaral_screens/sign_in/signin_screen.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/app_screen.dart';
+import 'package:veterinary_store_app/user/screens/app_screen.dart';
 import 'package:veterinary_store_app/admin/screens/admin_screen.dart';
 
 // void main() {
@@ -20,7 +20,7 @@ import 'package:veterinary_store_app/admin/screens/admin_screen.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: AdminScreen(),
+    home: SignIn(),
   ));
 }
 

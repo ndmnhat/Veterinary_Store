@@ -22,65 +22,82 @@ class _ChangeInfoState extends State<ChangeInfo> with SingleTickerProviderStateM
     return Container(  // Added
       child: Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.grey[50]),
           centerTitle: true,
-          title: Text("User info", style: TextStyle(fontSize: 30,color: Colors.black)),
-          backgroundColor: Colors.cyanAccent,
+          title: Text("User info", style: TextStyle(fontSize: 30, color: Colors.grey[50])),
+          backgroundColor: Color(0xFF085B6E),
           actions: [
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
               child: IconButton(
                 icon: Icon(
                   Icons.save,
-                  color: Colors.black,
                   size: 25,
                 ),
                 onPressed: (){},
               ),
             ),
           ],),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-              child: Text("Name", style: TextStyle(fontSize: 18,),),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  isDense: true,
-                  contentPadding: EdgeInsets.all(12),
-                ),),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: Text("Phone", style: TextStyle(fontSize: 18,),),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  isDense: true,
-                  contentPadding: EdgeInsets.all(12),
-                ),),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: Text("Email", style: TextStyle(fontSize: 18,),),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  isDense: true,
-                  contentPadding: EdgeInsets.all(12),
-                ),),
-            ),
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8.0, 20.0, 0, 8.0),
+                child: Text("Name", style: TextStyle(fontSize: 20)),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                child: TextField(
+                  style: TextStyle(fontSize: 20),
+                  controller: TextEditingController(text: 'Johnny'),              
+                  decoration: InputDecoration(
+                    isDense: true,
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.all(8),
+                  )
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8.0, 32, 0, 8),
+                child: Text("Phone", style: TextStyle(fontSize: 20))
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                child: TextField(
+                  style: TextStyle(fontSize: 20),
+                  controller: TextEditingController(text: '0123456789'),
+                  decoration: InputDecoration(
+                    isDense: true,
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.all(8),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 32, 0, 8),
+                child: Text("Email", style: TextStyle(fontSize: 20)),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                child: TextField(
+                  style: TextStyle(fontSize: 20),
+                  controller: TextEditingController(text: 'user@gmail.com'),
+                  decoration: InputDecoration(
+                    isDense: true,
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.all(8),
+                  ) 
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

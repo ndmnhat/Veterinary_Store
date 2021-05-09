@@ -1,13 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:veterinary_store_app/genaral_screens/sign_up/signup_screen.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/user/screens/app_screen.dart';
-
+import 'package:veterinary_store_app/user/screens/app_screen.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(30, 70, 30, 10),
+      padding: EdgeInsets.fromLTRB(30, 18, 30, 10),
       constraints: BoxConstraints.expand(),
       height: MediaQuery.of(context).size.height,
       color: Colors.white,
@@ -16,38 +15,34 @@ class Body extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+            Center(
               child: Container(
-                alignment: Alignment.center,
-                width: 100,
-                height: 100,
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,color: Colors.grey,
-                ),
-                child: Icon(
-                  Icons.pets,
-                  color: Colors.black,
-                  size: 60.0,
-                ),),
+                width: 220,
+                height: 220,
+                child: Image(
+                  image: AssetImage('assets/logo.png'),
+                )
+              ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-              child: Text("Hello\nWelcome back boss", style: TextStyle(
+            SizedBox(height: 12),
+            Text(
+              "Hello\nWelcome back boss", 
+              style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
+                letterSpacing: 1.5,
                 color: Colors.black,
-              )),
+                fontFamily: 'Shrikhand'
+              )
             ),
             SignInForm(),
             Padding(
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Text(
-                      " FORGOT PASSWORD", style: TextStyle(fontSize: 15,color: Colors.blue),
+                      " FORGOT PASSWORD", style: TextStyle(fontSize: 15,color: Color(0xFF085B6E)),
                     )
                   ],
                 )
@@ -56,7 +51,7 @@ class Body extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
                     child: RichText(
                       text: TextSpan(
                           text: "New user ?",
@@ -68,7 +63,7 @@ class Body extends StatelessWidget {
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp(),));
                                 },
                               text: " Sign up",
-                              style: TextStyle(fontSize: 15,color: Colors.blue ),
+                              style: TextStyle(fontSize: 15,color: Color(0xFF085B6E))
                             )
                           ]
                       ),
@@ -111,8 +106,9 @@ class _SignInFormState extends State<SignInForm> {
             height: 50,
             child: MaterialButton(
               onPressed: onSignInClick,
-              color: Colors.blue,
-              child: Text("Sign in" ,style: TextStyle(fontSize: 25, color: Colors.white)),),
+              color: Color(0xFF085B6E),
+              child: Text("Sign in" ,style: TextStyle(fontSize: 25, color: Colors.grey[50]))
+            ),
           ),
         ),
       ],
@@ -124,8 +120,9 @@ class _SignInFormState extends State<SignInForm> {
       padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
       child: StreamBuilder(
         builder: (context, snapshot) => TextField(
-          style: TextStyle(color: Colors.black,fontSize: 25),
+          cursorColor: Color(0xFF085B6E),
           controller: _userNameController,
+          style: TextStyle(color: Colors.black,fontSize: 25),
           decoration: InputDecoration(
             labelText: "Username",
             labelStyle: TextStyle(color: Colors.grey,fontSize: 20,),
@@ -134,11 +131,13 @@ class _SignInFormState extends State<SignInForm> {
               child: Icon(Icons.person, color: Colors.black, size: 30,),
             ),
             border: OutlineInputBorder(
-              borderSide:
-              BorderSide(color: Colors.grey , width:1),
-              borderRadius:
-              BorderRadius.all(Radius.circular(6)),
+              borderSide: BorderSide(color: Colors.grey , width: 1),
+              borderRadius: BorderRadius.all(Radius.circular(6)),
             ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Color(0xFF085B6E), width: 1),
+              borderRadius: BorderRadius.all(Radius.circular(6)),
+            )
           ),
         ),
       ),
@@ -150,6 +149,7 @@ class _SignInFormState extends State<SignInForm> {
       padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
       child: StreamBuilder(
         builder: (context, snapshot) =>  TextField(
+          cursorColor: Color(0xFF085B6E),
           style: TextStyle(color: Colors.black,fontSize: 25),
           controller: _passWordController,
           obscureText: !_showPass,
@@ -169,10 +169,12 @@ class _SignInFormState extends State<SignInForm> {
               ),
             ),
             border: OutlineInputBorder(
-              borderSide:
-              BorderSide(color: Colors.grey , width:1),
-              borderRadius:
-              BorderRadius.all(Radius.circular(6)),
+              borderSide: BorderSide(color: Colors.grey , width:1),
+              borderRadius: BorderRadius.all(Radius.circular(6)),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Color(0xFF085B6E) , width:1),
+              borderRadius: BorderRadius.all(Radius.circular(6)),
             ),
           ),
         ),

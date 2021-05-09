@@ -13,115 +13,164 @@ class UserInfo extends StatefulWidget {
 class _UserInfoState extends State<UserInfo> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(8, 12, 8, 20),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+          Container(
+            padding: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(color: Colors.grey, blurRadius: 2),
+              ]
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IntrinsicHeight(
+                  child: Row(children: [
+                    Expanded(
+                      flex: 1,
+                      child: CircleAvatar(
+                        radius: 40,
+                        child: Icon(Icons.person, size: 60)
+                      ),
+                    ),
+                    VerticalDivider(width: 26, thickness: 1),
+                    Expanded(
+                      flex: 3,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children:[
+                          Text(
+                            'User', 
+                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            'user@gmail.com',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          Text(
+                            '0123456789',
+                            style: TextStyle(fontSize: 18),
+                          )
+                        ]
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.edit), 
+                      onPressed:(){_userInfoChange();},
+                    )
+                  ]),
+                ),
+                Divider(height: 30, thickness: 1),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Total Bill Success:',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                    Text(
+                      '1',
+                      style: TextStyle(fontSize: 16),
+                    )
+                  ]
+                ),
+                Row(
+                  children:[
+                    Expanded(
+                      child: Text(
+                        'Total Money Cost:',
+                        style: TextStyle(fontSize: 16)
+                      ),
+                    ),
+                    Text(
+                      '100.000 đ',
+                      style: TextStyle(fontSize: 16)
+                    )
+                  ] 
+                ),
+              ] 
+            ),
+          ),
+          SizedBox(height: 8),
+          Container(
+            padding: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(color: Colors.grey, blurRadius: 2)
+              ]
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Info", style: TextStyle(fontSize: 18,),),
+                Text("Transaction History", style: TextStyle(fontSize: 20)),
                 Row(
                   children: [
-                    Text("See more", style: TextStyle(fontSize: 18,),),
-                    IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed:(){_userInfoChange();}),
-                  ],
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
-            child: Row(
-              children: [
-                Text("Name:   Demo", style: TextStyle(fontSize: 18,),),],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
-            child: Row(
-              children: [
-                Text("Email:", style: TextStyle(fontSize: 18,),),],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
-            child: Row(
-              children: [
-                Text("Phone:", style: TextStyle(fontSize: 18,),),],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-            child: Row(
-              children: [
-                Text("Total Bill Success:", style: TextStyle(fontSize: 18,),),],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
-            child: Row(
-              children: [
-                Text("Total Money Cost:", style: TextStyle(fontSize: 18,),),],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 15, 10, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Change Address", style: TextStyle(fontSize: 18,),),
-                Row(
-                  children: [
-                    Text("See more", style: TextStyle(fontSize: 18,),),
-                    IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed:(){_changeAddress();},),
-                  ],
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Transaction History", style: TextStyle(fontSize: 18,),),
-                Row(
-                  children: [
-                    Text("See more", style: TextStyle(fontSize: 18,),),
                     IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed:(){_tranHisScreen();},),
                   ],
                 )
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+          SizedBox(height: 8,),
+          Container(
+            padding: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(color: Colors.grey, blurRadius: 2)
+              ]
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Change Password", style: TextStyle(fontSize: 18,),),
+                Text("Change Address", style: TextStyle(fontSize: 20)),
                 Row(
                   children: [
-                    Text("See more", style: TextStyle(fontSize: 18,),),
+                    IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed:(){_changeAddress();},),
+                  ],
+                )
+              ],
+            ),
+          ),
+          SizedBox(height: 8,),
+          Container(
+            padding: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(color: Colors.grey, blurRadius: 2)
+              ]
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Change Password", style: TextStyle(fontSize: 20)),
+                Row(
+                  children: [
                     IconButton(icon: Icon(Icons.keyboard_arrow_right), onPressed:(){_changePass();},),
                   ],
                 )
               ],
             ),
           ),
+          SizedBox(height: 32.0),
           Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
+            padding: const EdgeInsets.fromLTRB(8, 10, 8, 0),
             child: OutlinedButton(
-              style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.cyanAccent),),
+              style: OutlinedButton.styleFrom(backgroundColor: Color(0xFF0D9ABA)),
               onPressed: () {_signOut();},
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Sign Out",style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
+                    color: Colors.grey[50],
+                    fontSize: 20,
                   ),),],
               ),
             ),

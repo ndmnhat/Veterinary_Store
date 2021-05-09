@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class DetailProduct extends StatefulWidget {
@@ -12,12 +14,13 @@ class _DetailProductState extends State<DetailProduct> {
     return Scaffold(
       extendBodyBehindAppBar: false,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.grey[50]),
         centerTitle: true,
         // title: Text("Name Product", style: TextStyle(fontSize: 30,color: Colors.black)),
-        backgroundColor: Colors.cyanAccent,
+        backgroundColor: Color(0xFF085B6E),
       ),
       body: SingleChildScrollView(
-          padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(8),
           child:
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,6 +37,7 @@ class _DetailProductState extends State<DetailProduct> {
                   child: Column(
                     children: [
                       Container(
+                        padding: EdgeInsets.all(8.0),
                         child: Image.network('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
                       ),
                       Divider(
@@ -73,9 +77,8 @@ class _DetailProductState extends State<DetailProduct> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 5.0),
+                SizedBox(height: 8.0),
                 Container(
-                  height: 100.0,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -86,7 +89,8 @@ class _DetailProductState extends State<DetailProduct> {
                   
                   ),
                   child: ListView.builder(
-                    scrollDirection: Axis.vertical,
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
                     itemCount: 4,
                     itemBuilder: (context, index){
                       return Container(
@@ -103,7 +107,7 @@ class _DetailProductState extends State<DetailProduct> {
                           child: Row(
                             children: [
                               Expanded(
-                                child: Text('Name')
+                                child: Text('Name', style: TextStyle(fontSize: 18),)
                               ),
                               VerticalDivider(
                                 width: 10.0,
@@ -111,7 +115,7 @@ class _DetailProductState extends State<DetailProduct> {
                                 
                               ),
                               Expanded(
-                                child: Text('abc')
+                                child: Text('abc', style: TextStyle(fontSize: 18),)
                               ),
                             ],
                           ),
@@ -120,15 +124,15 @@ class _DetailProductState extends State<DetailProduct> {
                     }
                   ),
                 ),
-                SizedBox(height: 50.0),
+                SizedBox(height: 30),
                 Text(
-                  'Usage Instructions',
+                  'Usage Instruction',
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 5.0),
+                SizedBox(height: 8),
                 Container(
                   padding: EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
@@ -139,9 +143,12 @@ class _DetailProductState extends State<DetailProduct> {
                       )
                     ],
                   ),
-                  child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel enim velit. Nunc interdum libero non felis bibendum tempus. Proin.'),
+                  child: Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel enim velit. Nunc interdum libero non felis bibendum tempus. Proin.',
+                    style: TextStyle(fontSize: 18),
+                  ),
                 ),
-                SizedBox(height: 50.0),
+                SizedBox(height: 30),
                 Text(
                   'Rates and Comments',
                   style: TextStyle(
@@ -149,7 +156,7 @@ class _DetailProductState extends State<DetailProduct> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 5.0),
+                SizedBox(height: 8),
                 Container(
                   padding: EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
@@ -176,7 +183,7 @@ class _DetailProductState extends State<DetailProduct> {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  Text('1465 rates'),
+                                  Text('1465 rates', style: TextStyle(fontSize: 16)),
                                 ],
                               ),
                             ),
@@ -188,11 +195,11 @@ class _DetailProductState extends State<DetailProduct> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('5: 1323 rates'),
-                                  Text('4: 108 rates'),
-                                  Text('3: 26 rates'),
-                                  Text('2: 04 rates'),
-                                  Text('1: 04 rates'),
+                                  Text('5: 1323 rates', style: TextStyle(fontSize: 16),),
+                                  Text('4: 108 rates', style: TextStyle(fontSize: 16),),
+                                  Text('3: 26 rates', style: TextStyle(fontSize: 16),),
+                                  Text('2: 04 rates', style: TextStyle(fontSize: 16),),
+                                  Text('1: 04 rates', style: TextStyle(fontSize: 16),),
                                 ],
                               ),
                             ),
@@ -223,18 +230,19 @@ class _DetailProductState extends State<DetailProduct> {
                                         ),
                                         SizedBox(width: 5.0),
                                         Expanded(
-                                          child: Text('Hot N*gga')
+                                          child: Text('Hot N*gga', style: TextStyle(fontSize: 18),)
                                         ),
                                         Text(
                                           '5',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
+                                            fontSize: 18
                                           ),
                                         ),
                                       ],
                                     ),
                                     SizedBox(height: 5.0),
-                                    Text('very good'),
+                                    Text('very good', style: TextStyle(fontSize: 16)),
                                   ],
                                 ),
                               ),
@@ -245,18 +253,31 @@ class _DetailProductState extends State<DetailProduct> {
                     ],
                   )
                 ),
-
-
+                SizedBox(height: 30),
               ]
             ),
         ),    
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.cyanAccent,
-        child: Container(
-          padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-          child: ElevatedButton(
-            onPressed: (){},
-            child: Text('Add to cart'),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(color: Colors.grey)
+          ]
+        ),
+        child: BottomAppBar(
+          color: Colors.grey[50],
+          child: Container(
+            padding: EdgeInsets.fromLTRB(16, 5, 16, 5),
+            child: OutlinedButton(
+              style: OutlinedButton.styleFrom(backgroundColor: Color(0xFF0D9ABA)),
+              onPressed: (){},
+              child: Text(
+                'Add to cart', 
+                style: TextStyle(
+                  color: Colors.grey[50],
+                  fontSize: 20
+                )
+              ),
+            ),
           ),
         ),
       ),

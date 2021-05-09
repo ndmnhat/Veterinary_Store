@@ -12,9 +12,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return InkWell(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+        padding: const EdgeInsets.fromLTRB(12, 20, 12, 20),
         child: StaggeredGridView.countBuilder(
-          //padding: EdgeInsets.all(10),
           physics: BouncingScrollPhysics(),
           crossAxisCount: 4,
           itemCount: 10,
@@ -39,11 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Container product(int a,int b){
     return Container(
-      //padding: EdgeInsets.all(8),
-      //color: Colors.green,
       decoration: BoxDecoration(
-        // color: colors[this.noteList[index].color],
-        border: Border.all(width: 0.5, color: Colors.black),
+        color: Colors.grey[50],
+        boxShadow: [
+          BoxShadow(color: Colors.grey, blurRadius: 4)
+        ],
         borderRadius: BorderRadius.circular(5.0),
       ),
       child: Column(
@@ -56,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: SizedBox(
               height: 190,
-              width: 250,
+              width: 220,
               child: Image.network('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
                   fit: BoxFit.fill),
             ),
@@ -72,8 +71,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     "Cú mèo",
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      // fontFamily: 'Sans',
-                      // fontWeight: FontWeight.bold,
                       color: Colors.black,
                       fontSize: 18,
                     ),
@@ -97,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       // fontFamily: 'Sans',
                       // fontWeight: FontWeight.bold,
                       color: Colors.black,
-                      fontSize: 18,
+                      fontSize: 16,
                     ),
                   ),
                 ),
@@ -119,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       // fontWeight: FontWeight.bold,
                       decoration: TextDecoration.lineThrough,
                       color: Colors.grey,
-                      fontSize: 18,
+                      fontSize: 16,
                     ),
                   ),
                 ),
