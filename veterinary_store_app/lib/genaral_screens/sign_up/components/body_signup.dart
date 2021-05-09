@@ -30,7 +30,7 @@ class Body extends StatelessWidget {
                                   Navigator.pop(context);
                                 },
                               text: " Sign in",
-                              style: TextStyle(fontSize: 15,color: Colors.blue ),
+                              style: TextStyle(fontSize: 15,color: Color(0xFF085B6E)),
                             )
                           ]
                       )
@@ -71,8 +71,9 @@ class _SignUpFormState extends State<SignUpForm> {
             height: 50,
             child: MaterialButton(
               onPressed: onSignUpClick,
-              color: Colors.blue,
-              child: Text("Sign up" ,style: TextStyle(fontSize: 25, color: Colors.white)),),
+              color: Color(0xFF085B6E),
+              child: Text("Sign up" ,style: TextStyle(fontSize: 25, color: Colors.grey[50]))
+            ),
           ),
         ),
       ],
@@ -83,6 +84,7 @@ class _SignUpFormState extends State<SignUpForm> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 20, 0, 00),
       child: TextField(
+        cursorColor: Color(0xFF085B6E),
         style: TextStyle(color: Colors.black,fontSize: 25),
         decoration: InputDecoration(
           labelText: "Username",
@@ -97,10 +99,16 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           border: OutlineInputBorder(
             borderSide:
-            BorderSide(color: Colors.grey , width:1),
+            BorderSide(color: Colors.grey , width: 1),
             borderRadius:
             BorderRadius.all(Radius.circular(6)),
           ),
+          focusedBorder: OutlineInputBorder(
+            borderSide:
+            BorderSide(color: Color(0xFF085B6E) , width: 1),
+            borderRadius:
+            BorderRadius.all(Radius.circular(6)),
+          )
         ),
       ),
     );
@@ -110,10 +118,11 @@ class _SignUpFormState extends State<SignUpForm> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 20, 0, 00),
       child: TextField(
+        cursorColor: Color(0xFF085B6E),
         style: TextStyle(color: Colors.black,fontSize: 25),
         decoration: InputDecoration(
           labelText: "Phonenumber",
-          labelStyle: TextStyle(color: Colors.grey,fontSize: 20,),
+          labelStyle: TextStyle(color: Colors.grey, fontSize: 20),
           prefixIcon: Container(
             width: 50,
             child: Icon(
@@ -123,10 +132,12 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
           ),
           border: OutlineInputBorder(
-            borderSide:
-            BorderSide(color: Colors.grey , width:1),
-            borderRadius:
-            BorderRadius.all(Radius.circular(6)),
+            borderSide: BorderSide(color: Colors.grey , width: 1),
+            borderRadius: BorderRadius.all(Radius.circular(6))
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFF085B6E) , width: 1),
+            borderRadius: BorderRadius.all(Radius.circular(6))
           ),
         ),
       ),
@@ -137,6 +148,7 @@ class _SignUpFormState extends State<SignUpForm> {
     return  Padding(
       padding: const EdgeInsets.fromLTRB(0, 20, 0, 00),
       child: TextField(
+        cursorColor: Color(0xFF085B6E),
         controller: _emailController,
         style: TextStyle(color: Colors.black,fontSize: 25),
         decoration: InputDecoration(
@@ -151,10 +163,12 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
           ),
           border: OutlineInputBorder(
-            borderSide:
-            BorderSide(color: Colors.grey , width:1),
-            borderRadius:
-            BorderRadius.all(Radius.circular(6)),
+            borderSide: BorderSide(color: Colors.grey, width: 1),
+            borderRadius: BorderRadius.all(Radius.circular(6)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFF085B6E), width: 1),
+            borderRadius: BorderRadius.all(Radius.circular(6)),
           ),
         ),
       ),
@@ -165,6 +179,7 @@ class _SignUpFormState extends State<SignUpForm> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
       child: TextField(
+        cursorColor: Color(0xFF085B6E),
         controller: _passWordController,
         style: TextStyle(color: Colors.black,fontSize: 25),
         // obscureText: !_showPass,
@@ -180,10 +195,12 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
           ),
           border: OutlineInputBorder(
-            borderSide:
-            BorderSide(color: Colors.grey , width:1),
-            borderRadius:
-            BorderRadius.all(Radius.circular(6)),
+            borderSide: BorderSide(color: Colors.grey, width: 1),
+            borderRadius: BorderRadius.all(Radius.circular(6)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFF085B6E), width: 1),
+            borderRadius: BorderRadius.all(Radius.circular(6)),
           ),
         ),
       ),
@@ -194,11 +211,12 @@ class _SignUpFormState extends State<SignUpForm> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
       child: TextField(
+        cursorColor: Color(0xFF085B6E),
         style: TextStyle(color: Colors.black,fontSize: 25),
         // obscureText: !_showPass,
         decoration: InputDecoration(
           labelText: "Confirm Password",
-          labelStyle: TextStyle(color: Colors.grey,fontSize: 20,),
+          labelStyle: TextStyle(color: Colors.grey, fontSize: 20,),
           prefixIcon: Container(
             width: 50,
             child: Icon(
@@ -208,10 +226,12 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
           ),
           border: OutlineInputBorder(
-            borderSide:
-            BorderSide(color: Colors.grey , width:1),
-            borderRadius:
-            BorderRadius.all(Radius.circular(6)),
+            borderSide: BorderSide(color: Colors.grey, width: 1),
+            borderRadius: BorderRadius.all(Radius.circular(6)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFF085B6E), width: 1),
+            borderRadius: BorderRadius.all(Radius.circular(6)),
           ),
         ),
       ),

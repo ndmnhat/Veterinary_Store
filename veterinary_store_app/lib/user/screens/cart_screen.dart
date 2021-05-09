@@ -11,8 +11,7 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-        color: Colors.white,
+        padding: const EdgeInsets.all(8.0),
         child: ListView.builder(
           itemCount: 10,
           itemBuilder: (context, index) {
@@ -21,6 +20,7 @@ class _CartScreenState extends State<CartScreen> {
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.94,
                 child: Card(
+                  elevation: 4,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(0.0),
                   ),

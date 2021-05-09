@@ -1,24 +1,24 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-Container transaction(var context,String status,int color){
+Container transaction(var context, String status, int color){
 
   Container boxDetail(String status,int color){
     if(color == 1){
       return Container(
-        // color: Colors.green,
           width: 80.0,
           height: 20.0,
           decoration: ShapeDecoration(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0),
-                side: BorderSide(color: Colors.lightGreen)
+                side: BorderSide(color: Color(0xFF026E46))
             ),
-            color: Colors.lightGreen,
+            color: Color(0xFF026E46),
           ),
           child: Text(
             status,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.white),
         ),
       );
     }
@@ -30,14 +30,14 @@ Container transaction(var context,String status,int color){
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
-              side: BorderSide(color: Colors.lightBlue)
+              side: BorderSide(color: Color(0xFF0D296E))
           ),
-          color: Colors.lightBlue,
+          color: Color(0xFF0D296E),
         ),
         child: Text(
           status,
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
       );
     }
@@ -48,15 +48,15 @@ Container transaction(var context,String status,int color){
         height: 20.0,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
-              side: BorderSide(color: Colors.redAccent)
+            borderRadius: BorderRadius.circular(5.0),
+            side: BorderSide(color: Color(0xFF9E331B))
           ),
-          color: Colors.redAccent,
+          color: Color(0xFF9E331B),
         ),
         child: Text(
           status,
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
       );
     }
@@ -66,12 +66,12 @@ Container transaction(var context,String status,int color){
   return Container(
     width: MediaQuery.of(context).size.width * 0.94,
     child: Card(
+      elevation: 4,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4.0),
-          side: BorderSide(color: Colors.cyanAccent)
+          side: BorderSide(color: Colors.white)
       ),
       color: Colors.white,
-      // elevation: 10,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
