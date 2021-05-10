@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'file:///E:/DoAn/Veterinary_Store/veterinary_store_app/lib/screens/signin_screen.dart';
 import 'package:veterinary_store_app/screens/transaction_history_screen.dart';
 import 'package:veterinary_store_app/screens/change_info_user_screens/change_address_screen.dart';
 import 'package:veterinary_store_app/screens/change_info_user_screens/change_info_user_screen.dart';

@@ -23,7 +23,15 @@ class CartScreen extends StatelessWidget {
                   QuerySnapshot querySnapshot = stream.data;
 
                   if(querySnapshot.size == 0){
-                    return Center(child: Text("No Product in you cart"),);
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("😿",style: TextStyle(fontSize: 130),),
+                          Text("No Product in you cart"),
+                        ],
+                      )
+                    );
                   }
                   else
                   {

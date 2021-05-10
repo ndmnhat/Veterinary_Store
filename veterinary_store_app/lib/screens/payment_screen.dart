@@ -10,6 +10,7 @@ import 'package:veterinary_store_app/models/user_model.dart';
 
 class Payment extends StatelessWidget {
   final formatter = new NumberFormat("#,###");
+  String useraddress;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,6 +25,7 @@ class Payment extends StatelessWidget {
                     return Center(child: Text(stream.error.toString()));
                   }
                   final UserModel user = UserModel.fromDocumentSnapshot(documentSnapshot: stream.data);
+                  useraddress = user.address;
                   return Scaffold(
                     appBar: AppBar(
                       centerTitle: true,
@@ -355,7 +357,7 @@ class Payment extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                         child: ElevatedButton(
-                          onPressed: (){},
+                          onPressed: (){_pay();},
                           child: Text('Pay'),
                         ),
                       ),
@@ -364,6 +366,15 @@ class Payment extends StatelessWidget {
                 })
         )
     );
+  }
+
+  void _pay() {
+    if(useraddress == ""){
+      Get.snackbar("Nofitication", "You need to set you address first!!");
+    }
+    else{
+      Get.snackbar("Nofitication", "Success");
+    }
   }
 }
 
