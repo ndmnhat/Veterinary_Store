@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:veterinary_store_app/genaral_screens/sign_in/signin_screen.dart';
-import 'package:veterinary_store_app/user/screens/app_screen.dart';
-import 'package:veterinary_store_app/admin/screens/admin_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
+import 'package:veterinary_store_app/bindings/Instancebinding.dart';
+import 'package:veterinary_store_app/bindings/isSignin.dart';
 
-// void main() {
-//   runApp(MaterialApp(
-//     debugShowCheckedModeBanner: false,
-//     home: AppScreen(),
-//   ));
-// }
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  // InstanceBinding().dependencies();
+  runApp(MyApp());
+}
 
-// void main() {
-//   runApp(MaterialApp(
-//     debugShowCheckedModeBanner: false,
-//     home: SignIn(),
-//   ));
-// }
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: SignIn(),
-  ));
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialBinding: InstanceBinding(),
+      title: 'Flutter Demo',
+      home: IsSignedIn(),
+    );
+  }
 }
 
 

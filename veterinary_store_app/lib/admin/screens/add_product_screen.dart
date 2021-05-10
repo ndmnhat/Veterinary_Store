@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:file_picker/file_picker.dart';
+// import 'package:file_picker/file_picker.dart';
 
 class AddProduct extends StatefulWidget {
   @override
@@ -128,7 +128,7 @@ class _AddProductState extends State<AddProduct> {
                       OutlinedButton(
                         onPressed: () {
                           setState(() async {
-                            result = await FilePicker.platform.pickFiles();
+                            // result = await FilePicker.platform.pickFiles();
                           });
                         }, 
                         child: Text('File Picker')

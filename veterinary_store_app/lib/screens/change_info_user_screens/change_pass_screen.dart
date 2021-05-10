@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:veterinary_store_app/controllers/auth_controller.dart';
+import 'package:get/get.dart';
 
 class ChangePass extends StatefulWidget {
   @override
@@ -6,6 +8,26 @@ class ChangePass extends StatefulWidget {
 }
 
 class _ChangePassState extends State< ChangePass> with SingleTickerProviderStateMixin {
+
+  final AuthController _userCtrl = Get.find();
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final TextEditingController _oldpassInputCtrl = TextEditingController();
+  final TextEditingController _newpassInputCtrl = TextEditingController();
+  final TextEditingController _newpassagainInputCtrl = TextEditingController();
+
+  void handleFormSubmit(context) async {
+    if (_oldpassInputCtrl.text.isNotEmpty && _newpassInputCtrl.text.isNotEmpty && _newpassagainInputCtrl.text.isNotEmpty && (_newpassInputCtrl.text == _newpassagainInputCtrl.text )) {
+      _userCtrl.changepasswword(_oldpassInputCtrl.text, _newpassInputCtrl.text);
+    }
+    else if(_oldpassInputCtrl.text ==  _newpassInputCtrl.text){
+      Get.snackbar("Error", "New password is same as old");
+    }
+    else if(_newpassInputCtrl.text != _newpassagainInputCtrl.text ){
+      Get.snackbar("Error", "Confirm password not correct!!!");
+    }
+  }
 
   @override
   void initState() {
@@ -21,6 +43,7 @@ class _ChangePassState extends State< ChangePass> with SingleTickerProviderState
   Widget build(BuildContext context) {
     return Container(  // Added
       child: Scaffold(
+        key: _scaffoldKey,
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.grey[50]),
           centerTitle: true,
@@ -34,7 +57,7 @@ class _ChangePassState extends State< ChangePass> with SingleTickerProviderState
                   Icons.save,
                   size: 25,
                 ),
-                onPressed: (){},
+                onPressed: () => handleFormSubmit(context),
               ),
             ),
           ],),
@@ -46,6 +69,7 @@ class _ChangePassState extends State< ChangePass> with SingleTickerProviderState
               Text("Old Password", style: TextStyle(fontSize: 20)),
               SizedBox(height: 8),
               TextField(
+                controller: _oldpassInputCtrl,
                 style: TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   filled: true,
@@ -59,6 +83,7 @@ class _ChangePassState extends State< ChangePass> with SingleTickerProviderState
               Text("New Password", style: TextStyle(fontSize: 20)),
               SizedBox(height: 8),
               TextField(
+                controller: _newpassInputCtrl,
                 style: TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   isDense: true,
@@ -72,6 +97,7 @@ class _ChangePassState extends State< ChangePass> with SingleTickerProviderState
               Text("Confirm New Password ", style: TextStyle(fontSize: 20)),
               SizedBox(height: 8),
               TextField(
+                controller: _newpassagainInputCtrl,
                 style: TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),

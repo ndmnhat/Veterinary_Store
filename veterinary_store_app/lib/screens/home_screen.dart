@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:veterinary_store_app/user/screens/detail_product_screen.dart';
+import 'package:veterinary_store_app/screens/detail_product_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
