@@ -72,8 +72,8 @@ class UserService {
       });
     }
     else{
-      final Product product = Product.fromDocumentSnapshot(documentSnapshot: snapShot);
-      int temp = int.parse(product.quantum);
+      final Product productTemp = Product.fromDocumentSnapshotForcart(documentSnapshot: snapShot);
+      int temp = int.parse(productTemp.quantum);
       temp++;
       await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).update({
         "quantum": temp.toString(),
@@ -84,7 +84,7 @@ class UserService {
 
   Future<Product> addProductInCart(Product product) async {
     final snapShot = await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).get();
-    final Product productTemp = Product.fromDocumentSnapshot(documentSnapshot: snapShot);
+    final Product productTemp = Product.fromDocumentSnapshotForcart(documentSnapshot: snapShot);
     int temp = int.parse(productTemp.quantum);
     temp++;
     await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).update({
@@ -96,7 +96,7 @@ class UserService {
 
   Future<Product> removeProductInCart(Product product) async {
     final snapShot = await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).get();
-    final Product productTemp = Product.fromDocumentSnapshot(documentSnapshot: snapShot);
+    final Product productTemp = Product.fromDocumentSnapshotForcart(documentSnapshot: snapShot);
     int temp = int.parse(productTemp.quantum);
     if(temp == 1){
       await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).delete();

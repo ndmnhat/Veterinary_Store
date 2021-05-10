@@ -186,7 +186,7 @@ class AuthController extends GetxController {
       Get.back();
       // Get.snackbar("","Add Product Successful");
     } catch (e) {
-      Get.snackbar("Error",e);
+      Get.snackbar("Error",e.toString());
     }
   }
 
@@ -199,9 +199,10 @@ class AuthController extends GetxController {
         discount: product.discount,
         pathImage: product.pathImage,
       );
+      // print("${product.id}");
       await _userService.addProductInCart(productTemp);
     } catch (e) {
-      Get.snackbar("Error",e);
+      Get.snackbar("Error",e.toString());
     }
   }
 
@@ -216,7 +217,7 @@ class AuthController extends GetxController {
       );
       await _userService.removeProductInCart(productTemp);
     } catch (e) {
-      Get.snackbar("Error",e);
+      Get.snackbar("Error",e.toString());
     }
   }
 

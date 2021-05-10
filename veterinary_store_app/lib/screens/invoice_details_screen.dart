@@ -228,7 +228,7 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
                     itemCount: 4,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailProduct()));},
+                        // onTap:(){ Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailProduct()));},
                         child: product(),
                       );
                     }

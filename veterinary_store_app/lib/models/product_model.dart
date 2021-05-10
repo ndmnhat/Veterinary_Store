@@ -26,10 +26,18 @@ class Product{
   });
 
   Product.fromDocumentSnapshot({DocumentSnapshot documentSnapshot}) {
-    // id = documentSnapshot["id"];
     id = documentSnapshot.id;
     name = documentSnapshot["name"];
     namelowercase = documentSnapshot["namelowercase"];
+    price = documentSnapshot["price"];
+    discount = documentSnapshot["discount"];
+    pathImage = documentSnapshot["path"];
+    quantum = documentSnapshot["quantum"];
+  }
+
+  Product.fromDocumentSnapshotForcart({DocumentSnapshot documentSnapshot}) {
+    id = documentSnapshot.id;
+    name = documentSnapshot["name"];
     price = documentSnapshot["price"];
     discount = documentSnapshot["discount"];
     pathImage = documentSnapshot["path"];

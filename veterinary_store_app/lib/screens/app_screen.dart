@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:veterinary_store_app/models/product_model.dart';
 import 'package:veterinary_store_app/screens/notification_screen.dart';
 import 'package:veterinary_store_app/screens/payment_screen.dart';
-import 'package:veterinary_store_app/screens/seach_screen.dart';
+import 'package:veterinary_store_app/screens/search_screen.dart';
 import 'package:veterinary_store_app/screens/user_info_screen.dart';
 import 'package:veterinary_store_app/screens/cart_screen.dart';
 import 'package:veterinary_store_app/screens/health_care_screen.dart';
@@ -37,7 +37,7 @@ class AppScreen  extends GetWidget<UtilitiesController> {
                       side: BorderSide(color: Colors.grey[50])
                     // backgroundColor: Colors.grey[50]
                   ),
-                  onPressed: () { Get.to(SeachProduct());},
+                  onPressed: () { Get.to(SearchScreen());},
                   child: Row(
                     children: [
                       Icon(Icons.search, color: Colors.grey[50], size: 30),],
@@ -66,12 +66,10 @@ class AppScreen  extends GetWidget<UtilitiesController> {
             index: controller.tabIndex,
             children: [
               // ProductManagement(),
-              // ListProduct(),
+              HomeScreen(),
+              HealthCare(),
               UserInfo(),
-              UserInfo(),
-              // CartScreen(),
-              UserInfo(),
-              UserInfo(),
+              CartScreen(),
             ],
           ),
         ),
@@ -102,8 +100,8 @@ class AppScreen  extends GetWidget<UtilitiesController> {
                             double tempcounter = 0;
                             for(int i = 0;i<querySnapshot.size;i++){
                               final item1 = querySnapshot.docs[i];
-                              // final Product product1 = Product.fromQueryDocumentSnapshot(queryDocSnapshot: item1);
-                              // tempcounter += (int.parse(product1.quantum)*(double.parse(product1.price) - double.parse(product1.price)*double.parse(product1.discount)/100));
+                              final Product product1 = Product.fromQueryDocumentSnapshot(queryDocSnapshot: item1);
+                              tempcounter += (int.parse(product1.quantum)*(double.parse(product1.price) - double.parse(product1.price)*double.parse(product1.discount)/100));
                             }
                             // print(tempcounter);
                             return tempcounter;
