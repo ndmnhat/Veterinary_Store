@@ -7,9 +7,11 @@ import 'package:veterinary_store_app/controllers/auth_controller.dart';
 import 'package:veterinary_store_app/controllers/utilities_controller.dart';
 import 'package:veterinary_store_app/models/product_model.dart';
 import 'package:veterinary_store_app/models/user_model.dart';
+import 'package:veterinary_store_app/screens/app_screen.dart';
 
 class Payment extends StatelessWidget {
   final formatter = new NumberFormat("#,###");
+  UserModel user = UserModel();
   String useraddress;
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class Payment extends StatelessWidget {
                   if (stream.hasError) {
                     return Center(child: Text(stream.error.toString()));
                   }
-                  final UserModel user = UserModel.fromDocumentSnapshot(documentSnapshot: stream.data);
+                  user = UserModel.fromDocumentSnapshot(documentSnapshot: stream.data);
                   useraddress = user.address;
                   return Scaffold(
                     appBar: AppBar(
@@ -125,14 +127,88 @@ class Payment extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                                  child: Text(
-                                    'Bla bla bla',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                    ),
-                                  ),
+                                child: GetBuilder<UtilitiesController>(
+                                    builder: (controller){
+                                      return Padding(
+                                          padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Radio<String>(
+                                                      value: "Self-Shop Ship",
+                                                      groupValue: controller.selectRadioShipping,
+                                                      activeColor: Color(0xFF085B6E),
+                                                      onChanged: (val){
+                                                        controller.setSelectRadioShipping(val);
+                                                      }
+                                                  ),
+                                                  Text(
+                                                    'Self-Shop Ship',
+                                                    style: TextStyle(
+                                                      fontSize: 20,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Radio<String>(
+                                                      value: "GHN",
+                                                      groupValue: controller.selectRadioShipping,
+                                                      activeColor: Color(0xFF085B6E),
+                                                      onChanged: (val){
+                                                        controller.setSelectRadioShipping(val);
+                                                      }
+                                                  ),
+                                                  Text(
+                                                    'GHN',
+                                                    style: TextStyle(
+                                                      fontSize: 20,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Radio<String>(
+                                                      value: "Ninja Van",
+                                                      groupValue: controller.selectRadioShipping,
+                                                      activeColor: Color(0xFF085B6E),
+                                                      onChanged: (val){
+                                                        controller.setSelectRadioShipping(val);
+                                                      }
+                                                  ),
+                                                  Text(
+                                                    'Ninja Van',
+                                                    style: TextStyle(
+                                                      fontSize: 20,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Radio<String>(
+                                                      value: "Post Office",
+                                                      groupValue: controller.selectRadioShipping,
+                                                      activeColor: Color(0xFF085B6E),
+                                                      onChanged: (val){
+                                                        controller.setSelectRadioShipping(val);
+                                                      }
+                                                  ),
+                                                  Text(
+                                                    'Post Office',
+                                                    style: TextStyle(
+                                                      fontSize: 20,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          )
+                                      );
+                                    }
                                 ),
                               ),
                               Container(
@@ -160,10 +236,10 @@ class Payment extends StatelessWidget {
                                                 children: [
                                                   Radio<String>(
                                                       value: "Cash",
-                                                      groupValue: controller.selectRadio,
+                                                      groupValue: controller.selectRadioPayment,
                                                       activeColor: Color(0xFF085B6E),
                                                       onChanged: (val){
-                                                        controller.setSelectRadio(val);
+                                                        controller.setSelectRadioPayment(val);
                                                       }
                                                   ),
                                                   Text(
@@ -178,10 +254,10 @@ class Payment extends StatelessWidget {
                                                 children: [
                                                   Radio<String>(
                                                       value: "Card",
-                                                      groupValue: controller.selectRadio,
+                                                      groupValue: controller.selectRadioPayment,
                                                       activeColor: Color(0xFF085B6E),
                                                       onChanged: (val){
-                                                        controller.setSelectRadio(val);
+                                                        controller.setSelectRadioPayment(val);
                                                       }
                                                   ),
                                                   Text(
@@ -373,7 +449,12 @@ class Payment extends StatelessWidget {
       Get.snackbar("Nofitication", "You need to set you address first!!");
     }
     else{
-      Get.snackbar("Nofitication", "Success");
+      Get.find<AuthController>().paythebill(user,Get.find<UtilitiesController>().selectRadioShipping,Get.find<UtilitiesController>().selectRadioPayment);
+      Get.find<UtilitiesController>().changeTabIndex(0);
+      Get.offAll(AppScreen());
+      Get.find<UtilitiesController>().selectRadioShipping = "Self-Shop Ship";
+      Get.find<UtilitiesController>().selectRadioPayment = "Cash";
+      Get.snackbar("Nofitication", "Make order success");
     }
   }
 }

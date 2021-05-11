@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:veterinary_store_app/models/order_model.dart';
 import 'package:veterinary_store_app/models/product_model.dart';
 import 'package:veterinary_store_app/screens/app_screen.dart';
 import 'package:veterinary_store_app/screens/signin_screen.dart';
@@ -225,11 +226,27 @@ class AuthController extends GetxController {
     await _userService.deleteProductFromCart(product);
     // Get.snackbar("","Delete Product $name Successful");
   }
+  // thanh toán
 
-  // test demo
-  Stream<QuerySnapshot> fetchProducts() {
-    Stream<QuerySnapshot> qSnapStream =
-    _userService.fetchProducts();
-    return qSnapStream;
+  Future<void> paythebill(UserModel user,String shippingmethod,String paymentmethod) async {
+    try {
+      OrderModel orderModel = OrderModel(
+        idUser: user.id,
+        nameUser: user.name,
+        emailUser: user.email,
+        phoneUser: user.phone,
+        addressUser: user.address,
+        shippingMethod: shippingmethod,
+        paymentMethod: paymentmethod,
+        isCancel: false,
+        isComplete: false,
+        isAccess: false,
+        isShipping: false,
+      );
+      await _userService.paythebill(orderModel);
+    } catch (e) {
+      Get.snackbar("Error",e.toString());
+    }
   }
+
 }

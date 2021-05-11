@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 class UtilitiesController extends GetxController {
   var tabIndex = 0;
   var titleScreen = "Veterinary Store";
-  String selectRadio = "Cash";
+  String selectRadioPayment = "Cash";
+  String selectRadioShipping = "Self-Shop Ship";
   bool showPass = false;
 
   void changeTabIndex(int index) {
@@ -24,9 +25,14 @@ class UtilitiesController extends GetxController {
     update();
   }
 
-  setSelectRadio(String val){
-      selectRadio = val;
-      update();
+  setSelectRadioPayment(String val){
+    selectRadioPayment = val;
+    update();
+  }
+
+  setSelectRadioShipping(String val){
+    selectRadioShipping = val;
+    update();
   }
 
 }

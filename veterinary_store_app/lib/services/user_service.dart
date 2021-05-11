@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:veterinary_store_app/models/order_model.dart';
 import 'package:veterinary_store_app/models/product_model.dart';
 import 'package:veterinary_store_app/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -24,12 +25,6 @@ class UserService {
     await _firestore.collection("users").doc(user.id).get();
     return user;
   }
-
-  // Stream<QuerySnapshot> fetchUser(String userId) {
-  //   return _firestore
-  //       .collection("users")
-  //       .doc(userId.toString()).snapshots();
-  // }
 
   Stream<DocumentSnapshot> fetchUser(String userId) {
     return _firestore
@@ -112,11 +107,45 @@ class UserService {
 
   Future<void> deleteProductFromCart(Product product) async {
     await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).delete();
+    //dùng cho tạo hóa đơn :)))
+    // await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").get().then((value) {
+    //   for (DocumentSnapshot ds in value.docs){
+    //     final Product product = Product.fromDocumentSnapshotForcart(documentSnapshot: ds);
+    //     // ds.reference.delete();
+    //     print("${product.name}");
+    //
+    //   };
+    // });
+  }
+  // thanh toán
+  Future<void> paythebill(OrderModel orderModel) async {
+    await _firestore.collection("orders").add({
+      "iduser": orderModel.idUser,
+      "nameuser": orderModel.nameUser,
+      "emailuser": orderModel.emailUser,
+      "phoneuser": orderModel.phoneUser,
+      "addressuser": orderModel.addressUser,
+      "shippingmethod": orderModel.shippingMethod,
+      "paymentmethod": orderModel.paymentMethod,
+      "iscancel": orderModel.isCancel,
+      "iscomplete": orderModel.isComplete,
+      "isaccess": orderModel.isAccess,
+      "isshipping": orderModel.isShipping,
+    }).then((valueorder) async {
+      await _firestore.collection("users").doc(orderModel.idUser).collection("cartproduct").get().then((value) async {
+        for (DocumentSnapshot ds in value.docs){
+          final Product product = Product.fromDocumentSnapshotForcart(documentSnapshot: ds);
+          await _firestore.collection("orders").doc(valueorder.id).collection("cartproduct").doc(product.id).set({
+            "name": product.name,
+            "price": product.price,
+            "discount": product.discount,
+            "path": product.pathImage,
+            "quantum": product.quantum,
+          });
+          ds.reference.delete();
+        };
+      });
+    });
   }
 
-
-  // test demo
-  Stream<QuerySnapshot> fetchProducts() {
-    return _firestore.collection("products").snapshots();
-  }
 }
