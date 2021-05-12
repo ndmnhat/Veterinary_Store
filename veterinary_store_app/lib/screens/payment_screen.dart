@@ -13,6 +13,7 @@ class Payment extends StatelessWidget {
   final formatter = new NumberFormat("#,###");
   UserModel user = UserModel();
   String useraddress;
+  double totals;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -398,6 +399,7 @@ class Payment extends StatelessWidget {
                                                 final Product product1 = Product.fromQueryDocumentSnapshot(queryDocSnapshot: item1);
                                                 tempcounter += (int.parse(product1.quantum)*(double.parse(product1.price) - double.parse(product1.price)*double.parse(product1.discount)/100));
                                               }
+                                              totals = tempcounter;
                                               return tempcounter;
                                             }
                                             return Container(
@@ -449,7 +451,7 @@ class Payment extends StatelessWidget {
       Get.snackbar("Nofitication", "You need to set you address first!!");
     }
     else{
-      Get.find<AuthController>().paythebill(user,Get.find<UtilitiesController>().selectRadioShipping,Get.find<UtilitiesController>().selectRadioPayment);
+      Get.find<AuthController>().paythebill(user,totals.toString(),Get.find<UtilitiesController>().selectRadioShipping,Get.find<UtilitiesController>().selectRadioPayment);
       Get.find<UtilitiesController>().changeTabIndex(0);
       Get.offAll(AppScreen());
       Get.find<UtilitiesController>().selectRadioShipping = "Self-Shop Ship";

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class OrderModel {
   String id;
@@ -9,8 +10,12 @@ class OrderModel {
   String addressUser;
   String shippingMethod;
   String paymentMethod;
+  String totals;
+  int dateTimeOrder;
   bool isCancel;
-  bool isComplete;
+  bool isCompleteUser;
+  bool isCompleteAdmin;
+  bool isWaitting;
   bool isAccess;
   bool isShipping;
 
@@ -23,8 +28,12 @@ class OrderModel {
     this.addressUser,
     this.shippingMethod,
     this.paymentMethod,
+    this.totals,
+    this.dateTimeOrder,
     this.isCancel,
-    this.isComplete,
+    this.isCompleteUser,
+    this.isCompleteAdmin,
+    this.isWaitting,
     this.isAccess,
     this.isShipping,
   });
@@ -38,8 +47,12 @@ class OrderModel {
     addressUser = documentSnapshot["addressuser"];
     shippingMethod = documentSnapshot["shippingmethod"];
     paymentMethod = documentSnapshot["paymentmethod"];
+    totals = documentSnapshot["totals"];
+    dateTimeOrder = documentSnapshot["datetimeorder"];
     isCancel = documentSnapshot["iscancel"];
-    isComplete = documentSnapshot["iscomplete"];
+    isCompleteUser = documentSnapshot["iscompleteuser"];
+    isCompleteAdmin = documentSnapshot["iscompleteadmin"];
+    isWaitting = documentSnapshot["iswaitting"];
     isAccess = documentSnapshot["isaccess"];
     isShipping = documentSnapshot["isshipping"];
 
@@ -55,8 +68,12 @@ class OrderModel {
     addressUser = data["addressuser"];
     shippingMethod = data["shippingmethod"];
     paymentMethod = data["paymentmethod"];
+    totals = data["totals"];
+    dateTimeOrder = data["datetimeorder"];
     isCancel = data["iscancel"];
-    isComplete = data["iscomplete"];
+    isCompleteUser = data["iscompleteuser"];
+    isCompleteAdmin = data["iscompleteadmin"];
+    isWaitting = data["iswaitting"];
     isAccess = data["isaccess"];
     isShipping = data["isshipping"];
   }

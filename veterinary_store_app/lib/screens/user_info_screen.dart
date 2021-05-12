@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:veterinary_store_app/models/order_model.dart';
 import 'package:veterinary_store_app/screens/transaction_history_screen.dart';
 import 'package:veterinary_store_app/screens/change_info_user_screens/change_address_screen.dart';
 import 'package:veterinary_store_app/screens/change_info_user_screens/change_info_user_screen.dart';
@@ -9,6 +11,7 @@ import 'package:veterinary_store_app/models/user_model.dart';
 import 'package:get/get.dart';
 
 class UserInfo extends StatelessWidget {
+  final formatter = new NumberFormat("#,###");
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -82,10 +85,30 @@ class UserInfo extends StatelessWidget {
                                     style: TextStyle(fontSize: 16),
                                   ),
                                 ),
-                                Text(
-                                  '1',
-                                  style: TextStyle(fontSize: 16),
-                                )
+                                Container(
+                                    child: GetBuilder<AuthController>(
+                                        builder: (_) => StreamBuilder<QuerySnapshot>(
+                                            stream: Get.find<AuthController>().fetchOrdersComplete(),
+                                            builder: (context, stream) {
+                                              if (stream.connectionState == ConnectionState.waiting) {
+                                                return Center(child: CircularProgressIndicator());
+                                              }
+                                              if (stream.hasError) {
+                                                return Center(child: Text(stream.error.toString()));
+                                              }
+                                              QuerySnapshot querySnapshot = stream.data;
+                                              return Container(
+                                                child: Text(
+                                                  "${querySnapshot.size}",
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                        )
+                                    )
+                                ),
                               ]
                           ),
                           Row(
@@ -96,10 +119,39 @@ class UserInfo extends StatelessWidget {
                                       style: TextStyle(fontSize: 16)
                                   ),
                                 ),
-                                Text(
-                                    '100.000 đ',
-                                    style: TextStyle(fontSize: 16)
-                                )
+                                Container(
+                                    child: GetBuilder<AuthController>(
+                                        builder: (_) => StreamBuilder<QuerySnapshot>(
+                                            stream: Get.find<AuthController>().fetchOrdersComplete(),
+                                            builder: (context, stream) {
+                                              if (stream.connectionState == ConnectionState.waiting) {
+                                                return Center(child: CircularProgressIndicator());
+                                              }
+                                              if (stream.hasError) {
+                                                return Center(child: Text(stream.error.toString()));
+                                              }
+                                              QuerySnapshot querySnapshot = stream.data;
+                                              double totalsPrice(){
+                                                double tempcounter = 0;
+                                                for(int i = 0;i<querySnapshot.size;i++){
+                                                  final item1 = querySnapshot.docs[i];
+                                                  final OrderModel order = OrderModel.fromQueryDocumentSnapshot(queryDocSnapshot: item1);
+                                                  tempcounter += (double.parse(order.totals));
+                                                }
+                                                return tempcounter;
+                                              }
+                                              return Container(
+                                                child: Text(
+                                                  "${formatter.format(totalsPrice())} vnđ",
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                        )
+                                    )
+                                ),
                               ]
                           ),
                         ]

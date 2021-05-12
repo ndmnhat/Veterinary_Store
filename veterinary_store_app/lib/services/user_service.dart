@@ -107,15 +107,6 @@ class UserService {
 
   Future<void> deleteProductFromCart(Product product) async {
     await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).delete();
-    //dùng cho tạo hóa đơn :)))
-    // await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").get().then((value) {
-    //   for (DocumentSnapshot ds in value.docs){
-    //     final Product product = Product.fromDocumentSnapshotForcart(documentSnapshot: ds);
-    //     // ds.reference.delete();
-    //     print("${product.name}");
-    //
-    //   };
-    // });
   }
   // thanh toán
   Future<void> paythebill(OrderModel orderModel) async {
@@ -127,8 +118,12 @@ class UserService {
       "addressuser": orderModel.addressUser,
       "shippingmethod": orderModel.shippingMethod,
       "paymentmethod": orderModel.paymentMethod,
+      "totals": orderModel.totals,
+      "datetimeorder": DateTime.now().toUtc().millisecondsSinceEpoch,
       "iscancel": orderModel.isCancel,
-      "iscomplete": orderModel.isComplete,
+      "iscompleteuser": orderModel.isCompleteUser,
+      "iscompleteadmin": orderModel.isCompleteAdmin,
+      "iswaitting": orderModel.isWaitting,
       "isaccess": orderModel.isAccess,
       "isshipping": orderModel.isShipping,
     }).then((valueorder) async {
@@ -146,6 +141,54 @@ class UserService {
         };
       });
     });
+  }
+  // lịch sử mua hàng
+  Stream<DocumentSnapshot> fetchOrder(String idorder) {
+    return _firestore.collection("orders").doc(idorder).snapshots();
+  }
+
+  Stream<QuerySnapshot> fetchOrdersAll() {
+    return _firestore.collection("orders").where('iduser', isEqualTo: _fireAuth.currentUser.uid).orderBy("datetimeorder",descending: true).snapshots();
+  }
+
+  Stream<QuerySnapshot> fetchOrdersWaitting() {
+    return _firestore.collection("orders").where('iduser', isEqualTo: _fireAuth.currentUser.uid).where('iscancel', isEqualTo: false).where('iswaitting', isEqualTo: true).orderBy("datetimeorder",descending: true).snapshots();
+  }
+
+  Stream<QuerySnapshot> fetchOrdersComplete() {
+    return _firestore.collection("orders").where('iduser', isEqualTo: _fireAuth.currentUser.uid).where('iscancel', isEqualTo: false).where('iscompleteuser', isEqualTo: true).where('iscompleteadmin', isEqualTo: true).orderBy("datetimeorder",descending: true).snapshots();
+  }
+
+  Stream<QuerySnapshot> fetchOrdersCancel() {
+    return _firestore.collection("orders").where('iduser', isEqualTo: _fireAuth.currentUser.uid).where('iscancel', isEqualTo: true).orderBy("datetimeorder",descending: true).snapshots();
+  }
+
+  Stream<QuerySnapshot> fetchProductsFromOrder(String idorrder) {
+    return _firestore.collection("orders").doc(idorrder).collection("cartproduct").snapshots();
+  }
+
+  Future<void> cancelOrder(String idorder) async {
+    await _firestore.collection("orders").doc(idorder).update({
+      "iscancel" : true,
+      "iswaitting": false,
+    });
+  }
+
+  Future<void> completeOrder(String idorder) async {
+    final snapShot = await _firestore.collection("orders").doc(idorder).get();
+    final OrderModel order = OrderModel.fromDocumentSnapshot(documentSnapshot: snapShot);
+    if(order.isCompleteAdmin == true){
+      await _firestore.collection("orders").doc(idorder).update({
+        "iscompleteuser" : true,
+        "iswaitting" : false,
+      });
+    }
+    else if(order.isCompleteAdmin == false) {
+      await _firestore.collection("orders").doc(idorder).update({
+        "iscompleteuser" : true,
+      });
+    }
+
   }
 
 }

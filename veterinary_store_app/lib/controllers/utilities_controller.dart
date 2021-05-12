@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class UtilitiesController extends GetxController {
@@ -35,4 +36,28 @@ class UtilitiesController extends GetxController {
     update();
   }
 
+}
+
+class MyTabController extends GetxController with SingleGetTickerProviderMixin {
+  static int index = 0;
+  final List<Tab> myTabs = <Tab>[
+    Tab(text: 'All',),
+    Tab(text: 'Waiting',),
+    Tab(text: 'Complete',),
+    Tab(text: 'Cancel',),
+  ];
+
+  TabController tabController;
+
+  @override
+  void onInit() {
+    super.onInit();
+    tabController = TabController(initialIndex:  MyTabController.index ,vsync: this, length: myTabs.length);
+  }
+
+  @override
+  void onClose() {
+    tabController.dispose();
+    super.onClose();
+  }
 }

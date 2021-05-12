@@ -228,7 +228,7 @@ class AuthController extends GetxController {
   }
   // thanh toán
 
-  Future<void> paythebill(UserModel user,String shippingmethod,String paymentmethod) async {
+  Future<void> paythebill(UserModel user,String totals,String shippingmethod,String paymentmethod) async {
     try {
       OrderModel orderModel = OrderModel(
         idUser: user.id,
@@ -238,8 +238,11 @@ class AuthController extends GetxController {
         addressUser: user.address,
         shippingMethod: shippingmethod,
         paymentMethod: paymentmethod,
+        totals: totals,
         isCancel: false,
-        isComplete: false,
+        isCompleteUser: false,
+        isCompleteAdmin: false,
+        isWaitting: true,
         isAccess: false,
         isShipping: false,
       );
@@ -248,5 +251,48 @@ class AuthController extends GetxController {
       Get.snackbar("Error",e.toString());
     }
   }
+  // lịch sử mua hàng
+  Stream<QuerySnapshot> fetchOrdersAll() {
+    Stream<QuerySnapshot> qSnapStream =
+    _userService.fetchOrdersAll();
+    return qSnapStream;
+  }
 
+  Stream<QuerySnapshot> fetchOrdersCancel() {
+    Stream<QuerySnapshot> qSnapStream =
+    _userService.fetchOrdersCancel();
+    return qSnapStream;
+  }
+
+  Stream<QuerySnapshot> fetchOrdersComplete() {
+    Stream<QuerySnapshot> qSnapStream =
+    _userService.fetchOrdersComplete();
+    return qSnapStream;
+  }
+
+  Stream<QuerySnapshot> fetchOrdersWaitting() {
+    Stream<QuerySnapshot> qSnapStream =
+    _userService.fetchOrdersWaitting();
+    return qSnapStream;
+  }
+
+  Stream<DocumentSnapshot> fetchOrder(String idorrder){
+    Stream<DocumentSnapshot> qSnapStream =
+    _userService.fetchOrder(idorrder) ;
+    return qSnapStream;
+  }
+
+  Stream<QuerySnapshot> fetchProductsFromOrder(String idorrder){
+    Stream<QuerySnapshot> qSnapStream =
+    _userService.fetchProductsFromOrder(idorrder) ;
+    return qSnapStream;
+  }
+
+  Future<void> cancelOrder(String idorder) async {
+    await _userService.cancelOrder(idorder);
+  }
+
+  Future<void> completeOrder(String idorder) async {
+    await _userService.completeOrder(idorder);
+  }
 }

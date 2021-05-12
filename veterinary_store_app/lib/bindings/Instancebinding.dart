@@ -11,6 +11,7 @@ class InstanceBinding extends Bindings {
     Get.put<AuthController>(AuthController(), permanent: true);
     Get.put<ProductController>(ProductController(), permanent: true);
     Get.put<UtilitiesController>(UtilitiesController(), permanent: true);
+    Get.put< MyTabController>( MyTabController(), permanent: true);
     // Get.put<ContactController>(ContactController(), permanent: true);
     // Get.lazyPut<UploadController>(() => UploadController(), fenix: false);
   }
