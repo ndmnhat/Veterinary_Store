@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:veterinary_store_app/admin/screens/product_management.dart';
-import 'package:veterinary_store_app/user/screens/user_info_screen.dart';
+import 'package:veterinary_store_app/screens/user_info_screen.dart';
 
 class AdminScreen extends StatefulWidget {
   @override

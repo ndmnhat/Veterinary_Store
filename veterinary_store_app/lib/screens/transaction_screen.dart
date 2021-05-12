@@ -1,28 +1,55 @@
-import 'package:flutter/foundation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:veterinary_store_app/controllers/auth_controller.dart';
+import 'package:veterinary_store_app/models/order_model.dart';
+import 'package:veterinary_store_app/models/product_model.dart';
 
-Container transaction(var context, String status, int color){
-
-  Container boxDetail(String status,int color){
-    if(color == 1){
+Container transaction(OrderModel orderModel){
+  final formatter = new NumberFormat("#,###");
+  int timeInMillis = orderModel.dateTimeOrder;
+  var date = DateTime.fromMillisecondsSinceEpoch(timeInMillis);
+  var formattedDate = DateFormat.yMMMd().format(date);
+  Container boxDetail(){
+    if(orderModel.isCancel == true){
       return Container(
-          width: 80.0,
-          height: 20.0,
-          decoration: ShapeDecoration(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0),
-                side: BorderSide(color: Color(0xFF026E46))
-            ),
-            color: Color(0xFF026E46),
+        // color: Colors.green,
+        width: 80.0,
+        height: 20.0,
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+              side: BorderSide(color: Color(0xFF9E331B))
           ),
-          child: Text(
-            status,
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white),
+          color: Color(0xFF9E331B),
+        ),
+        child: Text(
+          "Cancel",
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.white),
         ),
       );
     }
-    else if(color == 2){
+    else if(orderModel.isCompleteAdmin == true && orderModel.isCompleteUser == true){
+      return Container(
+        width: 80.0,
+        height: 20.0,
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+              side: BorderSide(color: Color(0xFF026E46))
+          ),
+          color: Color(0xFF026E46),
+        ),
+        child: Text(
+          "Complete",
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.white),
+        ),
+      );
+    }
+    else{
       return Container(
         // color: Colors.green,
         width: 80.0,
@@ -35,36 +62,16 @@ Container transaction(var context, String status, int color){
           color: Color(0xFF0D296E),
         ),
         child: Text(
-          status,
+          "Waitting",
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white),
         ),
       );
     }
-    else if(color == 3){
-      return Container(
-        // color: Colors.green,
-        width: 80.0,
-        height: 20.0,
-        decoration: ShapeDecoration(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            side: BorderSide(color: Color(0xFF9E331B))
-          ),
-          color: Color(0xFF9E331B),
-        ),
-        child: Text(
-          status,
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white),
-        ),
-      );
-    }
-    return Container();
   }
 
   return Container(
-    width: MediaQuery.of(context).size.width * 0.94,
+    width: Get.width * 0.94,
     child: Card(
       elevation: 4,
       shape: RoundedRectangleBorder(
@@ -79,31 +86,31 @@ Container transaction(var context, String status, int color){
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                width: MediaQuery.of(context).size.width * 0.5,
+                width: Get.width * 0.9,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                   child: Row(
                     children: [
                       Text(
-                        'ID Bill',
+                        'ID Bill: ${orderModel.dateTimeOrder}',
                         style: TextStyle(
                           fontSize: 20,
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: boxDetail(status, color)
+                        child: boxDetail()
                       )
                     ],
                   ),
                 ),
               ),
               Container(
-                width: MediaQuery.of(context).size.width * 0.5,
+                width: Get.width * 0.9,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                   child: Text(
-                    'Day: 30/2/2021',
+                    'Day: $formattedDate',
                     style: TextStyle(
                       fontSize: 20,
                     ),
@@ -111,11 +118,11 @@ Container transaction(var context, String status, int color){
                 ),
               ),
               Container(
-                width: MediaQuery.of(context).size.width * 0.5,
+                width: Get.width * 0.9,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                   child: Text(
-                    'Username: User',
+                    'Receiver: ${orderModel.nameUser}',
                     style: TextStyle(
                       fontSize: 20,
                     ),
@@ -123,14 +130,15 @@ Container transaction(var context, String status, int color){
                 ),
               ),
               Container(
-                width: MediaQuery.of(context).size.width * 0.5,
+                width: Get.width * 0.9,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
-                  child: Text(
-                    'Totals: 100.000 vnđ',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
+                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Totals: ", style: TextStyle(color: Colors.black,fontSize: 18,)),
+                      Text("${formatter.format(double.parse(orderModel.totals))} vnđ",style: TextStyle(color: Colors.black,fontSize: 18,)),
+                    ],
                   ),
                 ),
               ),
