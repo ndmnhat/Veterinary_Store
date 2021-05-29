@@ -392,24 +392,6 @@ class InvoiceDetail extends StatelessWidget {
         ),
       );
     }
-    else if(order.isShipping == true && order.isCompleteUser == false){
-      return Container(
-        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-        child: ElevatedButton(
-          onPressed: (){_completeorder(orderId);},
-          style: ElevatedButton.styleFrom(
-              primary: Color(0xFF026E46)
-          ),
-          child: Text(
-            'Complete',
-            style: TextStyle(
-                color: Colors.grey[50],
-                fontSize: 20
-            ),
-          ),
-        ),
-      );
-    }
     else{
       return Container(
         padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),

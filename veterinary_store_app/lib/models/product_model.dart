@@ -15,6 +15,7 @@ class Product{
   String discount;
   String pathImage;
   String quantum;
+  String howtouse;
 
   Product({
     this.id,
@@ -23,6 +24,7 @@ class Product{
     this.discount,
     this.pathImage,
     this.quantum,
+    this.howtouse,
   });
 
   Product.fromDocumentSnapshot({DocumentSnapshot documentSnapshot}) {
@@ -33,6 +35,7 @@ class Product{
     discount = documentSnapshot["discount"];
     pathImage = documentSnapshot["path"];
     quantum = documentSnapshot["quantum"];
+    howtouse =  documentSnapshot["howtouse"];
   }
 
   Product.fromDocumentSnapshotForcart({DocumentSnapshot documentSnapshot}) {
@@ -53,6 +56,7 @@ class Product{
     discount = data["discount"];
     pathImage = data["path"];
     quantum = data["quantum"];
+    howtouse =  data["howtouse"];
   }
 
   Product.fromJson(Map<String, dynamic> json) {
