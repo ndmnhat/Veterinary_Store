@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:veterinary_store_app/controllers/auth_controller.dart';
 import 'package:veterinary_store_app/controllers/product_controller.dart';
 import 'package:veterinary_store_app/models/product_model.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DetailProduct extends StatelessWidget {
   final String productId;
@@ -15,7 +15,7 @@ class DetailProduct extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         // title: Text("Name Product", style: TextStyle(fontSize: 30,color: Colors.black)),
-        backgroundColor: Color(0xFF085B6E),
+        backgroundColor: Colors.cyanAccent,
       ),
       body:GetBuilder<ProductController>(
           builder: (_) => StreamBuilder<DocumentSnapshot>(
@@ -47,7 +47,6 @@ class DetailProduct extends StatelessWidget {
                           child: Column(
                               children: [
                                 Container(
-                                  padding: EdgeInsets.all(8.0),
                                   child: Image.network(product.pathImage),
                                 ),
                                 Divider(
@@ -87,8 +86,9 @@ class DetailProduct extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 8.0),
+                        SizedBox(height: 5.0),
                         Container(
+                          height: 100.0,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             boxShadow: [
@@ -99,8 +99,7 @@ class DetailProduct extends StatelessWidget {
 
                           ),
                           child: ListView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
                               itemCount: 4,
                               itemBuilder: (context, index){
                                 return Container(
@@ -117,7 +116,7 @@ class DetailProduct extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         Expanded(
-                                            child: Text('Name', style: TextStyle(fontSize: 18),)
+                                            child: Text('Name')
                                         ),
                                         VerticalDivider(
                                           width: 10.0,
@@ -125,7 +124,7 @@ class DetailProduct extends StatelessWidget {
 
                                         ),
                                         Expanded(
-                                            child: Text(product.id, style: TextStyle(fontSize: 18),)
+                                            child: Text(product.name)
                                         ),
                                       ],
                                     ),
@@ -134,9 +133,9 @@ class DetailProduct extends StatelessWidget {
                               }
                           ),
                         ),
-                        SizedBox(height: 50.0),
+                        SizedBox(height: 30.0),
                         Text(
-                          'Usage Instructions',
+                          'Usage Instruction',
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
@@ -145,6 +144,7 @@ class DetailProduct extends StatelessWidget {
                         SizedBox(height: 5.0),
                         Container(
                           padding: EdgeInsets.all(8.0),
+                          width: Get.width,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             boxShadow: [
@@ -153,9 +153,9 @@ class DetailProduct extends StatelessWidget {
                               )
                             ],
                           ),
-                          child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel enim velit. Nunc interdum libero non felis bibendum tempus. Proin.'),
+                          child: Text('${product.howtouse}', style: TextStyle(fontSize: 18),),
                         ),
-                        SizedBox(height: 50.0),
+                        SizedBox(height: 30.0),
                         Text(
                           'Rates and Comments',
                           style: TextStyle(
@@ -163,7 +163,7 @@ class DetailProduct extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 8.0),
+                        SizedBox(height: 5.0),
                         Container(
                             padding: EdgeInsets.all(5.0),
                             decoration: BoxDecoration(
@@ -190,7 +190,7 @@ class DetailProduct extends StatelessWidget {
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
-                                            Text('1465 rates' , style: TextStyle(fontSize: 16),),
+                                            Text('1465 rates'),
                                           ],
                                         ),
                                       ),
@@ -202,11 +202,11 @@ class DetailProduct extends StatelessWidget {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text('5: 1323 rates' , style: TextStyle(fontSize: 16),),
-                                            Text('4: 108 rates' , style: TextStyle(fontSize: 16),),
-                                            Text('3: 26 rates' , style: TextStyle(fontSize: 16),),
-                                            Text('2: 04 rates' , style: TextStyle(fontSize: 16),),
-                                            Text('1: 04 rates' , style: TextStyle(fontSize: 16),),
+                                            Text('5: 1323 rates'),
+                                            Text('4: 108 rates'),
+                                            Text('3: 26 rates'),
+                                            Text('2: 04 rates'),
+                                            Text('1: 04 rates'),
                                           ],
                                         ),
                                       ),
@@ -237,7 +237,7 @@ class DetailProduct extends StatelessWidget {
                                                       ),
                                                       SizedBox(width: 5.0),
                                                       Expanded(
-                                                          child: Text('Hot N*gga' , style: TextStyle(fontSize: 18),)
+                                                          child: Text('Hot N*gga')
                                                       ),
                                                       Text(
                                                         '5',
@@ -248,7 +248,7 @@ class DetailProduct extends StatelessWidget {
                                                     ],
                                                   ),
                                                   SizedBox(height: 5.0),
-                                                  Text('very good' , style: TextStyle(fontSize: 16),),
+                                                  Text('very good'),
                                                 ],
                                               ),
                                             ),
@@ -278,27 +278,10 @@ class DetailProduct extends StatelessWidget {
                 return BottomAppBar(
                   color: Colors.cyanAccent,
                   child: Container(
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(color: Colors.grey)
-                        ]
-                    ),
-                    child: BottomAppBar(
-                      color: Colors.grey[50],
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(16, 5, 16, 5),
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(backgroundColor: Color(0xFF0D9ABA)),
-                          onPressed: (){Get.find<AuthController>().addProductToCart(product);},
-                          child: Text(
-                              'Add to cart',
-                              style: TextStyle(
-                                  color: Colors.grey[50],
-                                  fontSize: 20
-                              )
-                          ),
-                        ),
-                      ),
+                    padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                    child: ElevatedButton(
+                      onPressed: (){Get.find<AuthController>().addProductToCart(product);},
+                      child: Text('Add to cart'),
                     ),
                   ),
                 );
