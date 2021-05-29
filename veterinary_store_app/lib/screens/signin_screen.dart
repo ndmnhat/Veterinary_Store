@@ -4,6 +4,7 @@ import 'package:veterinary_store_app/controllers/auth_controller.dart';
 import 'package:get/get.dart';
 import 'package:veterinary_store_app/controllers/utilities_controller.dart';
 import 'package:veterinary_store_app/screens/signup_screen.dart';
+import 'package:veterinary_store_app/screens/forgotpassword_screen.dart';
 
 
 class SignIn extends GetWidget<UtilitiesController>{
@@ -136,8 +137,13 @@ class SignIn extends GetWidget<UtilitiesController>{
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          Text(
-                            " FORGOT PASSWORD", style: TextStyle(fontSize: 15,color: Color(0xFF085B6E)),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(ForgotPasswordScreen());
+                            },
+                            child: Text(
+                              " FORGOT PASSWORD", style: TextStyle(fontSize: 15,color: Color(0xFF085B6E)),
+                            ),
                           )
                         ],
                       )

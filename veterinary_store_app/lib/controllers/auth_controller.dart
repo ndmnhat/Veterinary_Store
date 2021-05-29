@@ -129,6 +129,18 @@ class AuthController extends GetxController {
     }
   }
 
+  void forgotPassword(String email) async {
+    try {
+      await _authService.forgotPassword(email);
+      Get.back();
+      Get.snackbar("Notification","Reset password link has sent your mail please use it to change the password.");
+      // Get.snackbar("Error","Enter valid email");
+    } catch (e) {
+      // Get.showSnackbar(snackbar)
+    }
+  }
+
+
   void updateUser({
     String id,
     String name,

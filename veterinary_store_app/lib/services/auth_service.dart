@@ -50,6 +50,10 @@ class AuthService {
     await _fireAuth.signOut();
   }
 
+  Future<void> forgotPassword(String email) async {
+    await _fireAuth.sendPasswordResetEmail(email: email);
+  }
+
   Future<UserCredential> changePassword(String oldpassword) async{
     User currentUser = _fireAuth.currentUser;
     UserCredential _authResult;

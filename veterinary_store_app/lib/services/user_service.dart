@@ -152,7 +152,7 @@ class UserService {
   }
 
   Stream<QuerySnapshot> fetchOrdersWaitting() {
-    return _firestore.collection("orders").where('iduser', isEqualTo: _fireAuth.currentUser.uid).where('iscancel', isEqualTo: false).where('iswaitting', isEqualTo: true).orderBy("datetimeorder",descending: true).snapshots();
+    return _firestore.collection("orders").where('iduser',isEqualTo: _fireAuth.currentUser.uid).where('iscancel', isEqualTo: false).where('iswaitting', isEqualTo: true).orderBy("datetimeorder",descending: true).snapshots();
   }
 
   Stream<QuerySnapshot> fetchOrdersComplete() {

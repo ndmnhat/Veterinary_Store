@@ -35,49 +35,47 @@ class SearchScreen extends GetWidget<UtilitiesController> {
                   }),
               backgroundColor: Color(0xFF085B6E),
             ),
-            body: GetBuilder<ProductController>(
-                builder: (_) => StreamBuilder<QuerySnapshot>(
-                    stream: streamQuery,
-                    builder: (context, stream) {
-                      if (stream.connectionState == ConnectionState.waiting) {
-                        return Center(child: CircularProgressIndicator());
-                      }
-                      if (stream.hasError) {
-                        return Center(child: Text(stream.error.toString()));
-                      }
-                      QuerySnapshot querySnapshot = stream.data;
-                      if(querySnapshot.size == 0){
-                        return Center(child: Text("No products match"));
-                      }
-                      else{
-                        return Padding(
-                            padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
-                            child: Container(
-                              child: StaggeredGridView.countBuilder(
-                                //padding: EdgeInsets.all(10),
-                                physics: BouncingScrollPhysics(),
-                                crossAxisCount: 4,
-                                itemCount: querySnapshot.size,
-                                itemBuilder: (context, index)
-                                {
-                                  final item = querySnapshot.docs[index];
-                                  // print(item.id);
-                                  // print("${controller.countDemo()}");
-                                  final Product product = Product.fromQueryDocumentSnapshot(queryDocSnapshot: item);
-                                  // print("${product.pathImage}");
-                                  // print("${product.id}");
-                                  return products(product);
-                                },
-                                staggeredTileBuilder: (int index) => new StaggeredTile.fit(2),
-                                mainAxisSpacing: 4.0,
-                                crossAxisSpacing: 4.0,
-                              ),
-                            )
-                        );
-                      }
-                    }
-                )
-            ),
+            body: StreamBuilder<QuerySnapshot>(
+              stream: streamQuery,
+              builder: (context, stream) {
+                if (stream.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                if (stream.hasError) {
+                  return Center(child: Text(stream.error.toString()));
+                }
+                QuerySnapshot querySnapshot = stream.data;
+                if(querySnapshot.size == 0){
+                  return Center(child: Text("No products match"));
+                }
+                else{
+                  return Padding(
+                    padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
+                    child: Container(
+                      child: StaggeredGridView.countBuilder(
+                        //padding: EdgeInsets.all(10),
+                        physics: BouncingScrollPhysics(),
+                        crossAxisCount: 4,
+                        itemCount: querySnapshot.size,
+                        itemBuilder: (context, index)
+                        {
+                          final item = querySnapshot.docs[index];
+                          // print(item.id);
+                          // print("${controller.countDemo()}");
+                          final Product product = Product.fromQueryDocumentSnapshot(queryDocSnapshot: item);
+                          // print("${product.pathImage}");
+                          // print("${product.id}");
+                          return products(product);
+                        },
+                        staggeredTileBuilder: (int index) => new StaggeredTile.fit(2),
+                        mainAxisSpacing: 4.0,
+                        crossAxisSpacing: 4.0,
+                      ),
+                    )
+                  );
+                }
+              }
+            )
           );
         }
     );
