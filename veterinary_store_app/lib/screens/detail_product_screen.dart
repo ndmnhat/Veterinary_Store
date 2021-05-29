@@ -275,16 +275,30 @@ class DetailProduct extends StatelessWidget {
                   return Center(child: Text(snapshot.error.toString()));
                 }
                 final Product product = Product.fromDocumentSnapshot(documentSnapshot: snapshot.data);
-                return BottomAppBar(
-                  color: Colors.cyanAccent,
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                    child: ElevatedButton(
-                      onPressed: (){Get.find<AuthController>().addProductToCart(product);},
-                      child: Text('Add to cart'),
+                if(int.parse(product.quantum) == 0){
+                  return BottomAppBar(
+                    color: Colors.cyanAccent,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                      child: ElevatedButton(
+                        onPressed: null,
+                        child: Text('It Sold Out'),
+                      ),
                     ),
-                  ),
-                );
+                  );
+                }
+                else{
+                  return BottomAppBar(
+                    color: Colors.cyanAccent,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                      child: ElevatedButton(
+                        onPressed: (){Get.find<AuthController>().addProductToCart(product);},
+                        child: Text('Add to cart'),
+                      ),
+                    ),
+                  );
+                }
               })),
     );
   }
