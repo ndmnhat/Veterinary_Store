@@ -196,7 +196,7 @@ class AuthController extends GetxController {
         pathImage: product.pathImage,
       );
       await _userService.addProductToCart(productTemp);
-      Get.back();
+      // Get.back();
       // Get.snackbar("","Add Product Successful");
     } catch (e) {
       Get.snackbar("Error",e.toString());

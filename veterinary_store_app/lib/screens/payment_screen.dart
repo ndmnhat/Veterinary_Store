@@ -452,11 +452,6 @@ class Payment extends StatelessWidget {
     }
     else{
       Get.find<AuthController>().paythebill(user,totals.toString(),Get.find<UtilitiesController>().selectRadioShipping,Get.find<UtilitiesController>().selectRadioPayment);
-      Get.find<UtilitiesController>().changeTabIndex(0);
-      Get.offAll(AppScreen());
-      Get.find<UtilitiesController>().selectRadioShipping = "Self-Shop Ship";
-      Get.find<UtilitiesController>().selectRadioPayment = "Cash";
-      Get.snackbar("Nofitication", "Make order success");
     }
   }
 }

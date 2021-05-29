@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:veterinary_store_app/controllers/utilities_controller.dart';
 import 'package:veterinary_store_app/models/order_model.dart';
 import 'package:veterinary_store_app/models/product_model.dart';
 import 'package:veterinary_store_app/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:veterinary_store_app/controllers/product_controller.dart';
 import 'package:get/get.dart';
+import 'package:veterinary_store_app/screens/app_screen.dart';
 
 class UserService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -57,6 +59,7 @@ class UserService {
 
   Future<Product> addProductToCart(Product product) async {
     final snapShot = await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).get();
+    final snapShotProduct = await _firestore.collection("products").doc(product.id).get();
     if (snapShot == null || !snapShot.exists) {
       await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).set({
         "name": product.name,
@@ -65,34 +68,70 @@ class UserService {
         "path": product.pathImage,
         "quantum": "1",
       });
+      Get.back();
     }
     else{
-      final Product productTemp = Product.fromDocumentSnapshotForcart(documentSnapshot: snapShot);
-      int temp = int.parse(productTemp.quantum);
-      temp++;
+      final Product productTemp1 = Product.fromDocumentSnapshot(documentSnapshot: snapShotProduct);
+      final Product productTemp2 = Product.fromDocumentSnapshotForcart(documentSnapshot: snapShot);
+      int temp1 = int.parse(productTemp1.quantum);
+      int temp2 = int.parse(productTemp2.quantum);
       await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).update({
-        "quantum": temp.toString(),
+        "name": productTemp1.name,
+        "price": productTemp1.price,
+        "discount": productTemp1.discount,
+        "path": productTemp1.pathImage,
       });
+      if(temp2 < temp1){
+        temp2++;
+        await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).update({
+          "quantum": temp2.toString(),
+        });
+        Get.back();
+      }
+      else{
+        Get.snackbar("Nofitication", "This product just have $temp1 quantum");
+      }
     }
     return product;
   }
 
   Future<Product> addProductInCart(Product product) async {
+    final snapShotProduct = await _firestore.collection("products").doc(product.id).get();
     final snapShot = await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).get();
-    final Product productTemp = Product.fromDocumentSnapshotForcart(documentSnapshot: snapShot);
-    int temp = int.parse(productTemp.quantum);
-    temp++;
+    final Product productTemp1 = Product.fromDocumentSnapshot(documentSnapshot: snapShotProduct);
+    final Product productTemp2 = Product.fromDocumentSnapshotForcart(documentSnapshot: snapShot);
+    int temp1 = int.parse(productTemp1.quantum);
+    int temp2 = int.parse(productTemp2.quantum);
     await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).update({
-      "quantum": temp.toString(),
+      "name": productTemp1.name,
+      "price": productTemp1.price,
+      "discount": productTemp1.discount,
+      "path": productTemp1.pathImage,
     });
-
+    if(temp2 < temp1){
+      temp2++;
+      await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).update({
+        "quantum": temp2.toString(),
+      });
+    }
+    else{
+      Get.snackbar("Nofitication", "This product just have $temp1 quantum");
+    }
     return product;
   }
 
   Future<Product> removeProductInCart(Product product) async {
+    final snapShotProduct = await _firestore.collection("products").doc(product.id).get();
     final snapShot = await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).get();
-    final Product productTemp = Product.fromDocumentSnapshotForcart(documentSnapshot: snapShot);
-    int temp = int.parse(productTemp.quantum);
+    final Product productTemp1 = Product.fromDocumentSnapshot(documentSnapshot: snapShotProduct);
+    final Product productTemp2 = Product.fromDocumentSnapshotForcart(documentSnapshot: snapShot);
+    int temp = int.parse(productTemp2.quantum);
+    await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).update({
+      "name": productTemp1.name,
+      "price": productTemp1.price,
+      "discount": productTemp1.discount,
+      "path": productTemp1.pathImage,
+    });
     if(temp == 1){
       await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).delete();
     }
@@ -110,36 +149,73 @@ class UserService {
   }
   // thanh toán
   Future<void> paythebill(OrderModel orderModel) async {
-    await _firestore.collection("orders").add({
-      "iduser": orderModel.idUser,
-      "nameuser": orderModel.nameUser,
-      "emailuser": orderModel.emailUser,
-      "phoneuser": orderModel.phoneUser,
-      "addressuser": orderModel.addressUser,
-      "shippingmethod": orderModel.shippingMethod,
-      "paymentmethod": orderModel.paymentMethod,
-      "totals": orderModel.totals,
-      "datetimeorder": DateTime.now().toUtc().millisecondsSinceEpoch,
-      "iscancel": orderModel.isCancel,
-      "iscompleteuser": orderModel.isCompleteUser,
-      "iscompleteadmin": orderModel.isCompleteAdmin,
-      "iswaitting": orderModel.isWaitting,
-      "isaccess": orderModel.isAccess,
-      "isshipping": orderModel.isShipping,
-    }).then((valueorder) async {
-      await _firestore.collection("users").doc(orderModel.idUser).collection("cartproduct").get().then((value) async {
-        for (DocumentSnapshot ds in value.docs){
-          final Product product = Product.fromDocumentSnapshotForcart(documentSnapshot: ds);
-          await _firestore.collection("orders").doc(valueorder.id).collection("cartproduct").doc(product.id).set({
-            "name": product.name,
-            "price": product.price,
-            "discount": product.discount,
-            "path": product.pathImage,
-            "quantum": product.quantum,
+    int tempCounter = 0;
+    await _firestore.collection("users").doc(orderModel.idUser).collection("cartproduct").get().then((value) async {
+      for (DocumentSnapshot ds in value.docs){
+        final Product product = Product.fromDocumentSnapshotForcart(documentSnapshot: ds);
+        await _firestore.collection("products").doc(product.id).get().then((valueproduct) async {
+          if (valueproduct == null || !valueproduct.exists) {
+            Get.snackbar("Nofitication", "This ${product.name} was deleted");
+            tempCounter = 1;
+          }
+          else{
+            final snapShotProduct = await _firestore.collection("products").doc(product.id).get();
+            final Product productTemp1 = Product.fromDocumentSnapshot(documentSnapshot: snapShotProduct);
+            int temp1 = int.parse(productTemp1.quantum);
+            int temp2 = int.parse(product.quantum);
+            if(temp2 > temp1){
+              Get.snackbar("Nofitication", "This ${product.name} was not enough quantum");
+              tempCounter = 2;
+            }
+          }
+        });
+      };
+      if(tempCounter == 0){
+        await _firestore.collection("orders").add({
+          "iduser": orderModel.idUser,
+          "nameuser": orderModel.nameUser,
+          "emailuser": orderModel.emailUser,
+          "phoneuser": orderModel.phoneUser,
+          "addressuser": orderModel.addressUser,
+          "shippingmethod": orderModel.shippingMethod,
+          "paymentmethod": orderModel.paymentMethod,
+          "totals": orderModel.totals,
+          "datetimeorder": DateTime.now().toUtc().millisecondsSinceEpoch,
+          "iscancel": orderModel.isCancel,
+          "iscompleteuser": orderModel.isCompleteUser,
+          "iscompleteadmin": orderModel.isCompleteAdmin,
+          "iswaitting": orderModel.isWaitting,
+          "isaccess": orderModel.isAccess,
+          "isshipping": orderModel.isShipping,
+        }).then((valueorder) async {
+          await _firestore.collection("users").doc(orderModel.idUser).collection("cartproduct").get().then((value) async {
+            for (DocumentSnapshot ds in value.docs){
+              final Product product = Product.fromDocumentSnapshotForcart(documentSnapshot: ds);
+              final snapShotProduct = await _firestore.collection("products").doc(product.id).get();
+              final Product productTemp1 = Product.fromDocumentSnapshot(documentSnapshot: snapShotProduct);
+              int temp1 = int.parse(productTemp1.quantum);
+              int temp2 = int.parse(product.quantum);
+              int temp = temp1 - temp2;
+              await _firestore.collection("products").doc(productTemp1.id).update({
+                "quantum": temp.toString(),
+              });
+              await _firestore.collection("orders").doc(valueorder.id).collection("cartproduct").doc(product.id).set({
+                "name": product.name,
+                "price": product.price,
+                "discount": product.discount,
+                "path": product.pathImage,
+                "quantum": product.quantum,
+              });
+              ds.reference.delete();
+            };
           });
-          ds.reference.delete();
-        };
-      });
+        });
+        Get.find<UtilitiesController>().changeTabIndex(0);
+        Get.find<UtilitiesController>().selectRadioShipping = "Self-Shop Ship";
+        Get.find<UtilitiesController>().selectRadioPayment = "Cash";
+        Get.offAll(AppScreen());
+        Get.snackbar("Nofitication", "Make order success");
+      }
     });
   }
   // lịch sử mua hàng
@@ -172,6 +248,19 @@ class UserService {
       "iscancel" : true,
       "iswaitting": false,
     });
+    await _firestore.collection("orders").doc(idorder).collection("cartproduct").get().then((value) async {
+      for (DocumentSnapshot ds in value.docs){
+        final Product product = Product.fromDocumentSnapshotForcart(documentSnapshot: ds);
+        final snapShotProduct = await _firestore.collection("products").doc(product.id).get();
+        final Product productTemp1 = Product.fromDocumentSnapshot(documentSnapshot: snapShotProduct);
+        int temp1 = int.parse(productTemp1.quantum);
+        int temp2 = int.parse(product.quantum);
+        int temp = temp1 + temp2;
+        await _firestore.collection("products").doc(productTemp1.id).update({
+          "quantum": temp.toString(),
+        });
+      }
+    });
   }
 
   Future<void> completeOrder(String idorder) async {
@@ -190,5 +279,4 @@ class UserService {
     }
 
   }
-
 }
