@@ -65,11 +65,11 @@ class SignIn extends GetWidget<UtilitiesController>{
                             controller: _emailInputCtrl,
                             style: TextStyle(color: Colors.black,fontSize: 25),
                             decoration: InputDecoration(
-                                labelText: "Username",
+                                labelText: "Email",
                                 labelStyle: TextStyle(color: Colors.grey,fontSize: 20,),
                                 errorText: snapshot.hasError ? snapshot.error : null,
                                 prefixIcon: Container(width: 50,
-                                  child: Icon(Icons.person, color: Colors.black, size: 30,),
+                                  child: Icon(Icons.email, color: Colors.black, size: 30,),
                                 ),
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.grey , width: 1),

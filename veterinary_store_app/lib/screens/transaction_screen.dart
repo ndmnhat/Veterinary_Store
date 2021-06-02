@@ -6,13 +6,13 @@ import 'package:veterinary_store_app/controllers/auth_controller.dart';
 import 'package:veterinary_store_app/models/order_model.dart';
 import 'package:veterinary_store_app/models/product_model.dart';
 
-Container transaction(OrderModel orderModel){
+Container transaction(OrderModel orderModel) {
   final formatter = new NumberFormat("#,###");
   int timeInMillis = orderModel.dateTimeOrder;
   var date = DateTime.fromMillisecondsSinceEpoch(timeInMillis);
   var formattedDate = DateFormat.yMMMd().format(date);
-  Container boxDetail(){
-    if(orderModel.isCancel == true){
+  Container boxDetail() {
+    if (orderModel.isCancel == true) {
       return Container(
         // color: Colors.green,
         width: 80.0,
@@ -20,8 +20,7 @@ Container transaction(OrderModel orderModel){
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
-              side: BorderSide(color: Color(0xFF9E331B))
-          ),
+              side: BorderSide(color: Color(0xFF9E331B))),
           color: Color(0xFF9E331B),
         ),
         child: Text(
@@ -30,16 +29,15 @@ Container transaction(OrderModel orderModel){
           style: TextStyle(color: Colors.white),
         ),
       );
-    }
-    else if(orderModel.isCompleteAdmin == true && orderModel.isCompleteUser == true){
+    } else if (orderModel.isCompleteAdmin == true &&
+        orderModel.isCompleteUser == true) {
       return Container(
         width: 80.0,
         height: 20.0,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
-              side: BorderSide(color: Color(0xFF026E46))
-          ),
+              side: BorderSide(color: Color(0xFF026E46))),
           color: Color(0xFF026E46),
         ),
         child: Text(
@@ -48,8 +46,7 @@ Container transaction(OrderModel orderModel){
           style: TextStyle(color: Colors.white),
         ),
       );
-    }
-    else{
+    } else {
       return Container(
         // color: Colors.green,
         width: 80.0,
@@ -57,8 +54,7 @@ Container transaction(OrderModel orderModel){
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
-              side: BorderSide(color: Color(0xFF0D296E))
-          ),
+              side: BorderSide(color: Color(0xFF0D296E))),
           color: Color(0xFF0D296E),
         ),
         child: Text(
@@ -76,8 +72,7 @@ Container transaction(OrderModel orderModel){
       elevation: 4,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4.0),
-          side: BorderSide(color: Colors.white)
-      ),
+          side: BorderSide(color: Colors.white)),
       color: Colors.white,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,22 +80,30 @@ Container transaction(OrderModel orderModel){
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: boxDetail(),
+              ),
               Container(
                 width: Get.width * 0.9,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                   child: Row(
                     children: [
-                      Text(
-                        'ID Bill: ${orderModel.dateTimeOrder}',
-                        style: TextStyle(
-                          fontSize: 20,
+                      Expanded(
+                        child: Text(
+                          'ID Bill:',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: boxDetail()
-                      )
+                      Text(
+                        '${orderModel.dateTimeOrder}',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -109,24 +112,44 @@ Container transaction(OrderModel orderModel){
                 width: Get.width * 0.9,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                  child: Text(
-                    'Day: $formattedDate',
-                    style: TextStyle(
-                      fontSize: 20,
+                  child: Row(children: [
+                    Expanded(
+                      child: Text(
+                        'Day:',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
                     ),
-                  ),
+                    Text(
+                      '$formattedDate',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ]),
                 ),
               ),
               Container(
                 width: Get.width * 0.9,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                  child: Text(
-                    'Receiver: ${orderModel.nameUser}',
-                    style: TextStyle(
-                      fontSize: 20,
+                  child: Row(children: [
+                    Expanded(
+                      child: Text(
+                        'Receiver:',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
                     ),
-                  ),
+                    Text(
+                      '${orderModel.nameUser}',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ]),
                 ),
               ),
               Container(
@@ -136,8 +159,19 @@ Container transaction(OrderModel orderModel){
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Totals: ", style: TextStyle(color: Colors.black,fontSize: 18,)),
-                      Text("${formatter.format(double.parse(orderModel.totals))} vnđ",style: TextStyle(color: Colors.black,fontSize: 18,)),
+                      Expanded(
+                        child: Text("Totals: ",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                            )),
+                      ),
+                      Text(
+                          "${formatter.format(double.parse(orderModel.totals))} vnđ",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                          )),
                     ],
                   ),
                 ),
