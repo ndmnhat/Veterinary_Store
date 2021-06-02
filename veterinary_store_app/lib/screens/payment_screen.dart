@@ -52,6 +52,7 @@ class Payment extends StatelessWidget {
                                     'Detail User',
                                     style: TextStyle(
                                         fontSize: 20,
+                                        fontWeight: FontWeight.bold,
                                         color: Colors.black
                                     ),
                                   ),
@@ -67,7 +68,7 @@ class Payment extends StatelessWidget {
                                       // fontFamily: 'Sans',
                                         fontWeight: FontWeight.normal,
                                         color: Colors.black,
-                                        fontSize: 20),
+                                        fontSize: 18),
                                   ),
                                 ),
                               ),
@@ -81,7 +82,7 @@ class Payment extends StatelessWidget {
                                       // fontFamily: 'Sans',
                                         fontWeight: FontWeight.normal,
                                         color: Colors.black,
-                                        fontSize: 20),
+                                        fontSize: 18),
                                   ),
                                 ),
                               ),
@@ -89,11 +90,12 @@ class Payment extends StatelessWidget {
                                 width: Get.width,
                                 color: Color(0xFFeaeaea),
                                 child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
+                                  padding: const EdgeInsets.fromLTRB(10, 30, 0, 5),
                                   child: Text(
                                     'Address',
                                     style: TextStyle(
                                         fontSize: 20,
+                                        fontWeight: FontWeight.bold,
                                         color: Colors.black
                                     ),
                                   ),
@@ -109,7 +111,7 @@ class Payment extends StatelessWidget {
                                       // fontFamily: 'Sans',
                                         fontWeight: FontWeight.normal,
                                         color: Colors.black,
-                                        fontSize: 20),
+                                        fontSize: 18),
                                   ),
                                 ),
                               ),
@@ -117,11 +119,12 @@ class Payment extends StatelessWidget {
                                 width: Get.width,
                                 color: Color(0xFFeaeaea),
                                 child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
+                                  padding: const EdgeInsets.fromLTRB(10, 30, 0, 5),
                                   child: Text(
                                     'Shipping Method',
                                     style: TextStyle(
                                         fontSize: 20,
+                                        fontWeight: FontWeight.bold,
                                         color: Colors.black
                                     ),
                                   ),
@@ -147,7 +150,7 @@ class Payment extends StatelessWidget {
                                                   Text(
                                                     'Self-Shop Ship',
                                                     style: TextStyle(
-                                                      fontSize: 20,
+                                                      fontSize: 18,
                                                     ),
                                                   ),
                                                 ],
@@ -165,7 +168,7 @@ class Payment extends StatelessWidget {
                                                   Text(
                                                     'GHN',
                                                     style: TextStyle(
-                                                      fontSize: 20,
+                                                      fontSize: 18,
                                                     ),
                                                   ),
                                                 ],
@@ -183,7 +186,7 @@ class Payment extends StatelessWidget {
                                                   Text(
                                                     'Ninja Van',
                                                     style: TextStyle(
-                                                      fontSize: 20,
+                                                      fontSize: 18,
                                                     ),
                                                   ),
                                                 ],
@@ -201,7 +204,7 @@ class Payment extends StatelessWidget {
                                                   Text(
                                                     'Post Office',
                                                     style: TextStyle(
-                                                      fontSize: 20,
+                                                      fontSize: 18,
                                                     ),
                                                   ),
                                                 ],
@@ -216,11 +219,12 @@ class Payment extends StatelessWidget {
                                 width: Get.width,
                                 color: Color(0xFFeaeaea),
                                 child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
+                                  padding: const EdgeInsets.fromLTRB(10, 30, 0, 5),
                                   child: Text(
                                     'Payment Method',
                                     style: TextStyle(
                                         fontSize: 20,
+                                        fontWeight: FontWeight.bold,
                                         color: Colors.black
                                     ),
                                   ),
@@ -246,7 +250,7 @@ class Payment extends StatelessWidget {
                                                   Text(
                                                     'Cash',
                                                     style: TextStyle(
-                                                      fontSize: 20,
+                                                      fontSize: 18,
                                                     ),
                                                   ),
                                                 ],
@@ -264,7 +268,7 @@ class Payment extends StatelessWidget {
                                                   Text(
                                                     'Card',
                                                     style: TextStyle(
-                                                      fontSize: 20,
+                                                      fontSize: 18,
                                                     ),
                                                   ),
                                                 ],
@@ -279,11 +283,12 @@ class Payment extends StatelessWidget {
                                 width: Get.width,
                                 color: Color(0xFFeaeaea),
                                 child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
+                                  padding: const EdgeInsets.fromLTRB(10, 30, 0, 5),
                                   child: Text(
                                     'Coupon discount',
                                     style: TextStyle(
                                         fontSize: 20,
+                                        fontWeight: FontWeight.bold,
                                         color: Colors.black
                                     ),
                                   ),
@@ -315,7 +320,7 @@ class Payment extends StatelessWidget {
                                             backgroundColor: Color(0xFF085B6E),
                                             side: BorderSide(width: 1, color: Color(0xFF085B6E),),),
                                           onPressed: (){},
-                                          child: Text("Use",style: TextStyle(color: Colors.black,fontSize: 18,)),
+                                          child: Text("Use",style: TextStyle(color: Colors.grey[50], fontSize: 18,)),
                                         ),
                                       ),
                                     ],
@@ -326,11 +331,12 @@ class Payment extends StatelessWidget {
                                 width: Get.width,
                                 color: Color(0xFFeaeaea),
                                 child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
+                                  padding: const EdgeInsets.fromLTRB(10, 30, 0, 5),
                                   child: Text(
                                     'Detail',
                                     style: TextStyle(
                                         fontSize: 20,
+                                        fontWeight: FontWeight.bold,
                                         color: Colors.black
                                     ),
                                   ),
@@ -366,13 +372,14 @@ class Payment extends StatelessWidget {
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width,
-                                color: Colors.grey,
+                                color: Colors.grey[50],
                                 child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
+                                  padding: const EdgeInsets.fromLTRB(10, 30, 0, 5),
                                   child: Text(
                                     'Total',
                                     style: TextStyle(
                                         fontSize: 20,
+                                        fontWeight: FontWeight.bold,
                                         color: Colors.black
                                     ),
                                   ),
@@ -431,12 +438,15 @@ class Payment extends StatelessWidget {
                       ),
                     ),
                     bottomNavigationBar: BottomAppBar(
-                      color: Colors.cyanAccent,
+                      color: Color(0xFF085B6E),
                       child: Container(
                         padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                         child: ElevatedButton(
                           onPressed: (){_pay();},
-                          child: Text('Pay'),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFF0D9ABA)
+                          ),
+                          child: Text('Pay', style: TextStyle(fontSize: 20),),
                         ),
                       ),
                     ),

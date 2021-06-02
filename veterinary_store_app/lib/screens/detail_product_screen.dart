@@ -15,12 +15,12 @@ class DetailProduct extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         // title: Text("Name Product", style: TextStyle(fontSize: 30,color: Colors.black)),
-        backgroundColor: Colors.cyanAccent,
+        backgroundColor: Color(0xFF085B6E),
       ),
-      body:GetBuilder<ProductController>(
+      body: GetBuilder<ProductController>(
           builder: (_) => StreamBuilder<DocumentSnapshot>(
               stream: Get.find<ProductController>().fetchProduct(productId),
-              builder: (context,  AsyncSnapshot<DocumentSnapshot> snapshot) {
+              builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
                 }
@@ -28,11 +28,11 @@ class DetailProduct extends StatelessWidget {
                   return Center(child: Text(snapshot.error.toString()));
                 }
 
-                final Product product = Product.fromDocumentSnapshot(documentSnapshot: snapshot.data);
+                final Product product = Product.fromDocumentSnapshot(
+                    documentSnapshot: snapshot.data);
                 return SingleChildScrollView(
                   padding: EdgeInsets.all(8.0),
-                  child:
-                  Column(
+                  child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
@@ -44,39 +44,14 @@ class DetailProduct extends StatelessWidget {
                               ),
                             ],
                           ),
-                          child: Column(
-                              children: [
-                                Container(
-                                  child: Image.network(product.pathImage),
-                                ),
-                                Divider(
-                                  color: Colors.grey,
-                                ),
-                                Container(
-                                  height: 100.0,
-                                  child: ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount: 20,
-                                      itemBuilder: (context, index) {
-                                        return Container(
-                                          padding: EdgeInsets.all(8.0),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.grey,
-                                              ),
-                                            ],
-                                          ),
-                                          child: Image.network(
-                                            'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
-                                          ),
-                                        );
-                                      }
-                                  ),
-                                ),
-                              ]
-                          ),
+                          child: Column(children: [
+                            Container(
+                              child: Image.network(product.pathImage),
+                            ),
+                            Divider(
+                              color: Colors.grey,
+                            ),
+                          ]),
                         ),
                         SizedBox(height: 50.0),
                         Text(
@@ -96,12 +71,11 @@ class DetailProduct extends StatelessWidget {
                                 color: Colors.grey,
                               ),
                             ],
-
                           ),
                           child: ListView.builder(
                               scrollDirection: Axis.vertical,
                               itemCount: 4,
-                              itemBuilder: (context, index){
+                              itemBuilder: (context, index) {
                                 return Container(
                                   padding: EdgeInsets.all(8.0),
                                   decoration: BoxDecoration(
@@ -116,21 +90,47 @@ class DetailProduct extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         Expanded(
-                                            child: Text('Name')
-                                        ),
+                                            child: Text('Name',
+                                                style:
+                                                    TextStyle(fontSize: 18))),
                                         VerticalDivider(
                                           width: 10.0,
                                           color: Colors.grey,
-
                                         ),
                                         Expanded(
-                                            child: Text(product.name)
-                                        ),
+                                            child: Text(
+                                          product.name,
+                                          style: TextStyle(fontSize: 16),
+                                        )),
                                       ],
                                     ),
                                   ),
                                 );
-                              }
+                              }),
+                        ),
+                        SizedBox(height: 30.0),
+                        Text(
+                          'Components',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        Container(
+                          padding: EdgeInsets.all(8.0),
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                              )
+                            ],
+                          ),
+                          child: Text(
+                            '${product.howtouse}',
+                            style: TextStyle(fontSize: 18),
                           ),
                         ),
                         SizedBox(height: 30.0),
@@ -153,7 +153,10 @@ class DetailProduct extends StatelessWidget {
                               )
                             ],
                           ),
-                          child: Text('${product.howtouse}', style: TextStyle(fontSize: 18),),
+                          child: Text(
+                            '${product.howtouse}',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ),
                         SizedBox(height: 30.0),
                         Text(
@@ -181,7 +184,8 @@ class DetailProduct extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             Text(
                                               '4.9',
@@ -199,8 +203,10 @@ class DetailProduct extends StatelessWidget {
                                       ),
                                       Expanded(
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text('5: 1323 rates'),
                                             Text('4: 108 rates'),
@@ -220,29 +226,36 @@ class DetailProduct extends StatelessWidget {
                                     height: 200.0,
                                     child: ListView.builder(
                                         itemCount: 4,
-                                        itemBuilder: (context, index){
+                                        itemBuilder: (context, index) {
                                           return Card(
                                             elevation: 1.0,
                                             child: Container(
                                               padding: EdgeInsets.all(5.0),
                                               child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Row(
                                                     children: [
                                                       CircleAvatar(
-                                                        backgroundColor: Colors.blue,
+                                                        backgroundColor:
+                                                            Colors.blue,
                                                         radius: 15,
-                                                        child: Icon(Icons.person),
+                                                        child:
+                                                            Icon(Icons.person),
                                                       ),
                                                       SizedBox(width: 5.0),
                                                       Expanded(
-                                                          child: Text('Hot N*gga')
-                                                      ),
+                                                          child: Text(
+                                                        'Hot N*gga',
+                                                        style: TextStyle(
+                                                            fontSize: 16),
+                                                      )),
                                                       Text(
                                                         '5',
                                                         style: TextStyle(
-                                                          fontWeight: FontWeight.bold,
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                         ),
                                                       ),
                                                     ],
@@ -253,31 +266,27 @@ class DetailProduct extends StatelessWidget {
                                               ),
                                             ),
                                           );
-                                        }
-                                    )
-                                ),
+                                        })),
                               ],
-                            )
-                        ),
-                      ]
-                  ),
+                            )),
+                      ]),
                 );
-              })
-      ),
+              })),
       bottomNavigationBar: GetBuilder<ProductController>(
           builder: (_) => StreamBuilder<DocumentSnapshot>(
               stream: Get.find<ProductController>().fetchProduct(productId),
-              builder: (context,  AsyncSnapshot<DocumentSnapshot> snapshot) {
+              builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
                 }
                 if (snapshot.hasError) {
                   return Center(child: Text(snapshot.error.toString()));
                 }
-                final Product product = Product.fromDocumentSnapshot(documentSnapshot: snapshot.data);
-                if(int.parse(product.quantum) == 0){
+                final Product product = Product.fromDocumentSnapshot(
+                    documentSnapshot: snapshot.data);
+                if (int.parse(product.quantum) == 0) {
                   return BottomAppBar(
-                    color: Colors.cyanAccent,
+                    color: Color(0xFF085B6E),
                     child: Container(
                       padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                       child: ElevatedButton(
@@ -286,15 +295,19 @@ class DetailProduct extends StatelessWidget {
                       ),
                     ),
                   );
-                }
-                else{
+                } else {
                   return BottomAppBar(
-                    color: Colors.cyanAccent,
+                    color: Color(0xFF085B6E),
                     child: Container(
                       padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                       child: ElevatedButton(
-                        onPressed: (){Get.find<AuthController>().addProductToCart(product);},
-                        child: Text('Add to cart'),
+                        style: ElevatedButton.styleFrom(
+                            primary: Color(0xFF0D9ABA)),
+                        onPressed: () {
+                          Get.find<AuthController>().addProductToCart(product);
+                        },
+                        child:
+                            Text('Add to cart', style: TextStyle(fontSize: 20)),
                       ),
                     ),
                   );
@@ -303,4 +316,3 @@ class DetailProduct extends StatelessWidget {
     );
   }
 }
-
