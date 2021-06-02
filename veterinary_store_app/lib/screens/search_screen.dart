@@ -23,6 +23,7 @@ class SearchScreen extends GetWidget<UtilitiesController> {
             appBar: AppBar(
               centerTitle: true,
               title: TextField(
+                  style: TextStyle(color:Colors.grey[50],fontSize: 18,decoration: TextDecoration.none),
                   decoration: InputDecoration(
                     icon: Icon(Icons.search, color: Colors.grey[50], size: 30),
                     hintText: "Search ...",

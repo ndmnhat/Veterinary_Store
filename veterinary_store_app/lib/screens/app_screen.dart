@@ -38,7 +38,7 @@ class AppScreen  extends GetWidget<UtilitiesController> {
                       side: BorderSide(color: Colors.grey[50])
                     // backgroundColor: Colors.grey[50]
                   ),
-                  onPressed: () { Get.to(SearchScreen());},
+                  onPressed: () { Get.to(()=>SearchScreen());},
                   child: Row(
                     children: [
                       Icon(Icons.search, color: Colors.grey[50], size: 30),],
@@ -193,7 +193,7 @@ class AppScreen  extends GetWidget<UtilitiesController> {
       Get.snackbar("Nofitication", "No Product in you cart");
     }
     else{
-      Get.to(Payment());
+      Get.to(()=>Payment());
     }
   }
 }

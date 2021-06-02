@@ -348,18 +348,6 @@ class InvoiceDetail extends StatelessWidget {
           ),
         ),
       );
-    } else if (order.isCancel == true || order.isShipping == true) {
-      return Container(
-        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-        child: ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(primary: Color(0xFF210B06)),
-          child: Text(
-            'Cancel',
-            style: TextStyle(color: Colors.grey[50], fontSize: 20),
-          ),
-        ),
-      );
     } else if (order.isCompleteAdmin == true && order.isCompleteUser == true) {
       return Container(
         padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
@@ -372,12 +360,24 @@ class InvoiceDetail extends StatelessWidget {
           ),
         ),
       );
+    }else if (order.isCancel == true || order.isShipping == true) {
+      return Container(
+        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+        child: ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(primary: Color(0xFF210B06)),
+          child: Text(
+            'Cancel',
+            style: TextStyle(color: Colors.grey[50], fontSize: 20),
+          ),
+        ),
+      );
     } else {
       return Container(
         padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
         child: ElevatedButton(
           onPressed: () {
-            _cancelorder(orderId);
+            _showDialog(orderId);
           },
           style: ElevatedButton.styleFrom(primary: Color(0xFF9E331B)),
           child: Text(
@@ -390,6 +390,55 @@ class InvoiceDetail extends StatelessWidget {
   }
 }
 
+void _showDialog(String idProduct) {
+  showDialog(
+    context: Get.context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        title: Text(
+          "Cancel Order?",
+          style: TextStyle(color: Colors.black),
+        ),
+        content: Container(
+          height: 80,
+          child: Column(
+            children: [
+              Text("😿",style: TextStyle(fontSize: 30),),
+              Text(
+                "Are you sure you want to cancel this order",
+                style: TextStyle(color: Colors.black,fontSize: 18),
+              ),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          ElevatedButton(
+            onPressed: () {
+              Get.back();
+            },
+            style: ElevatedButton.styleFrom(primary: Color(0xFF085B6E)),
+            child: Text(
+              'No',
+              style: TextStyle(color: Colors.grey[50]),
+            ),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(primary: Color(0xFF085B6E)),
+            child: new Text(
+              "Yes",
+              style: TextStyle(color: Colors.grey[50]),
+            ),
+            onPressed: () => _cancelorder(idProduct)
+          ),
+        ],
+      );
+    },
+  );
+}
+
+
 void _cancelorder(String idProduct) {
   Get.find<AuthController>().cancelOrder(idProduct);
 }
@@ -400,7 +449,7 @@ void _completeorder(String idProduct) {
 
 void _changetodetail(String idProduct) {
   print("detail");
-  Get.to(DetailProduct(idProduct));
+  Get.to(()=>DetailProduct(idProduct));
 }
 
 GestureDetector productinorder(Product product) {

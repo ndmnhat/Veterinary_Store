@@ -139,7 +139,7 @@ class SignIn extends GetWidget<UtilitiesController>{
                         children: <Widget>[
                           GestureDetector(
                             onTap: () {
-                              Get.to(ForgotPasswordScreen());
+                              Get.to(()=>ForgotPasswordScreen());
                             },
                             child: Text(
                               " FORGOT PASSWORD", style: TextStyle(fontSize: 15,color: Color(0xFF085B6E)),
@@ -161,7 +161,7 @@ class SignIn extends GetWidget<UtilitiesController>{
                                   TextSpan(
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
-                                        Get.to(SignUp());
+                                        Get.to(()=>SignUp());
                                       },
                                     text: " Sign up",
                                     style: TextStyle(fontSize: 15,color: Color(0xFF085B6E)),

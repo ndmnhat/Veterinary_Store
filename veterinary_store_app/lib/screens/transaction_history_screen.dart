@@ -97,7 +97,7 @@ class AllTransaction extends StatelessWidget {
                     final item = querySnapshot.docs[index];
                     final OrderModel orderModel = OrderModel.fromQueryDocumentSnapshot(queryDocSnapshot: item);
                     return GestureDetector(
-                      onTap:(){ Get.to(InvoiceDetail(orderModel.id));},
+                      onTap:(){ Get.to(()=>InvoiceDetail(orderModel.id));},
                       child: transaction(orderModel),
                     );
                   }
@@ -146,7 +146,7 @@ class CompleteTransaction extends StatelessWidget {
                             final item = querySnapshot.docs[index];
                             final OrderModel orderModel = OrderModel.fromQueryDocumentSnapshot(queryDocSnapshot: item);
                             return GestureDetector(
-                              onTap:(){ Get.to(InvoiceDetail(orderModel.id));},
+                              onTap:(){ Get.to(()=>InvoiceDetail(orderModel.id));},
                               child: transaction(orderModel),
                             );
                           }
@@ -195,7 +195,7 @@ class CancelTransaction extends StatelessWidget {
                             final item = querySnapshot.docs[index];
                             final OrderModel orderModel = OrderModel.fromQueryDocumentSnapshot(queryDocSnapshot: item);
                             return GestureDetector(
-                              onTap:(){ Get.to(InvoiceDetail(orderModel.id));},
+                              onTap:(){ Get.to(()=>InvoiceDetail(orderModel.id));},
                               child: transaction(orderModel),
                             );
                           }
@@ -244,7 +244,7 @@ class WaittingTransaction extends StatelessWidget {
                             final item = querySnapshot.docs[index];
                             final OrderModel orderModel = OrderModel.fromQueryDocumentSnapshot(queryDocSnapshot: item);
                             return GestureDetector(
-                              onTap:(){ Get.to(InvoiceDetail(orderModel.id));},
+                              onTap:(){ Get.to(()=>InvoiceDetail(orderModel.id));},
                               child: transaction(orderModel),
                             );
                           }

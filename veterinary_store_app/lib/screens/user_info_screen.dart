@@ -73,7 +73,7 @@ class UserInfo extends StatelessWidget {
                               ),
                               IconButton(
                                 icon: Icon(Icons.edit),
-                                  onPressed:() => Get.to(ChangeInfo("${user.name}","${user.phone}"))),
+                                  onPressed:() => Get.to(()=>ChangeInfo("${user.name}","${user.phone}"))),
                             ]),
                           ),
                           Divider(height: 30, thickness: 1),
@@ -194,7 +194,7 @@ class UserInfo extends StatelessWidget {
                         Row(
                           children: [
                             IconButton(icon: Icon(Icons.keyboard_arrow_right),
-                            onPressed:() => Get.to(ChangeAddress("${user.address}"))),
+                            onPressed:() => Get.to(()=>ChangeAddress("${user.address}"))),
                           ],
                         )
                       ],
@@ -249,11 +249,11 @@ class UserInfo extends StatelessWidget {
 
   void _tranHisScreen() {
     print('transaction_history');
-    Get.to(TranHis());
+    Get.to(()=>TranHis());
   }
 
   void _changePass(){
-    Get.to(ChangePass());
+    Get.to(()=>ChangePass());
   }
 }
 

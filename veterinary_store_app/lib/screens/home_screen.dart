@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                   }
                   QuerySnapshot querySnapshot = stream.data;
                   return Padding(
-                      padding: const EdgeInsets.fromLTRB(12, 20, 12, 20),
+                      padding: const EdgeInsets.fromLTRB(10, 12, 10, 12),
                       child: Container(
                         child: StaggeredGridView.countBuilder(
                           //padding: EdgeInsets.all(10),
@@ -169,6 +169,6 @@ class HomeScreen extends StatelessWidget {
   }
 
   void _changetodetail(String idProduct) {
-    Get.to(DetailProduct(idProduct));
+    Get.to(()=>DetailProduct(idProduct));
   }
 }

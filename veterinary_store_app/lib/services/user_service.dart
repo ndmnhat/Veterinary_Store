@@ -261,6 +261,7 @@ class UserService {
         });
       }
     });
+    Get.back();
   }
 
   Future<void> completeOrder(String idorder) async {

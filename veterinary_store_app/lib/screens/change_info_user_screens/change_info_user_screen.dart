@@ -91,7 +91,7 @@ class _ChangeInfoState extends State<ChangeInfo> with SingleTickerProviderStateM
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(8.0, 32, 0, 8),
+                padding: const EdgeInsets.fromLTRB(8.0, 22, 0, 8),
                 child: Text("Phone", style: TextStyle(fontSize: 20))
               ),
               Padding(
