@@ -67,6 +67,7 @@ class _ChangeAddressState extends State<ChangeAddress> with SingleTickerProvider
                 Text('Address', style: TextStyle(fontSize: 20)),
                 SizedBox(height: 8),
                 TextField(
+                  maxLines: 3,
                   controller: _addressInputCtrl,
                   style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(

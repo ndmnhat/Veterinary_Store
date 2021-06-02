@@ -57,7 +57,7 @@ class CartScreen extends StatelessWidget {
 
 void _changetodetail(String idProduct) {
   print("detail");
-  Get.to(DetailProduct(idProduct));
+  Get.to(() =>DetailProduct(idProduct));
 }
 
 GestureDetector productincart(Product product){
