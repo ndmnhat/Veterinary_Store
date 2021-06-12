@@ -12,12 +12,12 @@ class _NofiScreenState extends State<NofiScreen> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("Nofitications", style: TextStyle(fontSize: 30,color: Colors.grey[50])),
+          title: Text("Thông báo", style: TextStyle(fontSize: 30,color: Colors.grey[50])),
           backgroundColor: Color(0xFF085B6E),
         ),
         body: Column(
           children: [
-            Text("Nothing here"),
+            Text("Đang thi công"),
           ]
         ),
       ),

@@ -4,16 +4,16 @@ import 'package:get/get.dart';
 class UtilitiesController extends GetxController {
   var tabIndex = 0;
   var titleScreen = "Veterinary Store";
-  String selectRadioPayment = "Cash";
-  String selectRadioShipping = "Self-Shop Ship";
+  String selectRadioPayment = "Tiền mặt";
+  String selectRadioShipping = "Shop tự vận chuyển";
   bool showPass = false;
 
   void changeTabIndex(int index) {
     tabIndex = index;
     if(index == 0){titleScreen = 'Veterinary Store';}
     else if(index == 1){titleScreen = 'HealthCare';}
-    else if(index == 2){titleScreen = 'User Information';}
-    else if(index == 3){titleScreen = 'Cart';}
+    else if(index == 2){titleScreen = 'Thông tin người dùng';}
+    else if(index == 3){titleScreen = 'Giỏ hàng';}
     update();
   }
 
@@ -41,10 +41,10 @@ class UtilitiesController extends GetxController {
 class MyTabController extends GetxController with SingleGetTickerProviderMixin {
   static int index = 0;
   final List<Tab> myTabs = <Tab>[
-    Tab(text: 'All',),
-    Tab(text: 'Waiting',),
-    Tab(text: 'Complete',),
-    Tab(text: 'Cancel',),
+    Tab(text: 'Tất cả',),
+    Tab(text: 'Đang đợi',),
+    Tab(text: 'Hoàn thành',),
+    Tab(text: 'Bị hủy',),
   ];
 
   TabController tabController;

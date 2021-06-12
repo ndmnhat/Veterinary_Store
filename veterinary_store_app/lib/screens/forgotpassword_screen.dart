@@ -11,7 +11,7 @@ class ForgotPasswordScreen extends StatelessWidget {
       appBar: AppBar(
         // iconTheme: IconThemeData(color: Colors.grey[50]),
         centerTitle: true,
-        title: Text("Forgot password", style: TextStyle(fontSize: 30,color: Colors.grey[50])),
+        title: Text("Quên mật khẩu", style: TextStyle(fontSize: 30,color: Colors.grey[50])),
         backgroundColor: Color(0xFF085B6E),
       ),
       body: Container(
@@ -23,7 +23,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               controller: editController,
               decoration: InputDecoration(
                   labelText: "Email",
-                  hintText: "Enter Email",
+                  hintText: "Nhập vào email",
                   border: OutlineInputBorder()),
             ),
             SizedBox(
@@ -40,8 +40,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                   resetPassword();
                 },
                 child: Text(
-                  "Reset password",
-                  style: TextStyle(color: Colors.white),
+                  "Cài lại mật khẩu",
+                  style: TextStyle(color: Colors.white,fontSize: 25),
                 ),
               ),
             )
@@ -53,7 +53,7 @@ class ForgotPasswordScreen extends StatelessWidget {
 
   void resetPassword(){
     if (editController.text.length == 0 || !editController.text.contains("@")) {
-      Get.snackbar("Error", "Enter valid email");
+      Get.snackbar("Lỗi", "Email không hợp lệ");
       return;
     }
     Get.find<AuthController>().forgotPassword(editController.text);

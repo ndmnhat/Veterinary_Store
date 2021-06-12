@@ -26,7 +26,7 @@ class SearchScreen extends GetWidget<UtilitiesController> {
                   style: TextStyle(color:Colors.grey[50],fontSize: 18,decoration: TextDecoration.none),
                   decoration: InputDecoration(
                     icon: Icon(Icons.search, color: Colors.grey[50], size: 30),
-                    hintText: "Search ...",
+                    hintText: "Nhập Để Tìm kiếm ...",
                     hintStyle: TextStyle(color: Colors.grey[50]),
                   ),
                   onChanged: (value){
@@ -47,7 +47,7 @@ class SearchScreen extends GetWidget<UtilitiesController> {
                 }
                 QuerySnapshot querySnapshot = stream.data;
                 if(querySnapshot.size == 0){
-                  return Center(child: Text("No products match"));
+                  return Center(child: Text("Không có sản phẩm trùng khớp"));
                 }
                 else{
                   return Padding(
@@ -171,8 +171,6 @@ class SearchScreen extends GetWidget<UtilitiesController> {
   }
 
   void _changetodetail(String idProduct) {
-    print("detail");
-    // Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailProduct()));
     Get.to(DetailProduct(idProduct));
   }
 }

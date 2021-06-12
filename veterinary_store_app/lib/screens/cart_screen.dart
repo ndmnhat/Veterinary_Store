@@ -28,7 +28,7 @@ class CartScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("😿",style: TextStyle(fontSize: 130),),
-                          Text("No Product in you cart"),
+                          Text("Không có sản phẩm trong giỏ hàng",style: TextStyle(fontSize: 22)),
                         ],
                       )
                     );
@@ -56,7 +56,6 @@ class CartScreen extends StatelessWidget {
 }
 
 void _changetodetail(String idProduct) {
-  print("detail");
   Get.to(() =>DetailProduct(idProduct));
 }
 
@@ -133,12 +132,12 @@ GestureDetector productincart(Product product){
                         children: [
                           Row(
                             children:[
-                              IconButton(icon: new Icon(Icons.remove),onPressed: (){Get.find<AuthController>().removeProductInCart(product);}),
+                              IconButton(icon: new Icon(Icons.remove),onPressed: (){_showDialogremove(product,product.quantum);}),
                               Text("${product.quantum}"),
                               IconButton(icon: new Icon(Icons.add),onPressed: (){Get.find<AuthController>().addProductInCart(product);}),
                             ],
                           ),
-                          IconButton(icon: new Icon(Icons.delete),onPressed: (){Get.find<AuthController>().deleteProductFromCart(product);}),
+                          IconButton(icon: new Icon(Icons.delete),onPressed: (){_showDialog(product);}),
                         ],
                       ),
                     ),
@@ -150,5 +149,106 @@ GestureDetector productincart(Product product){
         ),
       ),
     ),
+  );
+}
+
+void _showDialogremove(Product product,String quantum) {
+  if(quantum == "1"){
+    showDialog(
+      context: Get.context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          title: Text(
+            "Bỏ sản phẩm khỏi giỏ hàng?",
+            style: TextStyle(color: Colors.black),
+          ),
+          content: Container(
+            height: 80,
+            child: Column(
+              children: [
+                Text("😿",style: TextStyle(fontSize: 30),),
+                Text(
+                  "Bạn có chắc muốn bỏ sản phẩm khỏi giỏ hàng",
+                  style: TextStyle(color: Colors.black,fontSize: 18),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Get.back();
+              },
+              style: ElevatedButton.styleFrom(primary: Color(0xFF085B6E)),
+              child: Text(
+                'Không',
+                style: TextStyle(color: Colors.grey[50]),
+              ),
+            ),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Color(0xFF085B6E)),
+                child: new Text(
+                  "Có",
+                  style: TextStyle(color: Colors.grey[50]),
+                ),
+                onPressed: () => Get.find<AuthController>().deleteProductFromCart(product)
+            ),
+          ],
+        );
+      },
+    );
+  }else{
+    Get.find<AuthController>().removeProductInCart(product);
+  }
+
+}
+
+void _showDialog(Product product) {
+  showDialog(
+    context: Get.context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        title: Text(
+          "Bỏ sản phẩm khỏi giỏ hàng?",
+          style: TextStyle(color: Colors.black),
+        ),
+        content: Container(
+          height: 80,
+          child: Column(
+            children: [
+              Text("😿",style: TextStyle(fontSize: 30),),
+              Text(
+                "Bạn có chắc muốn bỏ sản phẩm khỏi giỏ hàng",
+                style: TextStyle(color: Colors.black,fontSize: 18),
+              ),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          ElevatedButton(
+            onPressed: () {
+              Get.back();
+            },
+            style: ElevatedButton.styleFrom(primary: Color(0xFF085B6E)),
+            child: Text(
+              'Không',
+              style: TextStyle(color: Colors.grey[50]),
+            ),
+          ),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(primary: Color(0xFF085B6E)),
+              child: new Text(
+                "Có",
+                style: TextStyle(color: Colors.grey[50]),
+              ),
+              onPressed: () => Get.find<AuthController>().deleteProductFromCart(product)
+          ),
+        ],
+      );
+    },
   );
 }

@@ -9,7 +9,7 @@ class _HealthCareState extends State<HealthCare> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Text('hello'),
+      child: Text('Đang thi công'),
     );
   }
 }

@@ -53,7 +53,7 @@ class _ChangeInfoState extends State<ChangeInfo> with SingleTickerProviderStateM
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.grey[50]),
           centerTitle: true,
-          title: Text("User info", style: TextStyle(fontSize: 30, color: Colors.grey[50])),
+          title: Text("Đổi thông tin", style: TextStyle(fontSize: 30, color: Colors.grey[50])),
           backgroundColor: Color(0xFF085B6E),
           actions: [
             Padding(
@@ -73,7 +73,7 @@ class _ChangeInfoState extends State<ChangeInfo> with SingleTickerProviderStateM
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(8.0, 20.0, 0, 8.0),
-                child: Text("Name", style: TextStyle(fontSize: 20)),
+                child: Text("Họ và tên", style: TextStyle(fontSize: 20)),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
@@ -92,11 +92,12 @@ class _ChangeInfoState extends State<ChangeInfo> with SingleTickerProviderStateM
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(8.0, 22, 0, 8),
-                child: Text("Phone", style: TextStyle(fontSize: 20))
+                child: Text("Số điện thoại", style: TextStyle(fontSize: 20))
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                 child: TextField(
+                  keyboardType: TextInputType.number,
                   style: TextStyle(fontSize: 20),
                   controller: _phoneInputCtrl,
                   decoration: InputDecoration(

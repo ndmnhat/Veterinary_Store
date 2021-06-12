@@ -46,7 +46,7 @@ class InvoiceDetail extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Info',
+                                    'Thông tin đơn hàng',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20),
@@ -70,7 +70,7 @@ class InvoiceDetail extends StatelessWidget {
                                             children: [
                                               Expanded(
                                                 child: Text(
-                                                  'ID Bill:',
+                                                  'Mã đơn hàng:',
                                                   style: TextStyle(
                                                     fontSize: 18,
                                                   ),
@@ -87,7 +87,7 @@ class InvoiceDetail extends StatelessWidget {
                                             children: [
                                               Expanded(
                                                 child: Text(
-                                                  'Day:',
+                                                  'Ngày:',
                                                   style: TextStyle(
                                                     fontSize: 18,
                                                   ),
@@ -105,7 +105,7 @@ class InvoiceDetail extends StatelessWidget {
                                           Row(children: [
                                             Expanded(
                                               child: Text(
-                                                'Username:',
+                                                'Tên người nhận:',
                                                 style: TextStyle(
                                                   fontSize: 18,
                                                 ),
@@ -121,7 +121,7 @@ class InvoiceDetail extends StatelessWidget {
                                           Row(children: [
                                             Expanded(
                                               child: Text(
-                                                'Totals:',
+                                                'Tổng tiền:',
                                                 style: TextStyle(
                                                   fontSize: 18,
                                                 ),
@@ -142,7 +142,7 @@ class InvoiceDetail extends StatelessWidget {
                                     height: 30,
                                   ),
                                   Text(
-                                    'Address',
+                                    'Địa chỉ người nhận',
                                     style: TextStyle(
                                         fontSize: 20,
                                         color: Colors.black,
@@ -165,7 +165,7 @@ class InvoiceDetail extends StatelessWidget {
                                   ),
                                   SizedBox(height: 30),
                                   Text(
-                                    'Shipping Method',
+                                    'Phương thức vận chuyển',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -189,7 +189,7 @@ class InvoiceDetail extends StatelessWidget {
                                   ),
                                   SizedBox(height: 30),
                                   Text(
-                                    'Payment Method',
+                                    'Phương thức thanh toán',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -213,7 +213,7 @@ class InvoiceDetail extends StatelessWidget {
                                   ),
                                   SizedBox(height: 30),
                                   Text(
-                                    'Detail',
+                                    'Thông tin sản phẩm',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -291,7 +291,7 @@ class InvoiceDetail extends StatelessWidget {
           color: Color(0xFF9E331B),
         ),
         child: Text(
-          "Cancel",
+          "Bị hủy",
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white),
         ),
@@ -307,7 +307,7 @@ class InvoiceDetail extends StatelessWidget {
           color: Color(0xFF026E46),
         ),
         child: Text(
-          "Complete",
+          "Hoàn thành",
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white),
         ),
@@ -324,7 +324,7 @@ class InvoiceDetail extends StatelessWidget {
           color: Color(0xFF0D296E),
         ),
         child: Text(
-          "Waitting",
+          "Đang đợi",
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white),
         ),
@@ -343,7 +343,7 @@ class InvoiceDetail extends StatelessWidget {
           },
           style: ElevatedButton.styleFrom(primary: Color(0xFF026E46)),
           child: Text(
-            'Complete',
+            'Đã nhận được hàng',
             style: TextStyle(color: Colors.grey[50], fontSize: 20),
           ),
         ),
@@ -355,24 +355,36 @@ class InvoiceDetail extends StatelessWidget {
           onPressed: () {},
           style: ElevatedButton.styleFrom(primary: Color(0xFF011F14)),
           child: Text(
-            'Complete',
+            'Đã hoàn thành',
             style: TextStyle(color: Colors.grey[50], fontSize: 20),
           ),
         ),
       );
-    }else if (order.isCancel == true || order.isShipping == true) {
+    }else if (order.isCancel == true) {
       return Container(
         padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
         child: ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(primary: Color(0xFF210B06)),
           child: Text(
-            'Cancel',
+            'Bị hủy',
             style: TextStyle(color: Colors.grey[50], fontSize: 20),
           ),
         ),
       );
-    } else {
+    } else if (order.isShipping == true) {
+      return Container(
+        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+        child: ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(primary: Color(0xFF210B06)),
+          child: Text(
+            'Đợi xác nhận',
+            style: TextStyle(color: Colors.grey[50], fontSize: 20),
+          ),
+        ),
+      );
+    }else {
       return Container(
         padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
         child: ElevatedButton(
@@ -381,7 +393,7 @@ class InvoiceDetail extends StatelessWidget {
           },
           style: ElevatedButton.styleFrom(primary: Color(0xFF9E331B)),
           child: Text(
-            'Cancel',
+            'Hủy',
             style: TextStyle(color: Colors.grey[50], fontSize: 20),
           ),
         ),
@@ -398,7 +410,7 @@ void _showDialog(String idProduct) {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0))),
         title: Text(
-          "Cancel Order?",
+          "Hủy đơn hàng?",
           style: TextStyle(color: Colors.black),
         ),
         content: Container(
@@ -407,7 +419,7 @@ void _showDialog(String idProduct) {
             children: [
               Text("😿",style: TextStyle(fontSize: 30),),
               Text(
-                "Are you sure you want to cancel this order",
+                "Bạn có chắc muốn hủy đơn hàng không",
                 style: TextStyle(color: Colors.black,fontSize: 18),
               ),
             ],
@@ -420,14 +432,14 @@ void _showDialog(String idProduct) {
             },
             style: ElevatedButton.styleFrom(primary: Color(0xFF085B6E)),
             child: Text(
-              'No',
+              'Không',
               style: TextStyle(color: Colors.grey[50]),
             ),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(primary: Color(0xFF085B6E)),
             child: new Text(
-              "Yes",
+              "Có",
               style: TextStyle(color: Colors.grey[50]),
             ),
             onPressed: () => _cancelorder(idProduct)
@@ -448,7 +460,6 @@ void _completeorder(String idProduct) {
 }
 
 void _changetodetail(String idProduct) {
-  print("detail");
   Get.to(()=>DetailProduct(idProduct));
 }
 

@@ -47,9 +47,9 @@ class AuthController extends GetxController {
 
       setUser(_fireAuth.currentUser);
       Get.offAll(AppScreen());
-      Get.snackbar("","Created Successful");
+      Get.snackbar("","Tạo tài khoản thành công");
     } catch (e) {
-      Get.snackbar("Error",e);
+      Get.snackbar("Lỗi",e.toString());
     }
   }
 
@@ -62,12 +62,12 @@ class AuthController extends GetxController {
 
       await _userService.getUser(user);
       Get.offAll(AppScreen());
-      Get.snackbar("","Login Successful");
+      Get.snackbar("","Đăng nhập thành công");
 
       // Get.offAll(HomeScreen());
 
     } catch (e) {
-      Get.snackbar("Error",e);
+      Get.snackbar("Lỗi",e.toString());
     }
   }
 
@@ -104,9 +104,9 @@ class AuthController extends GetxController {
       if(_authResult != null && _authResult.user != null){
         _fireAuth.currentUser.updatePassword(newpassword).then((_){
             Get.back();
-            Get.snackbar("Notification","Change info success");
+            Get.snackbar("Thông báo","Đổi mật khẩu thành công");
           }).catchError((error){
-            Get.snackbar("Error","Something went wrong");
+            Get.snackbar("Lỗi","Có gì đó không ổn");
             //This might happen, when the wrong password is in, the user isn't found, or if the user hasn't logged in recently.
           });
       }
@@ -133,7 +133,7 @@ class AuthController extends GetxController {
     try {
       await _authService.forgotPassword(email);
       Get.back();
-      Get.snackbar("Notification","Reset password link has sent your mail please use it to change the password.");
+      Get.snackbar("Thông báo","Đường link thay đổi mật khẩu đã được gửi tới email bạn vui lòng kiểm tra");
       // Get.snackbar("Error","Enter valid email");
     } catch (e) {
       // Get.showSnackbar(snackbar)
@@ -155,9 +155,9 @@ class AuthController extends GetxController {
 
       await _userService.updateUser(_user);
       Get.back();
-      Get.snackbar("Notification","Change info success");
+      Get.snackbar("Thông báo","Thay đổi thông tin cá nhân thành công");
     } catch (e) {
-      Get.snackbar("Error","Something went wrong");
+      Get.snackbar("Lỗi","Có gì đó không ổn");
     }
   }
 
@@ -173,9 +173,9 @@ class AuthController extends GetxController {
 
       await _userService.updateAddressUser(_user);
       Get.back();
-      Get.snackbar("Notification","Change address success");
+      Get.snackbar("Thông báo","Đổi địa chỉ thành công");
     } catch (e) {
-      Get.snackbar("Error","Something went wrong");
+      Get.snackbar("Lỗi","Có gì đó không ổn");
     }
   }
   //product trong cart
@@ -199,7 +199,7 @@ class AuthController extends GetxController {
       // Get.back();
       // Get.snackbar("","Add Product Successful");
     } catch (e) {
-      Get.snackbar("Error",e.toString());
+      Get.snackbar("Lỗi",e.toString());
     }
   }
 
@@ -215,7 +215,7 @@ class AuthController extends GetxController {
       // print("${product.id}");
       await _userService.addProductInCart(productTemp);
     } catch (e) {
-      Get.snackbar("Error",e.toString());
+      Get.snackbar("Lỗi",e.toString());
     }
   }
 
@@ -230,7 +230,7 @@ class AuthController extends GetxController {
       );
       await _userService.removeProductInCart(productTemp);
     } catch (e) {
-      Get.snackbar("Error",e.toString());
+      Get.snackbar("Lỗi",e.toString());
     }
   }
 
@@ -260,7 +260,7 @@ class AuthController extends GetxController {
       );
       await _userService.paythebill(orderModel);
     } catch (e) {
-      Get.snackbar("Error",e.toString());
+      Get.snackbar("Lỗi",e.toString());
     }
   }
   // lịch sử mua hàng

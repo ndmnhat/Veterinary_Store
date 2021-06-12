@@ -43,7 +43,7 @@ class _ChangeAddressState extends State<ChangeAddress> with SingleTickerProvider
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.grey[50]),
           centerTitle: true,
-          title: Text("Change Address", style: TextStyle(fontSize: 30, color: Colors.grey[50])),
+          title: Text("Đổi địa chỉ", style: TextStyle(fontSize: 30, color: Colors.grey[50])),
           backgroundColor: Color(0xFF085B6E),
           actions: [
             Padding(
@@ -64,7 +64,7 @@ class _ChangeAddressState extends State<ChangeAddress> with SingleTickerProvider
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Address', style: TextStyle(fontSize: 20)),
+                Text('Địa chỉ', style: TextStyle(fontSize: 20)),
                 SizedBox(height: 8),
                 TextField(
                   maxLines: 3,

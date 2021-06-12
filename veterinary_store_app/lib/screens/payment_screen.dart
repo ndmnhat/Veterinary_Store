@@ -49,7 +49,7 @@ class Payment extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                                   child: Text(
-                                    'Detail User',
+                                    'Thông tin người mua',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -92,7 +92,7 @@ class Payment extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(10, 30, 0, 5),
                                   child: Text(
-                                    'Address',
+                                    'Địa chỉ',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -121,7 +121,7 @@ class Payment extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(10, 30, 0, 5),
                                   child: Text(
-                                    'Shipping Method',
+                                    'Phương thức vận chuyển',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -140,7 +140,7 @@ class Payment extends StatelessWidget {
                                               Row(
                                                 children: [
                                                   Radio<String>(
-                                                      value: "Self-Shop Ship",
+                                                      value: "Shop tự vận chuyển",
                                                       groupValue: controller.selectRadioShipping,
                                                       activeColor: Color(0xFF085B6E),
                                                       onChanged: (val){
@@ -148,7 +148,7 @@ class Payment extends StatelessWidget {
                                                       }
                                                   ),
                                                   Text(
-                                                    'Self-Shop Ship',
+                                                    'Shop tự vận chuyển',
                                                     style: TextStyle(
                                                       fontSize: 18,
                                                     ),
@@ -158,7 +158,7 @@ class Payment extends StatelessWidget {
                                               Row(
                                                 children: [
                                                   Radio<String>(
-                                                      value: "GHN",
+                                                      value: "Giao hàng nhanh",
                                                       groupValue: controller.selectRadioShipping,
                                                       activeColor: Color(0xFF085B6E),
                                                       onChanged: (val){
@@ -166,7 +166,7 @@ class Payment extends StatelessWidget {
                                                       }
                                                   ),
                                                   Text(
-                                                    'GHN',
+                                                    'Giao hàng nhanh',
                                                     style: TextStyle(
                                                       fontSize: 18,
                                                     ),
@@ -194,7 +194,7 @@ class Payment extends StatelessWidget {
                                               Row(
                                                 children: [
                                                   Radio<String>(
-                                                      value: "Post Office",
+                                                      value: "Bưu điện",
                                                       groupValue: controller.selectRadioShipping,
                                                       activeColor: Color(0xFF085B6E),
                                                       onChanged: (val){
@@ -202,7 +202,7 @@ class Payment extends StatelessWidget {
                                                       }
                                                   ),
                                                   Text(
-                                                    'Post Office',
+                                                    'Bưu điện',
                                                     style: TextStyle(
                                                       fontSize: 18,
                                                     ),
@@ -221,7 +221,7 @@ class Payment extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(10, 30, 0, 5),
                                   child: Text(
-                                    'Payment Method',
+                                    'Phương thức thanh toán',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -240,7 +240,7 @@ class Payment extends StatelessWidget {
                                               Row(
                                                 children: [
                                                   Radio<String>(
-                                                      value: "Cash",
+                                                      value: "Tiền mặt",
                                                       groupValue: controller.selectRadioPayment,
                                                       activeColor: Color(0xFF085B6E),
                                                       onChanged: (val){
@@ -248,7 +248,7 @@ class Payment extends StatelessWidget {
                                                       }
                                                   ),
                                                   Text(
-                                                    'Cash',
+                                                    'Tiền mặt',
                                                     style: TextStyle(
                                                       fontSize: 18,
                                                     ),
@@ -258,7 +258,7 @@ class Payment extends StatelessWidget {
                                               Row(
                                                 children: [
                                                   Radio<String>(
-                                                      value: "Card",
+                                                      value: "Thẻ",
                                                       groupValue: controller.selectRadioPayment,
                                                       activeColor: Color(0xFF085B6E),
                                                       onChanged: (val){
@@ -266,7 +266,7 @@ class Payment extends StatelessWidget {
                                                       }
                                                   ),
                                                   Text(
-                                                    'Card',
+                                                    'Thẻ',
                                                     style: TextStyle(
                                                       fontSize: 18,
                                                     ),
@@ -285,7 +285,7 @@ class Payment extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(10, 30, 0, 5),
                                   child: Text(
-                                    'Coupon discount',
+                                    'Mã giảm giá',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -301,7 +301,7 @@ class Payment extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       SizedBox(
-                                        width: Get.width*0.75,
+                                        width: Get.width*0.7,
                                         height: 30,
                                         child: TextField(
                                           // maxLines: 1,
@@ -320,7 +320,7 @@ class Payment extends StatelessWidget {
                                             backgroundColor: Color(0xFF085B6E),
                                             side: BorderSide(width: 1, color: Color(0xFF085B6E),),),
                                           onPressed: (){},
-                                          child: Text("Use",style: TextStyle(color: Colors.grey[50], fontSize: 18,)),
+                                          child: Text("Dùng",style: TextStyle(color: Colors.grey[50], fontSize: 18,)),
                                         ),
                                       ),
                                     ],
@@ -333,7 +333,7 @@ class Payment extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(10, 30, 0, 5),
                                   child: Text(
-                                    'Detail',
+                                    'Thông tin sản phẩm',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -376,7 +376,7 @@ class Payment extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(10, 30, 0, 5),
                                   child: Text(
-                                    'Total',
+                                    'Tổng tiền',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -446,7 +446,7 @@ class Payment extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFF0D9ABA)
                           ),
-                          child: Text('Pay', style: TextStyle(fontSize: 20),),
+                          child: Text('Thanh toán', style: TextStyle(fontSize: 20),),
                         ),
                       ),
                     ),
@@ -458,7 +458,7 @@ class Payment extends StatelessWidget {
 
   void _pay() {
     if(useraddress == ""){
-      Get.snackbar("Nofitication", "You need to set you address first!!");
+      Get.snackbar("Thông báo", "Bạn chưa cài đặt địa chỉ nhận hàng");
     }
     else{
       Get.find<AuthController>().paythebill(user,totals.toString(),Get.find<UtilitiesController>().selectRadioShipping,Get.find<UtilitiesController>().selectRadioPayment);
@@ -467,7 +467,6 @@ class Payment extends StatelessWidget {
 }
 
 void _changetodetail(String idProduct) {
-  print("detail");
   Get.to(()=>DetailProduct(idProduct));
 }
 

@@ -89,7 +89,7 @@ class UserService {
         Get.back();
       }
       else{
-        Get.snackbar("Nofitication", "This product just have $temp1 quantum");
+        Get.snackbar("Thông báo", "Sản phẩm này chỉ có số lượng là $temp1");
       }
     }
     return product;
@@ -115,7 +115,7 @@ class UserService {
       });
     }
     else{
-      Get.snackbar("Nofitication", "This product just have $temp1 quantum");
+      Get.snackbar("Thông báo", "Sản phẩm này chỉ có số lượng là $temp1");
     }
     return product;
   }
@@ -146,6 +146,7 @@ class UserService {
 
   Future<void> deleteProductFromCart(Product product) async {
     await _firestore.collection("users").doc(_fireAuth.currentUser.uid).collection("cartproduct").doc(product.id).delete();
+    Get.back();
   }
   // thanh toán
   Future<void> paythebill(OrderModel orderModel) async {
@@ -155,7 +156,7 @@ class UserService {
         final Product product = Product.fromDocumentSnapshotForcart(documentSnapshot: ds);
         await _firestore.collection("products").doc(product.id).get().then((valueproduct) async {
           if (valueproduct == null || !valueproduct.exists) {
-            Get.snackbar("Nofitication", "This ${product.name} was deleted");
+            Get.snackbar("Thông báo", "Sản phẩm ${product.name} đã bị xóa");
             tempCounter = 1;
           }
           else{
@@ -164,7 +165,7 @@ class UserService {
             int temp1 = int.parse(productTemp1.quantum);
             int temp2 = int.parse(product.quantum);
             if(temp2 > temp1){
-              Get.snackbar("Nofitication", "This ${product.name} was not enough quantum");
+              Get.snackbar("Thông báo", "Sản phẩm ${product.name} không còn đủ số lượng");
               tempCounter = 2;
             }
           }
@@ -211,10 +212,10 @@ class UserService {
           });
         });
         Get.find<UtilitiesController>().changeTabIndex(0);
-        Get.find<UtilitiesController>().selectRadioShipping = "Self-Shop Ship";
-        Get.find<UtilitiesController>().selectRadioPayment = "Cash";
+        Get.find<UtilitiesController>().selectRadioShipping = "Shop tự vận chuyển";
+        Get.find<UtilitiesController>().selectRadioPayment = "Tiền mặt";
         Get.offAll(AppScreen());
-        Get.snackbar("Nofitication", "Make order success");
+        Get.snackbar("Thông báo", "Tạo đơn hàng thành công");
       }
     });
   }

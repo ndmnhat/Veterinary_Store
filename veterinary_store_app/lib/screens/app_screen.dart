@@ -117,14 +117,14 @@ class AppScreen  extends GetWidget<UtilitiesController> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Totals: ", style: TextStyle(color: Colors.black,fontSize: 18,)),
+                                    Text("Tổng tiền: ", style: TextStyle(color: Colors.black,fontSize: 18,)),
                                     Text("${formatter.format(TotalsPrice())} vnđ",style: TextStyle(color: Colors.black,fontSize: 18,)),
                                   ],
                                 ),
                               ),
                               Container(
                                 padding: EdgeInsets.fromLTRB(0, 5.0, 8.0, 10.0),
-                                width: 100,
+                                width: 150,
                                 child: Container(
                                   height: 38,
                                   width: 80,
@@ -135,7 +135,7 @@ class AppScreen  extends GetWidget<UtilitiesController> {
                                     style: OutlinedButton.styleFrom(
                                       backgroundColor: Color(0xFF085B6E),
                                     ),
-                                    child: Text("Pay",style: TextStyle(color: Colors.grey[50], fontSize: 20,)),
+                                    child: Text("Thanh toán",style: TextStyle(color: Colors.grey[50], fontSize: 20,)),
                                   ),
                                 ),
                               ),
@@ -188,9 +188,8 @@ class AppScreen  extends GetWidget<UtilitiesController> {
   }
 
   void _payment() {
-    print("pay");
     if(totalstemp == 0){
-      Get.snackbar("Nofitication", "No Product in you cart");
+      Get.snackbar("Thông báo", "Không có sản phẩm trong giỏ hàng");
     }
     else{
       Get.to(()=>Payment());

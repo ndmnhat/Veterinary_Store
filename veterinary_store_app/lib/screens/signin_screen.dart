@@ -92,7 +92,7 @@ class SignIn extends GetWidget<UtilitiesController>{
                             controller: _passwordInputCtrl,
                             obscureText: !controller.showPass,
                             decoration: InputDecoration(
-                              labelText: "Password",
+                              labelText: "Mật khẩu",
                               labelStyle: TextStyle(color: Colors.grey,fontSize: 20,),
                               errorText: snapshot.hasError ? snapshot.error : null,
                               prefixIcon: Container(width: 50,
@@ -126,7 +126,7 @@ class SignIn extends GetWidget<UtilitiesController>{
                           child: MaterialButton(
                               onPressed: handleFormSubmit,
                               color: Color(0xFF085B6E),
-                              child: Text("Sign in" ,style: TextStyle(fontSize: 25, color: Colors.grey[50]))
+                              child: Text("Đăng nhập" ,style: TextStyle(fontSize: 25, color: Colors.grey[50]))
                           ),
                         ),
                       ),
@@ -142,7 +142,7 @@ class SignIn extends GetWidget<UtilitiesController>{
                               Get.to(()=>ForgotPasswordScreen());
                             },
                             child: Text(
-                              " FORGOT PASSWORD", style: TextStyle(fontSize: 15,color: Color(0xFF085B6E)),
+                              " Quên mật khẩu ?", style: TextStyle(fontSize: 15,color: Color(0xFF085B6E)),
                             ),
                           )
                         ],
@@ -155,7 +155,7 @@ class SignIn extends GetWidget<UtilitiesController>{
                           padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
                           child: RichText(
                             text: TextSpan(
-                                text: "New user ?",
+                                text: "Người dùng mới ?",
                                 style: TextStyle(fontSize: 15,color: Colors.grey ),
                                 children: <TextSpan>[
                                   TextSpan(
@@ -163,7 +163,7 @@ class SignIn extends GetWidget<UtilitiesController>{
                                       ..onTap = () {
                                         Get.to(()=>SignUp());
                                       },
-                                    text: " Sign up",
+                                    text: " Đăng ký tài khoản",
                                     style: TextStyle(fontSize: 15,color: Color(0xFF085B6E)),
                                   )
                                 ]

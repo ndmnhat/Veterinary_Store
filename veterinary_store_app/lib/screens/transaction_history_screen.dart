@@ -22,7 +22,7 @@ class TranHis extends GetWidget<MyTabController> {
             appBar: AppBar(
               iconTheme: IconThemeData(color: Colors.grey[50]),
               centerTitle: true,
-              title: Text("History", style: TextStyle(fontSize: 30, color: Colors.grey[50])),
+              title: Text("Lịch sử mua hàng", style: TextStyle(fontSize: 30, color: Colors.grey[50])),
               backgroundColor: Color(0xFF085B6E),
               leading: IconButton(
                 icon: Icon(Icons.arrow_back, color: Colors.grey[50]),
@@ -32,6 +32,7 @@ class TranHis extends GetWidget<MyTabController> {
                 },
               ),
               bottom: TabBar(
+                isScrollable: true,
                 controller: controller.tabController,
                 tabs: controller.myTabs,
                 labelColor: Colors.white,
@@ -84,7 +85,7 @@ class AllTransaction extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("😿",style: TextStyle(fontSize: 130),),
-                    Text("No Order"),
+                    Text("Không có đơn hàng nào"),
                   ],
                 )
             );
@@ -133,7 +134,7 @@ class CompleteTransaction extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("😿",style: TextStyle(fontSize: 130),),
-                            Text("No Order"),
+                            Text("Không có đơn hàng nào"),
                           ],
                         )
                     );
@@ -182,7 +183,7 @@ class CancelTransaction extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("😿",style: TextStyle(fontSize: 130),),
-                            Text("No Order"),
+                            Text("Không có đơn hàng nào"),
                           ],
                         )
                     );
@@ -231,7 +232,7 @@ class WaittingTransaction extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("😿",style: TextStyle(fontSize: 130),),
-                            Text("No Order"),
+                            Text("Không có đơn hàng nào"),
                           ],
                         )
                     );

@@ -10,7 +10,7 @@ class AuthService {
       _authResult = await _fireAuth.createUserWithEmailAndPassword(email: email.trim(), password: password.trim(),);
     } catch(e){
       Get.snackbar(
-        "Error creating Account",
+        "Lỗi tạo tài khoản",
         e.message,
         snackPosition: SnackPosition.TOP,
         duration: Duration(seconds: 3),
@@ -23,8 +23,8 @@ class AuthService {
     UserCredential _authResult;
     if(email == "admin@gmail.com"){
       Get.snackbar(
-        "Error signing in",
-        "You can't login with this email",
+        "Lỗi đăng nhập",
+        "Bạn không thể đăng nhập với email này",
         snackPosition: SnackPosition.TOP,
         duration: Duration(seconds: 3),
       );
@@ -37,7 +37,7 @@ class AuthService {
       );
     } catch(e){
       Get.snackbar(
-        "Error signing in",
+        "Lỗi đăng nhập",
         e.message,
         snackPosition: SnackPosition.TOP,
         duration: Duration(seconds: 3),

@@ -22,10 +22,10 @@ class _ChangePassState extends State< ChangePass> with SingleTickerProviderState
       _userCtrl.changepasswword(_oldpassInputCtrl.text, _newpassInputCtrl.text);
     }
     else if(_oldpassInputCtrl.text ==  _newpassInputCtrl.text){
-      Get.snackbar("Error", "New password is same as old");
+      Get.snackbar("Lỗi", "Mật khẩu mới giống mật khẩu cũ");
     }
     else if(_newpassInputCtrl.text != _newpassagainInputCtrl.text ){
-      Get.snackbar("Error", "Confirm password not correct!!!");
+      Get.snackbar("Lỗi", "Mật khẩu nhập lại không đúng");
     }
   }
 
@@ -47,7 +47,7 @@ class _ChangePassState extends State< ChangePass> with SingleTickerProviderState
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.grey[50]),
           centerTitle: true,
-          title: Text("Change Pass", style: TextStyle(fontSize: 30, color: Colors.grey[50])),
+          title: Text("Đổi mật khẩu", style: TextStyle(fontSize: 30, color: Colors.grey[50])),
           backgroundColor: Color(0xFF085B6E),
           actions: [
             Padding(
@@ -66,7 +66,7 @@ class _ChangePassState extends State< ChangePass> with SingleTickerProviderState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Old Password", style: TextStyle(fontSize: 20)),
+              Text("Mật khẩu cũ", style: TextStyle(fontSize: 20)),
               SizedBox(height: 8),
               TextField(
                 controller: _oldpassInputCtrl,
@@ -80,7 +80,7 @@ class _ChangePassState extends State< ChangePass> with SingleTickerProviderState
                 ),
               ),
               SizedBox(height: 30),
-              Text("New Password", style: TextStyle(fontSize: 20)),
+              Text("Mật khẩu mới", style: TextStyle(fontSize: 20)),
               SizedBox(height: 8),
               TextField(
                 controller: _newpassInputCtrl,
@@ -94,7 +94,7 @@ class _ChangePassState extends State< ChangePass> with SingleTickerProviderState
                 ),
               ),
               SizedBox(height: 30),
-              Text("Confirm New Password ", style: TextStyle(fontSize: 20)),
+              Text("Nhập lại mật khẩu mới", style: TextStyle(fontSize: 20)),
               SizedBox(height: 8),
               TextField(
                 controller: _newpassagainInputCtrl,

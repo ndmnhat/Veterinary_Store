@@ -18,7 +18,7 @@ class SignUp extends StatelessWidget {
       await _authCtrl.register(_nameInputCtrl.text,_emailInputCtrl.text,_phoneInputCtrl.text,_passwordInputCtrl.text,"");
     }
     else{
-      Get.snackbar("Error", "Confirm password not correct!!!");
+      Get.snackbar("Lỗi", "Mật khẩu không trùng nhau");
     }
   }
   @override
@@ -48,7 +48,7 @@ class SignUp extends StatelessWidget {
                       controller: _nameInputCtrl,
                       style: TextStyle(color: Colors.black,fontSize: 25),
                       decoration: InputDecoration(
-                          labelText: "Username",
+                          labelText: "Họ và tên",
                           labelStyle: TextStyle(color: Colors.grey,fontSize: 20,),
                           prefixIcon: Container(
                             width: 50,
@@ -76,11 +76,12 @@ class SignUp extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 20, 0, 00),
                     child: TextField(
+                      keyboardType: TextInputType.number,
                       cursorColor: Color(0xFF085B6E),
                       controller: _phoneInputCtrl,
                       style: TextStyle(color: Colors.black,fontSize: 25),
                       decoration: InputDecoration(
-                        labelText: "Phonenumber",
+                        labelText: "Số điện thoại",
                         labelStyle: TextStyle(color: Colors.grey, fontSize: 20),
                         prefixIcon: Container(
                           width: 50,
@@ -137,7 +138,7 @@ class SignUp extends StatelessWidget {
                       style: TextStyle(color: Colors.black,fontSize: 25),
                       // obscureText: !_showPass,
                       decoration: InputDecoration(
-                        labelText: "Password",
+                        labelText: "Mật khẩu",
                         labelStyle: TextStyle(color: Colors.grey,fontSize: 20,),
                         prefixIcon: Container(
                           width: 50,
@@ -165,7 +166,7 @@ class SignUp extends StatelessWidget {
                       controller: _confirmpasswordInputCtrl,
                       style: TextStyle(color: Colors.black,fontSize: 25),
                       decoration: InputDecoration(
-                        labelText: "Confirm Password",
+                        labelText: "Nhập lại mật khẩu",
                         labelStyle: TextStyle(color: Colors.grey, fontSize: 20,),
                         prefixIcon: Container(
                           width: 50,
@@ -194,7 +195,7 @@ class SignUp extends StatelessWidget {
                     child: MaterialButton(
                         onPressed: handleFormSubmit,
                         color: Color(0xFF085B6E),
-                        child: Text("Sign up" ,style: TextStyle(fontSize: 25, color: Colors.grey[50]))
+                        child: Text("Đăng ký" ,style: TextStyle(fontSize: 25, color: Colors.grey[50]))
                     ),
                   ),
                 ),
@@ -207,13 +208,13 @@ class SignUp extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(0, 90, 0, 0),
                     child: RichText(
                         text: TextSpan(
-                            text: "already have an account ?",
+                            text: "Đã có tài khoản rồi ?",
                             style: TextStyle(fontSize: 15,color: Colors.grey ),
                             children: <TextSpan>[
                               TextSpan(
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {Get.back();},
-                                text: " Sign in",
+                                text: " Đăng nhập",
                                 style: TextStyle(fontSize: 15,color: Color(0xFF085B6E)),
                               )
                             ]

@@ -56,7 +56,7 @@ class DetailProduct extends StatelessWidget {
                           ),
                           SizedBox(height: 30.0),
                           Text(
-                            'Product Information',
+                            'Thông tin sản phẩm',
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
@@ -73,96 +73,108 @@ class DetailProduct extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: Column(
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    // mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Name',
-                                        style: TextStyle(fontSize: 18),
-                                      ),
-                                      VerticalDivider(
-                                        width: 50.0,
-                                        color: Colors.grey,
-                                      ),
-                                      Text(product.name,
-                                          style: TextStyle(fontSize: 18,color: Colors.black)),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        'Price',
-                                        style: TextStyle(fontSize: 18),
-                                      ),
-                                      VerticalDivider(
-                                        width: 57.0,
-                                        color: Colors.grey,
-                                      ),
-                                      Row(
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        // mainAxisAlignment: MainAxisAlignment.start,
                                         children: [
-                                          int.parse(product.discount) == 0 ?
-                                          Text("${formatter.format(double.parse(product.price))} vnđ", style: TextStyle(fontSize: 18,),)
-                                              : Text("${formatter.format((double.parse(product.price)-(double.parse(product.discount)/100*double.parse(product.price))))} vnđ", style: TextStyle( fontSize: 18,),),
+                                          Text(
+                                            'Tên',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
                                           VerticalDivider(
-                                            width: 20.0,
+                                            width: 50.0,
                                             color: Colors.grey,
                                           ),
-                                          int.parse(product.discount) == 0 ? Text("")
-                                              : Text("${formatter.format(double.parse(product.price))} vnđ", style: TextStyle(decoration: TextDecoration.lineThrough, fontSize: 18,),),
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(15, 0,0, 0),
+                                            child: Text(product.name,
+                                                style: TextStyle(fontSize: 18,color: Colors.black)),
+                                          ),
                                         ],
                                       ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        'Discount',
-                                        style: TextStyle(fontSize: 18),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Giá',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                          VerticalDivider(
+                                            width: 57.0,
+                                            color: Colors.grey,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(12, 0,0, 0),
+                                            child: Row(
+                                              children: [
+                                                int.parse(product.discount) == 0 ?
+                                                Text("${formatter.format(double.parse(product.price))} vnđ", style: TextStyle(fontSize: 18,),)
+                                                    : Text("${formatter.format((double.parse(product.price)-(double.parse(product.discount)/100*double.parse(product.price))))} vnđ", style: TextStyle( fontSize: 18,),),
+                                                VerticalDivider(
+                                                  width: 20.0,
+                                                  color: Colors.grey,
+                                                ),
+                                                int.parse(product.discount) == 0 ? Text("")
+                                                    : Text("${formatter.format(double.parse(product.price))} vnđ", style: TextStyle(decoration: TextDecoration.lineThrough, fontSize: 18,),),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      VerticalDivider(
-                                        width: 27.0,
-                                        color: Colors.grey,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(7, 8, 8, 8),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Giảm giá',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                          VerticalDivider(
+                                            width: 27.0,
+                                            color: Colors.grey,
+                                          ),
+                                          Text("${product.discount} %",
+                                              style:
+                                              TextStyle(fontSize: 18)),
+                                        ],
                                       ),
-                                      Text("${product.discount} %",
-                                          style:
-                                          TextStyle(fontSize: 18)),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        'Quantum',
-                                        style: TextStyle(fontSize: 18),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Số lượng',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                          VerticalDivider(
+                                            width: 24.5,
+                                            color: Colors.grey,
+                                          ),
+                                          Text(product.quantum,
+                                              style:
+                                              TextStyle(fontSize: 18)),
+                                        ],
                                       ),
-                                      VerticalDivider(
-                                        width: 24.5,
-                                        color: Colors.grey,
-                                      ),
-                                      Text(product.quantum,
-                                          style:
-                                          TextStyle(fontSize: 18)),
-                                    ],
-                                  ),
-                                ),
+                                    ),
+                                  ],
+                                )
                               ],
                             ),
                           ),
                           SizedBox(height: 30),
                           Text(
-                            'Components',
+                            'Thành phần trong sản phẩm',
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
@@ -187,7 +199,7 @@ class DetailProduct extends StatelessWidget {
                           ),
                           SizedBox(height: 30.0),
                           Text(
-                            'Usage Instruction',
+                            'Cách sử dụng',
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
@@ -212,7 +224,7 @@ class DetailProduct extends StatelessWidget {
                           ),
                           SizedBox(height: 30.0),
                           Text(
-                            'Rates and Comments',
+                            'Đánh giá và bình luận',
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
@@ -246,7 +258,7 @@ class DetailProduct extends StatelessWidget {
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
-                                              Text('1465 rates'),
+                                              Text('1465 Đánh giá'),
                                             ],
                                           ),
                                         ),
@@ -260,11 +272,11 @@ class DetailProduct extends StatelessWidget {
                                             crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                             children: [
-                                              Text('5: 1323 rates'),
-                                              Text('4: 108 rates'),
-                                              Text('3: 26 rates'),
-                                              Text('2: 04 rates'),
-                                              Text('1: 04 rates'),
+                                              Text('5: 1323 Đánh giá'),
+                                              Text('4: 108 Đánh giá'),
+                                              Text('3: 26 Đánh giá'),
+                                              Text('2: 04 Đánh giá'),
+                                              Text('1: 04 Đánh giá'),
                                             ],
                                           ),
                                         ),
@@ -313,7 +325,7 @@ class DetailProduct extends StatelessWidget {
                                                       ],
                                                     ),
                                                     SizedBox(height: 5.0),
-                                                    Text('very good'),
+                                                    Text('Rất tốt'),
                                                   ],
                                                 ),
                                               ),
@@ -329,7 +341,7 @@ class DetailProduct extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("😿",style: TextStyle(fontSize: 130),),
-                          Text("This product has been deleted"),
+                          Text("Sản phẩm này đã bị xóa"),
                         ],
                       )
                   );
@@ -354,7 +366,7 @@ class DetailProduct extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('It Sold Out'),
+                          child: Text('Đã bán hết'),
                         ),
                       ),
                     );
@@ -370,7 +382,7 @@ class DetailProduct extends StatelessWidget {
                             Get.find<AuthController>().addProductToCart(product);
                           },
                           child:
-                          Text('Add to cart', style: TextStyle(fontSize: 20)),
+                          Text('Thêm sản phẩm vào giỏ hàng', style: TextStyle(fontSize: 20)),
                         ),
                       ),
                     );
@@ -383,7 +395,7 @@ class DetailProduct extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                       child: ElevatedButton(
                         onPressed: null,
-                        child: Text('It Deleted'),
+                        child: Text('Đã bị xóa'),
                       ),
                     ),
                   );

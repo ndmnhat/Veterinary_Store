@@ -24,7 +24,7 @@ Container transaction(OrderModel orderModel) {
           color: Color(0xFF9E331B),
         ),
         child: Text(
-          "Cancel",
+          "Bị hủy",
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white),
         ),
@@ -41,7 +41,7 @@ Container transaction(OrderModel orderModel) {
           color: Color(0xFF026E46),
         ),
         child: Text(
-          "Complete",
+          "Hoàn thành",
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white),
         ),
@@ -58,7 +58,7 @@ Container transaction(OrderModel orderModel) {
           color: Color(0xFF0D296E),
         ),
         child: Text(
-          "Waitting",
+          "Đang đợi",
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white),
         ),
@@ -92,7 +92,7 @@ Container transaction(OrderModel orderModel) {
                     children: [
                       Expanded(
                         child: Text(
-                          'ID Bill:',
+                          'Mã đơn hàng:',
                           style: TextStyle(
                             fontSize: 20,
                           ),
@@ -115,7 +115,7 @@ Container transaction(OrderModel orderModel) {
                   child: Row(children: [
                     Expanded(
                       child: Text(
-                        'Day:',
+                        'Ngày:',
                         style: TextStyle(
                           fontSize: 20,
                         ),
@@ -137,7 +137,7 @@ Container transaction(OrderModel orderModel) {
                   child: Row(children: [
                     Expanded(
                       child: Text(
-                        'Receiver:',
+                        'Tên người nhận:',
                         style: TextStyle(
                           fontSize: 20,
                         ),
@@ -160,7 +160,7 @@ Container transaction(OrderModel orderModel) {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
-                        child: Text("Totals: ",
+                        child: Text("Tổng tiền: ",
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,
