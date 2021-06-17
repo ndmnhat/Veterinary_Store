@@ -57,6 +57,7 @@ class AppScreen  extends GetWidget<UtilitiesController> {
                   size: 35,
                 ),
                 onPressed: (){Get.to(NofiScreen());},
+                // onPressed: () {Get.find<AuthController>().signOutUser();},
               ),
             ),
           ],
