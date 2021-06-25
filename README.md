@@ -1,7 +1,7 @@
 # Veterinary_Store - Ứng dụng cửa hàng thuốc thú y
 ## Nội dung
 * [Chức năng](#chức-năng)
-   * [Đăng nhập / đăng ký / đăng xuất](#đăng-nhập-/-đăng-ký-/-đăng-xuất)
+   * [Đăng nhập / đăng ký](#đăng-nhập-/-đăng-ký)
    * [Thay đổi các thông tin cá nhân](#thay-đổi-các-thông-tin-cá-nhân)
    * [Đổi mật khẩu](#đổi-mật-khẩu)
    * [Tìm kiếm sản phẩm](#tìm-kiếm-sản-phẩm)
@@ -15,14 +15,42 @@
 * [Tác giả](#tác-giả)
 * [Giấy phép](#giấy-phép)
 ## Chức năng
-### Đăng nhập / đăng ký / đăng xuất
+### Đăng nhập / đăng ký
+
+* Đăng nhập
+<img src="img/3df5b7e5a9dc5d8204cd.jpg" height = "480" width="270">
+
+* Đăng ký
+<img src="img/ae3db929a710534e0a01.jpg" height = "480" width="270">
+
 ### Thay đổi các thông tin cá nhân
+
+<img src="img/bce913e60ddff981a0ce.jpg" height = "480" width="270">
+
 ### Đổi mật khẩu
+
+<img src="img/3f39242f3a16ce489707.jpg" height = "480" width="270">
+
 ### Tìm kiếm sản phẩm
+
+<img src="img/1d5794518a687e362779.jpg" height = "480" width="270">
+
 ### Xem thông tin sản phẩm
+
+<img src="img/26c3ca479a7e6e20376f.jpg" height = "480" width="270">
+
 ### Thêm sản phẩm vào giỏ hàng
+
+<img src="img/21dc07d919e0edbeb4f1.jpg" height = "480" width="270">
+
 ### Đặt mua sản phẩm
+
+<img src="img/2d2013310d08f956a019.jpg" height = "480" width="270">
+
 ### Xem danh sách đơn hàng
+
+<img src="img/ae275d394300b75eee11.jpg" height = "480" width="270">
+
 ## Yêu cầu thiết bị
 -Android:
 
@@ -41,6 +69,15 @@
 - Backend: Firebase
 
 ## Sơ đồ thiết kế
+* Sơ đồ lớp
+<img src="img/Picture1.png">
+
+* Thiết kế dữ liệu
+<img src="img/Picture2.png">
+
+* Sơ đồ liên kết các màn hình
+<img src="img/Picture3.png">
+
 ## Tác giả
 
 Lưu Trung Nguyên - 18521158@gm.uit.edu.vn
